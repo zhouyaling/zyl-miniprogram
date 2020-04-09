@@ -1,32 +1,46 @@
 <!--index.wxml-->
 <view class="container">
 	<view class="topWrap">
-		<view class="topContainer">
-			<view class="topTitle">首页</view>
-		</view>
 		<view class="swiperContent">
 			<swiper indicator-dots="{{true}}" indicator-color="transprant" indicator-active-color="#fff" autoplay="{{false}}" interval="2000" duration="500">
 				<block wx:for="{{bannerList}}" wx:key="*this">
 					<swiper-item>
-						<image src="../images/moren.png"></image>
+						<image src="{{item.url}}"></image>
 					</swiper-item>
 				</block>
 			</swiper>
 		</view>
-    <view class="topNav">
-      <view class="navItem">二手房</view>
-      <view class="navItem">租房</view>
-      <view class="navItem">车位</view>
-    </view>
+		<view class="topNav">
+			<view class="navItem active">
+				<view class="label">临床</view>
+			</view>
+			<view class="navItem">
+				<view class="label">实习</view>
+			</view>
+			<view class="navItem">
+				<view class="label">就业</view>
+			</view>
+			<view class="navItem">
+				<view class="label">视频</view>
+			</view>
+		</view>
 	</view>
-  <!-- 推荐商品 -->
-  <view class="listContent">
-    <view class="listBar">
-      <view>推荐商品</view>
-      <view>
-          <view>出租</view>
-          <view>出售</view>
-      </view>
-    </view>
-  </view>
+	<!-- 列表 -->
+	<view class="listContent">
+			<view class="list-item" wx:for="{{list}}">
+        <view class="list-item-image">
+          <image src="../images/img2.png"></image>
+        </view>
+        <view class="list-item-text">
+          <view class="text-title">疫情过后，这5类医疗专业将大火</view>
+          <view class="text-desc">
+            <view>2020-4-13</view>
+            <view class="text-zan">
+              <image src="../images/icon-zan.png"></image>
+              34
+            </view>
+          </view>
+        </view>
+			</view>
+	</view>
 </view>

@@ -4,8 +4,13 @@ const app = getApp()
 
 Page({
   data: {
-    bannerList:[1,2,3],
+    bannerList:[
+      {url:"../images/moren1.png"},
+    {url:"../images/moren3.png"},
+    {url:"../images/moren2.png"}
+  ],
     motto: 'Hello World',
+    list:[1,2,3,4,5],
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
