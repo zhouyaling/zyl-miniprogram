@@ -1,0 +1,85 @@
+/**index.wxss**/
+.container{
+  padding: 0;
+}
+
+.topWrap {
+  padding: 0 32rpx 52rpx 32rpx;
+  width: 100%;
+  box-sizing: border-box;
+  background-image: linear-gradient(-180deg, #fff 25%, #f5f7fc 100%);
+}
+
+.topContainer {
+  position: relative;
+  width: 100%;
+}
+
+.topContainer .topTitle {
+  font-family: PingFang SC;
+  font-size: 48rpx;
+  color: #23252b;
+  letter-spacing: 0;
+  text-align: left;
+  padding: 28rpx 0;
+  font-weight: 600;
+}
+
+.topContainer .topAddress {
+  position: absolute;
+  right: 0;
+  top: 32rpx;
+  font-family: PingFang SC;
+  font-size: 24rpx;
+  color: #23252b;
+  letter-spacing: 0;
+  font-weight: 600;
+  padding: 8rpx 24rpx;
+  border: 4rpx solid #f2f2f5;
+  border-radius: 200rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topContainer .iconImg {
+  width: 18rpx;
+  height: 22rpx;
+  margin-right:8rpx;
+}
+
+.swiperContent{
+  width: 100%;
+  border-radius: 8rpx;
+}
+
+.swiperContent image{
+  width: 100%;
+  height: 300rpx;
+  border-radius: 8rpx;
+}
+
+.topNav{
+  width: 100%;
+}
+
+.topNav .navItem{
+  width: 33.3%;
+  float: left;
+  padding: 40rpx 0;
+  text-align: center;
+}
+
+.listContent{
+  background-color: #fff;
+  position: relative;
+  width: 100%;
+  top: -40rpx;
+  border-top-left-radius: 60rpx;
+  border-top-right-radius: 60rpx;
+  min-height: 400rpx;
+}
+
+.listBar{
+  padding: 30rpx 40rpx;
+}

@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<view class="container">
+	<view class="topWrap">
+		<view class="topContainer">
+			<view class="topTitle">首页</view>
+		</view>
+		<view class="swiperContent">
+			<swiper indicator-dots="{{true}}" indicator-color="transprant" indicator-active-color="#fff" autoplay="{{false}}" interval="2000" duration="500">
+				<block wx:for="{{bannerList}}" wx:key="*this">
+					<swiper-item>
+						<image src="../images/moren.png"></image>
+					</swiper-item>
+				</block>
+			</swiper>
+		</view>
+    <view class="topNav">
+      <view class="navItem">二手房</view>
+      <view class="navItem">租房</view>
+      <view class="navItem">车位</view>
+    </view>
+	</view>
+  <!-- 推荐商品 -->
+  <view class="listContent">
+    <view class="listBar">
+      <view>推荐商品</view>
+      <view>
+          <view>出租</view>
+          <view>出售</view>
+      </view>
+    </view>
+  </view>
+</view>

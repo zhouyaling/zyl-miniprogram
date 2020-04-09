@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="741e3da4-22e8-47de-8467-aadcaea3ca7e" name="默认更改列表" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1a1Sh25hhVdo2OHdKDK9Ppe1B27" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="741e3da4-22e8-47de-8467-aadcaea3ca7e" name="默认更改列表" comment="" />
+      <created>1585901723051</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585901723051</updated>
+      <workItem from="1585901724167" duration="2803000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2690" y="300" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585903546020">
+      <screen x="1920" y="-6" width="1920" height="1040" />
+    </state>
+    <state x="2690" y="300" key="#com.intellij.fileTypes.FileTypeChooser/1920.-6.1920.1040/0.0.1920.1040@1920.-6.1920.1040" timestamp="1585903546020" />
+    <state x="2591" y="356" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1585903424037">
+      <screen x="1920" y="-6" width="1920" height="1040" />
+    </state>
+    <state x="2591" y="356" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.-6.1920.1040/0.0.1920.1040@1920.-6.1920.1040" timestamp="1585903424037" />
+    <state x="2429" y="145" width="902" height="738" key="find.popup" timestamp="1585902371839">
+      <screen x="1920" y="-6" width="1920" height="1040" />
+    </state>
+    <state x="2429" y="145" width="902" height="738" key="find.popup/1920.-6.1920.1040/0.0.1920.1040@1920.-6.1920.1040" timestamp="1585902371839" />
+  </component>
+</project>
