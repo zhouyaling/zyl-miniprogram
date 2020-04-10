@@ -4,13 +4,13 @@ const app = getApp()
 
 Page({
   data: {
+    loading:false,
     bannerList:[
       {url:"../images/moren1.png"},
     {url:"../images/moren3.png"},
     {url:"../images/moren2.png"}
   ],
-    motto: 'Hello World',
-    list:[1,2,3,4,5],
+    list:[],
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -48,6 +48,11 @@ Page({
         }
       })
     }
+
+    this.setData({
+      list:[1,2,3,4],
+      loading:true
+    });
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -56,5 +61,11 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  handlerOnChangeTab:function(event){
+    this.setData({
+      list:[1,2,3,4],
+      loading:true
+    });
   }
 })

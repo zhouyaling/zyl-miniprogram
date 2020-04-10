@@ -11,7 +11,13 @@
 			</swiper>
 		</view>
 		<view class="topNav">
-			<view class="navItem active">
+			<van-tabs active="a" animated color="#19CCB0" bind:click="handlerOnChangeTab">
+				<van-tab title="临床" name="a"></van-tab>
+				<van-tab title="实习" name="b"></van-tab>
+				<van-tab title="就业" name="c"></van-tab>
+				<van-tab title="视频" name="c"></van-tab>
+			</van-tabs>
+			<!-- <view class="navItem active">
 				<view class="label">临床</view>
 			</view>
 			<view class="navItem">
@@ -22,25 +28,30 @@
 			</view>
 			<view class="navItem">
 				<view class="label">视频</view>
-			</view>
+			</view> -->
 		</view>
 	</view>
 	<!-- 列表 -->
 	<view class="listContent">
-			<view class="list-item" wx:for="{{list}}">
-        <view class="list-item-image">
-          <image src="../images/img2.png"></image>
-        </view>
-        <view class="list-item-text">
-          <view class="text-title">疫情过后，这5类医疗专业将大火</view>
-          <view class="text-desc">
-            <view>2020-4-13</view>
-            <view class="text-zan">
-              <image src="../images/icon-zan.png"></image>
-              34
-            </view>
-          </view>
-        </view>
+		<van-skeleton title avatar row="1" row-width="30%" title-width="100%" avatar-size="130rpx" avatar-shape="square" loading="true">
+			<view>
+				<view class="list-item" wx:for="{{list}}">
+					<view class="list-item-image">
+						<image src="../images/img2.png"></image>
+					</view>
+					<view class="list-item-text">
+						<view class="text-title">疫情过后，这5类医疗专业将大火</view>
+						<view class="text-desc">
+							<view>2020-4-13</view>
+							<view class="text-zan">
+								<image src="../images/icon-zan.png"></image>
+								34
+							</view>
+						</view>
+					</view>
+				</view>
 			</view>
+		</van-skeleton>
+
 	</view>
 </view>

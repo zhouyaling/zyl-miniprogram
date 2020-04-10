@@ -43,6 +43,10 @@
     "navigationBarTitleText": "平台",
     "navigationBarTextStyle": "white"
   },
-  "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-skeleton": "@vant/weapp/skeleton/index"
+  }
 }
