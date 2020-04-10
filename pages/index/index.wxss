@@ -6,7 +6,7 @@
 }
 
 .topWrap {
-  padding: 0 32rpx 0rpx 32rpx;
+  padding: 20rpx 20rpx 0rpx 20rpx;
   width: 100%;
   box-sizing: border-box;
   /* background-image: linear-gradient(-180deg, #fff 25%, #f5f7fc 100%); */
@@ -57,12 +57,12 @@
 
 .swiperContent image{
   width: 100%;
-  height: 350rpx;
+  height: 320rpx;
   border-radius: 8rpx;
 }
 
 swiper{
-  height: 350rpx;
+  height: 320rpx;
 }
 
 .topNav{
