@@ -21,6 +21,11 @@
   width: 100%;
   text-align: center;
   padding-top: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
 }
 
 .mineInfo image {
@@ -30,6 +35,7 @@
 }
 
 .mineInfo .name {
+  display: inline-block;
   font-size: 44rpx;
   color: #fff;
   letter-spacing: 0;

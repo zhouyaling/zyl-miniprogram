@@ -7,8 +7,7 @@ Page({
     loading:false,
     bannerList:[
       {url:"../images/moren1.png"},
-    {url:"../images/moren3.png"},
-    {url:"../images/moren2.png"}
+     {url:"../images/moren3.png"},
   ],
     list:[],
     userInfo: {},

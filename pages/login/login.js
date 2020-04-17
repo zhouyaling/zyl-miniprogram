@@ -9,7 +9,7 @@ Page({
    */
   data: {
     showModal:false, // 微信确认授权弹窗
-    isUserAuth:false, // 用户是否授权
+    isUserAuth:false, // 是否授权用户信息
     loginStatus:true, // 是否登录
     encryptedData:"",
     iv:""
@@ -60,7 +60,7 @@ Page({
       if(this.isUserAuth){
         this.getUserinfo()
        }else{
-         // TODO: 提示用户先授权
+         // TODO: 提示用户先授权用户信息
          this.setData({
            showModal: true
          });
