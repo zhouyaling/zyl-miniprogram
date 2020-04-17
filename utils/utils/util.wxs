@@ -1,0 +1,21 @@
+var  includes = function (statusList,curStatus) {
+  statusList.map(function (item) {
+    item=item+''
+  })
+  return statusList.indexOf(curStatus)>-1
+}
+
+//数组
+var isInArray = function(arr, value) {
+  for (var i = 0; i < arr.length; i++) {
+    if (value === arr[i]) {
+      return true;
+    }
+  }
+  return false;
+}
+
+module.exports = {
+  includes : includes,
+  isInArray: isInArray
+}

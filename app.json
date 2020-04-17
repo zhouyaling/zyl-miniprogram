@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/videos/videos",
     "pages/index/index",
     "pages/my/mine/mine",
-    "pages/logs/logs",
-    "pages/videos/videos"
+    "pages/logs/logs"
   ],
   "tabBar": {
     "color": "#CBCBCB",
@@ -39,7 +39,7 @@
   },
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#19CCB0",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "平台",
     "navigationBarTextStyle": "white"
   },

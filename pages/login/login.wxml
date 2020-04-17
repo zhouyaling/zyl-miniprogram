@@ -1,0 +1,30 @@
+<!--pages/login/login.wxml-->
+<view wx:if="{{showModal}}" class='popup_modal'>
+  <view class='mask'></view>
+  <view class='modal_content'>
+     <view class="basicprofile"><image src='../images/basicprofile.png' style='width:100rpx;height:107rpx'></image> <text>金科租售</text></view>
+      
+    <view class='modal_title'>请点击下方按钮获取您的微信权限</view>
+    <view class='modal_foot'>
+      <button open-type="getUserInfo" bindgetuserinfo='getUserinfo' class='btn confirm'>确认授权</button>
+    </view>
+  </view>
+</view>
+
+<view class="page">
+<view class="container">
+  <view class="login-box">
+      <view class="wechart-login">
+      <button type="default"  size="default" disabled="{{loginStatus}}"  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" hover-class="other-button-hover">微信一键登录</button>
+      </view>
+      <view class="{{loginStatus?'phone-login':'phone-login-active'}}" >
+      <button type="default" plain="true" disabled="{{loginStatus}}"  size="default"  bindtap="default" hover-class="other-button-hover">手机号登录/注册</button>
+      </view>
+      <view class="login-sub">
+      <checkbox-group bindchange="checkboxChange">
+        <checkbox value="1" color="#19CCB0" />同意《金科租售用户注册协议》
+        </checkbox-group>
+      </view>
+  </view>
+</view>
+</view>

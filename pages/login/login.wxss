@@ -1,0 +1,70 @@
+/* pages/login/login.wxss */
+.login-box{
+  width: 84%;
+  margin-top: 50%;
+}
+
+.wechart-login button{
+  border: none!important;
+  background-color: #19CCB0;
+  color: #fff;
+}
+
+.phone-login,.phone-login-active{
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.phone-login button{
+  border: 1px solid #D6D6D8!important;
+}
+
+.phone-login-active button{
+  border: 1px solid #19CCB0!important;
+  color: #19CCB0!important;
+}
+
+.login-sub{
+  color: #999;
+}
+
+/* 遮罩层 */
+.mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.5);
+}
+.popup_modal {
+  z-index: 101;
+  position: fixed;
+  text-align: center;
+}
+.modal_content {
+  border-radius: 12rpx;
+  color: #333;
+  background-color: #fff;
+  z-index: 101;
+  position: fixed;
+  top: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 340rpx;
+  width: 80%;
+  padding-top: 40rpx;
+}
+.modal_foot {
+  text-align: center;
+  border-top: -1rpx solid #e6e6e6;
+  margin: 0 40rpx;
+}
+.modal_title {
+  margin-bottom: 40rpx;
+}
+.cancel_btn {
+  background: #e6e6e6;
+}
