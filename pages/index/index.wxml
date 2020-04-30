@@ -33,14 +33,17 @@
 	</view>
 	<!-- 列表 -->
 	<view class="listContent">
-		<van-skeleton title avatar row="1" row-width="30%" title-width="100%" avatar-size="130rpx" avatar-shape="square" loading="true">
 			<view>
 				<view class="list-item" wx:for="{{list}}">
-					<view class="list-item-image">
-						<image src="../images/img2.png"></image>
-					</view>
+					<navigator url="/pages/details/details">
+						<view class="list-item-image">
+							<image src="../images/img2.png"></image>
+						</view>
+					</navigator>
 					<view class="list-item-text">
-						<view class="text-title">疫情过后，这5类医疗专业将大火</view>
+						<navigator url="/pages/details/details?id={{item.id}}">
+							<view class="text-title">疫情过后，这5类医疗专业将大火</view>
+						</navigator>
 						<view class="text-desc">
 							<view>2020-4-13</view>
 							<view class="text-zan">
@@ -51,7 +54,5 @@
 					</view>
 				</view>
 			</view>
-		</van-skeleton>
-
 	</view>
 </view>

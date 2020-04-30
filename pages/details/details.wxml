@@ -1,0 +1,12 @@
+<!--pages/details/details.wxml-->
+<view>
+  <view class="title">{{detail.title}}</view>
+  <view class="sub-title">
+    <text class="detail-time">发布于：{{detail.time}}</text>
+    <text>点赞量：{{detail.zan}}</text>
+  </view>
+  <view class="detail-content">
+  <!-- {{detail.content}} -->
+  <rich-text nodes="{{detail.content}}"></rich-text> 
+  </view>
+</view>

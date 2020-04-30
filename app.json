@@ -3,7 +3,10 @@
     "pages/videos/videos",
     "pages/index/index",
     "pages/my/mine/mine",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/details/details",
+    "pages/login/login",
+    "pages/library/library"
   ],
   "tabBar": {
     "color": "#CBCBCB",
@@ -24,7 +27,7 @@
         "text": "视频"
       },
       {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/library/library",
         "iconPath": "pages/images/bar_study.png",
         "selectedIconPath": "pages/images/bar_study_active.png",
         "text": "题库"
@@ -48,5 +51,10 @@
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
     "van-skeleton": "@vant/weapp/skeleton/index"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
   }
 }

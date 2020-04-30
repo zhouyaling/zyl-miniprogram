@@ -8,6 +8,7 @@
   border: none!important;
   background-color: #19CCB0;
   color: #fff;
+  margin-bottom: 30rpx;
 }
 
 .phone-login,.phone-login-active{

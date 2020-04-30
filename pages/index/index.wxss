@@ -93,11 +93,11 @@ swiper{
 
 .listContent{
   position: relative;
-  padding: 0 32rpx 50rpx 32rpx;
+  margin: 0 32rpx 50rpx 32rpx;
   border-top-left-radius: 60rpx;
   border-top-right-radius: 60rpx;
   min-height: 400rpx;
-  width:100%;
+  box-sizing: border-box;
 }
 
 .listBar{
@@ -109,7 +109,7 @@ swiper{
   /* background-color: #fff; */
   /* border-radius: 8rpx; */
   border-bottom:  1px solid #F6F6F6;
-  padding: 30rpx 0;
+  padding: 30rpx 30rpx;
   display: flex;
   align-items: center;
   justify-content: flex-start;

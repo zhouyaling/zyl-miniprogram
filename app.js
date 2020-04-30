@@ -12,6 +12,18 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
+
+    // 授权用户定位
+    wx.authorize({scope:"scope.userLocation",
+    success:function(){
+        wx.getLocation({
+          success:function(res){
+            console.log("纬度:"+res.latitude+"经度"+res.longitude);
+          }
+        })
+    }
+  })
+
     // 获取用户信息
     wx.getSetting({
       success: res => {

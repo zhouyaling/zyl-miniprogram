@@ -1,0 +1,27 @@
+/* pages/details/details.wxss */
+.title{
+  color: #0E0E0E;
+  font-size: 34rpx;
+  margin: 26rpx 26rpx 18rpx 26rpx;
+}
+
+.sub-title{
+  color: #858585;
+  font-size: 24rpx;
+  margin: 0 0 26rpx 26rpx;
+}
+
+.detail-time{
+  margin-right: 24rpx;
+}
+
+.detail-content{
+  border-top:2rpx solid #F3F3F3;
+  padding: 30rpx 20rpx;
+  color: #4F4F4F;
+  font-size: 28rpx;
+}
+
+rich-text img{
+  width: 100%;
+}

@@ -21,7 +21,7 @@
 				<navigator src='#' url="../personalData/personalData" wx:if="{{isLogin==1}}">
 					<text class="nickName">{{userInfo.nickName||userInfo.mobile}}</text>
 				</navigator>
-				<navigator   url="../../login/login" wx:elif="{{isLogin==0}}">
+				<navigator   url="/pages/login/login" wx:elif="{{isLogin==0}}">
 					<text class="nickName"> 点击登录</text>
 				</navigator>
 			</view>
@@ -29,7 +29,7 @@
 	</view>
 
 
-	<!-- <view class='mineList radiusOne'>
+	<view class='mineList radiusOne'>
 		<view class='cell mineCell'>
 			<image class="mineIcons" src="../../images/icon-collect.png"></image>
 			<text class="cenlie">个人资料</text>
@@ -65,5 +65,5 @@
 				<image src="../../images/icon-arrow1.png"></image>
 			</i>
 		</view>
-	</view> -->
+	</view>
 </view>
