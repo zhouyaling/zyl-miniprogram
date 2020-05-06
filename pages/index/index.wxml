@@ -2,7 +2,7 @@
 <view class="container">
 	<view class="topWrap">
 		<view class="swiperContent">
-			<swiper indicator-dots="{{true}}" indicator-color="transprant" indicator-active-color="#fff" autoplay="{{false}}" interval="2000" duration="500">
+			<swiper indicator-dots="{{true}}" indicator-color="transprant" indicator-active-color="#fff" autoplay="{{true}}" interval="5000" duration="500">
 				<block wx:for="{{bannerList}}" wx:key="*this">
 					<swiper-item>
 						<image src="{{item.url}}"></image>
@@ -11,12 +11,12 @@
 			</swiper>
 		</view>
 		<view class="topNav">
-			<van-tabs active="a" animated color="#19CCB0" bind:click="handlerOnChangeTab">
-				<van-tab title="临床" name="a"></van-tab>
-				<van-tab title="实习" name="b"></van-tab>
-				<van-tab title="就业" name="c"></van-tab>
-				<van-tab title="视频" name="c"></van-tab>
-			</van-tabs>
+			<van-tabbar active="{{active}}" bind:change="handlerOnChangeTab" fixed="{{mark}}" active-color="#19CCB0">
+				<van-tabbar-item icon="star">临床</van-tabbar-item>
+				<van-tabbar-item icon="diamond">实习</van-tabbar-item>
+				<van-tabbar-item icon="service">就业</van-tabbar-item>
+				<van-tabbar-item icon="fire">视频</van-tabbar-item>
+			</van-tabbar>
 			<!-- <view class="navItem active">
 				<view class="label">临床</view>
 			</view>

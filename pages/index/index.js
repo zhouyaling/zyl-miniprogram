@@ -4,6 +4,8 @@ const app = getApp()
 
 Page({
   data: {
+    active: 0,
+    mark:false,
     loading:false,
     bannerList:[
       {id:1,url:"../images/moren1.png"},
@@ -64,7 +66,8 @@ Page({
   handlerOnChangeTab:function(event){
     this.setData({
       list:[1,2,3,4],
-      loading:true
+      loading:true,
+      active:event.detail
     });
   }
 })

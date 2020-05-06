@@ -1,2 +1,57 @@
-<!--pages/videos/videos.wxml-->
-<text>pages/videos/videos.wxml</text>
+<!--index.wxml-->
+<view class="container">
+	<view class="topWrap">
+		<view class="swiperContent">
+			<swiper indicator-dots="{{true}}" indicator-color="transprant" indicator-active-color="#fff" autoplay="{{true}}" interval="4000" duration="500">
+				<block wx:for="{{bannerList}}" wx:key="*this">
+					<swiper-item>
+						<image src="{{item.url}}"></image>
+					</swiper-item>
+				</block>
+			</swiper>
+		</view>
+		<view class="topNav">
+			<van-tabs active="a" animated color="#19CCB0" swipeable bind:click="handlerOnChangeTab">
+				<van-tab title="分类1" name="a"></van-tab>
+				<van-tab title="分类2" name="b"></van-tab>
+				<van-tab title="分类3" name="c"></van-tab>
+				<van-tab title="分类4" name="d"></van-tab>
+				<van-tab title="分类5" name="e"></van-tab>
+				<van-tab title="分类6" name="f"></van-tab>
+			</van-tabs>
+			<!-- <view class="navItem active">
+				<view class="label">临床</view>
+			</view>
+			<view class="navItem">
+				<view class="label">实习</view>
+			</view>
+			<view class="navItem">
+				<view class="label">就业</view>
+			</view>
+			<view class="navItem">
+				<view class="label">视频</view>
+			</view> -->
+		</view>
+	</view>
+	<!-- 列表 -->
+	<view class="listContent">
+			<view>
+				<view class="list-item" wx:for="{{list}}">
+					<navigator url="/pages/details/details">
+						<view class="list-item-image">
+							<image src="../images/img2.png"></image>
+						</view>
+					</navigator>
+					<view class="list-item-text">
+						<navigator url="/pages/details/details?id={{item.id}}">
+							<view class="text-title">疫情过后，这5类医疗专业将大火</view>
+						</navigator>
+						<view class="text-desc">
+							<view>215人已学习</view>
+							
+						</view>
+					</view>
+				</view>
+			</view>
+	</view>
+</view>

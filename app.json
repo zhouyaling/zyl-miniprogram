@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/library/library",
     "pages/videos/videos",
     "pages/index/index",
     "pages/my/mine/mine",
     "pages/logs/logs",
     "pages/details/details",
-    "pages/login/login",
-    "pages/library/library"
+    "pages/login/login"
   ],
   "tabBar": {
     "color": "#CBCBCB",
@@ -50,7 +50,9 @@
   "usingComponents": {
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
-    "van-skeleton": "@vant/weapp/skeleton/index"
+    "van-skeleton": "@vant/weapp/skeleton/index",
+    "van-tabbar": "@vant/weapp/tabbar/index",
+  "van-tabbar-item": "@vant/weapp/tabbar-item/index"
   },
   "permission": {
     "scope.userLocation": {
