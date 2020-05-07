@@ -34,23 +34,39 @@ Page({
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
     }
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  }
+   /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    let wxSession = wx.getStorageSync("authName") // token是否存在
+
+    if(wxSession=="" || wxSession==null || wxSession == undefined){
+        this.setData({
+          isLogin:0
+        })
+    }else{
+      this.setData({
+        isLogin:1
+      })
+      // 获取用户信息
+      this.getUserInfo()
+    }
+  },
+    // 获取用户信息
+    async getUserInfo(params) {
+      let resule = await Serv.getUserInfo(params)
+      if (resule.success) { // 用户信息获取成功
+        this.setData({ userInfo: resule.data })
+      }
+    },
+  // getUserInfo: function(e) {
+  //   console.log(e)
+  //   app.globalData.userInfo = e.detail.userInfo
+  //   this.setData({
+  //     userInfo: e.detail.userInfo,
+  //     hasUserInfo: true
+  //   })
+  // }
 })

@@ -35,7 +35,7 @@ let envConfig = {
     'https://app-zmzj-test.mideazy.com/',//test
     // host: 'https://appzmzjsit.midea.com/',//sit
     // host: 'https://app-zmzj.mideazy.com/',//prod
-    ossHost: 'https://zmzj-test.oss-cn-shenzhen.aliyuncs.com/mideadc-miniprogram/',//https://zmzj-test.oss-cn-shenzhen.aliyuncs.com/mideadc-miniprogram/images/logo/03030000.png
+    ossHost: 'https://zmzj-test.oss-cn-shenzhen.aliyuncs.com/mideadc-miniprogram/',
     // 只能在本地生效
     IntergralH5Url: 'https://jfsc-sit.mideazy.com', 
     mock: false,
@@ -68,7 +68,7 @@ let envConfig = {
   prod: {
     // api接口主机地址，演示阶段，先用本地，且开启mock
     //https://rend-sale-test.tq-service.com/app/
-    host: 'https://rend-sale-test.tq-service.com/',
+    host: 'http://118.190.217.38/ys_jhjy/',
     ossHost: 'https://zmzj-pro.oss-cn-shenzhen.aliyuncs.com/mideadc-miniprogram/',
     IntergralH5Url: 'https://jfsc.mideazy.com',
     // 只能在本地生效
@@ -92,7 +92,6 @@ const getApiAppName = function (url) {
   }
 
   let str = ""
-  //https://zmzj-test.oss-cn-shenzhen.aliyuncs.com/mideadc-miniprogram/mock/app-beautyHouse-queryHouseTypeList.json
   // 本机开发环境，则当前assets/mock下面的json
   if (config.mock && (config.ENV == 'loc' || config.ENV === 'dev')) {
     console.log(document)

@@ -24,6 +24,7 @@ Page({
       wx.getSetting({
         success(res){
           let authorizeList = res.authSetting;
+          debugger
           _this.setData({
               isUserAuth:authorizeList["scope.userInfo"]
             })
@@ -45,6 +46,7 @@ Page({
    * 微信一键登录
    */
   getPhoneNumber(e){
+    debugger
     if (e.detail.errMsg == 'getPhoneNumber:fail user deny') {
       wx.showModal({
         title: '提示',
@@ -57,7 +59,7 @@ Page({
         encryptedData:e.detail.encryptedData,
         iv:e.detail.iv
       })
-      if(this.isUserAuth){
+      if(this.data.isUserAuth){
         this.getUserinfo()
        }else{
          // TODO: 提示用户先授权用户信息
@@ -72,6 +74,7 @@ Page({
    * 获取用户基本信息
    */
   getUserinfo(){
+    debugger
     let _this = this;
     wx.getUserInfo({
       success: async function (res) {
@@ -84,36 +87,36 @@ Page({
 
          // code换取登录态信息（openid,sessionKey）
         const params = {
-          encryptedData: _this.data.encryptedData,
-          code: wx.getStorageSync(Config.jsCodeKey),
-          iv: _this.data.iv,
-          userInfo: res.userInfo,
-          recommendId: wx.getStorageSync(Config.referrerIdKey)
+          "code": wx.getStorageSync(Config.jsCodeKey)
         };
         Request({
-          url: "app/weixin/login",
-          type: "post",
+          url: "Weixin/get",
+          type: "get",
           data: params
-        }).then((result) => {
-          if(result.success){
-            let data = result.data;
-            wx.setStorageSync(Config.openIdKey, data.openId)
-            wx.setStorageSync(Config.sessionKey, data.sessionKey)
-            wx.setStorageSync(Config.authName, data.token)
-            wx.setStorageSync(Config.userIdKey, data.userId)
-            wx.setStorageSync(Config.phoneNoKey, data.mobile)
-            wx.setStorageSync(Config.userInfoKey, res.userInfo)
+        }).then((data) => {
+          wx.setStorageSync(Config.openIdKey, data.openid)
+          wx.setStorageSync(Config.sessionKey, data.session_key)
+          wx.setStorageSync(Config.userInfoKey, res.userInfo)
+          wx.setStorageSync(Config.authName, 1)
+          wx.navigateBack({
+            delta: 1
+          })
 
-            wx.navigateBack({
-              delta: 1
-            })
-          }else{
-            wx.login({
-              success: res => {
-                wx.setStorageSync(Config.jsCodeKey, res.code)
-              }
-            })
-          }
+          // if(result.success){
+          //   let data = result.data;
+          //   wx.setStorageSync(Config.openIdKey, data.openId)
+          //   wx.setStorageSync(Config.sessionKey, data.sessionKey)
+
+          //   wx.navigateBack({
+          //     delta: 1
+          //   })
+          // }else{
+          //   wx.login({
+          //     success: res => {
+          //       wx.setStorageSync(Config.jsCodeKey, res.code)
+          //     }
+          //   })
+          // }
         })
         wx.hideLoading();
       },
