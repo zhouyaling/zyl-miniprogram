@@ -1,0 +1,48 @@
+<view class="wrap">
+  <view class="question-header">
+    <view class="header-left">第一节 金科服务</view>
+    <view class="header-right">1/10</view>
+  </view>
+  <view class="question-wrap">
+    <view class="question-title">
+    列表中唯一的字符串或者或者数字，且不会发生改变。
+    </view>
+    <view class="question-answer">
+      <view class="question-answer-item">
+        <text class="answer-a">A</text>
+        <text class="answer-text">大管家</text>
+      </view>
+      <view class="question-answer-item">
+        <text class="answer-a">B</text>
+        <text class="answer-text">大管家</text>
+      </view>
+      <view class="question-answer-item">
+        <text class="answer-a">A</text>
+        <text class="answer-text">大管家</text>
+      </view>
+      <view class="question-answer-item">
+        <text class="answer-a">B</text>
+        <text class="answer-text">大管家</text>
+      </view>
+    </view>
+  </view>
+  <view class="question-result">
+    <view class="question-result-all">
+      <text>正确答案：<text class="result-b">A</text> </text>
+      <text>你的答案：<text class="result-b">B</text> </text>
+    </view>
+    <view class="question-result-all title">解析：</view>
+    <view class="question-result-detail">
+    当数据改变触发渲染层重新渲染的时候，会校正带有 key 的组件，框架会确保他们被重新排序，而不是重新创建，以确保使组件保持自身的状态，并且提高列表渲染时的效率。
+    </view>
+  </view>
+  <view class="question-footer">
+    <van-tabbar>
+    <van-tabbar-item icon="exchange">返回</van-tabbar-item>
+    <van-tabbar-item icon="arrow-left">上一题</van-tabbar-item>
+    <van-tabbar-item icon="arrow">下一题</van-tabbar-item>
+    <van-tabbar-item icon="notes-o">答题卡</van-tabbar-item>
+  </van-tabbar>
+</view>
+
+</view>

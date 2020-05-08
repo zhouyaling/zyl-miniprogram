@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/questions/questions",
     "pages/library/library",
     "pages/videos/videos",
     "pages/index/index",
@@ -52,7 +53,8 @@
     "van-tabs": "@vant/weapp/tabs/index",
     "van-skeleton": "@vant/weapp/skeleton/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
-  "van-tabbar-item": "@vant/weapp/tabbar-item/index"
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+    "van-icon": "@vant/weapp/icon/index"
   },
   "permission": {
     "scope.userLocation": {

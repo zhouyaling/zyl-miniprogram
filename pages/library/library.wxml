@@ -1,2 +1,58 @@
-<!--pages/library/library.wxml-->
-<text>pages/library/library.wxml</text>
+<view class="wrap">
+  <view class="library-head-bk"></view>
+  <!--分类 -->
+    <view class="library-tab">
+      <view class="library-tab-item">
+        <image src="../images/icon-lianxi.png"></image>
+				<view class="label">章节练习</view>
+			</view>
+       <view class="library-tab-item">
+				 <image src="../images/icon-kaoshi.png"></image>
+				<view class="label">模拟考试</view>
+			</view>
+      <view class="library-tab-item">
+          <image src="../images/icon-ceshi.png"></image>
+            <view class="label">章节测试</view>
+          </view>
+          <view class="library-tab-item">
+            <image src="../images/icon-zhenti.png"></image>
+            <view class="label">模拟真题</view>
+          </view>
+          <view class="library-tab-item">
+          <image src="../images/icon-cuoti.png"></image>
+            <view class="label">我的错题</view>
+          </view>
+        </view>
+      <!-- 内容区域 -->
+      <view class="library-list">
+        <view class="library-list-item" wx:for="{{list}}" wx:key="id">
+          <view class="library-list-total">
+              <view class="icon-check" class="{{item.status?'icon-check checked':'icon-check'}}" data-item="{{item}}" bindtap="arrowClick">
+                <van-icon wx:if="{{item.status}}" name="arrow-up" color="#ffffff" />
+                <van-icon wx:if="{{!item.status}}" name="arrow-down" color="#ffffff" />
+              </view>
+              <view class="item-content">
+                <view class="item-title">{{item.totalInfo.name}}</view>
+                <view class="item-subtitle">{{item.totalInfo.actived}}/{{item.totalInfo.total}}道</view>
+                <view class="progress-box">
+                  <progress percent="{{item.totalInfo.actived}}" color="#19CCB0" active stroke-width="3" />
+                </view>
+              </view>
+              <image class="icon-edit" src="../images/icon-edit.png"></image>
+          </view>
+          <view class="library-list-detail" wx:if="{{item.status}}" wx:for="{{item.children}}" wx:for-item="child" wx:key="id" >
+            <view class="">
+              <van-icon name="circle" color="#19CCB0" />
+              </view>
+              <view class="item-content">
+                <view class="item-title">{{child.name}}</view>
+                <view class="item-subtitle">{{child.actived}}/{{child.total}}道</view>
+                <view class="progress-box">
+                  <progress percent="{{child.actived/child.total * 100}}" color="#19CCB0" active stroke-width="3" />
+                </view>
+              </view>
+              <image class="icon-edit" src="../images/icon-edit.png" bindtap="goQuestion" data-item="{{child}}"></image>
+          </view>
+        </view>
+      </view>
+</view>

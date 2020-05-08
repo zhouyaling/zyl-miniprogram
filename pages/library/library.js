@@ -5,8 +5,85 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    list:[{
+      id:1,
+      status:false,
+      totalInfo:{
+        name:'第一章 金科大社区',
+        total:100,
+        actived:65,
+      },
+      children:[
+        {
+          id:11,
+          name:'第一节 金科大社区',
+          total:50,
+          actived:25,
+        },
+        {
+          id:12,
+          name:'第二节 金科大社区',
+          total:50,
+          actived:40,
+        }
+      ]
+    },
+    {
+      id:2,
+      status:true,
+      totalInfo:{
+        name:'第二章 金科大社区',
+        total:100,
+        actived:65,
+      },
+      children:[
+        {
+          id:21,
+          name:'第一节 金科大社区',
+          total:50,
+          actived:25,
+        }
+      ]
+    },{
+      id:3,
+      status:false,
+      totalInfo:{
+        name:'第三章 金科大社区',
+        total:100,
+        actived:65,
+      },
+        children:[]
+    }]
   },
+
+  /**
+   * 章节展开
+   */
+  arrowClick(e){
+    let currid = e.currentTarget.dataset.item.id;
+    let qq = this.data.list.map(function(ele){
+        if(ele.id==currid){
+          ele.status = !ele.status;
+        }else{
+          ele.status = false;
+        }
+
+        return ele;
+    })
+    this.setData({
+      list:qq
+    })
+  },
+
+  /**
+   * 开始答题
+   */
+  goQuestion(e){
+    wx.navigateTo({
+      url: '../questions/questions?id=' + e.currentTarget.dataset.item.id,
+    })
+  },
+  
 
   /**
    * 生命周期函数--监听页面加载
