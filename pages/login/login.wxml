@@ -2,7 +2,7 @@
 <view wx:if="{{showModal}}" class='popup_modal'>
   <view class='mask'></view>
   <view class='modal_content'>
-     <view class="basicprofile"><image src='../images/basicprofile.png' style='width:100rpx;height:107rpx'></image> <text>金科租售</text></view>
+     <view class="basicprofile"><image src='../images/basicprofile.png' style='width:100rpx;height:107rpx'></image> <text>健康平台</text></view>
       
     <view class='modal_title'>请点击下方按钮获取您的微信权限</view>
     <view class='modal_foot'>
@@ -22,7 +22,7 @@
       </view> -->
       <view class="login-sub">
       <checkbox-group bindchange="checkboxChange">
-        <checkbox value="1" color="#19CCB0" />同意《金科租售用户注册协议》
+        <checkbox value="1" color="#19CCB0" />同意《用户注册协议》
         </checkbox-group>
       </view>
   </view>

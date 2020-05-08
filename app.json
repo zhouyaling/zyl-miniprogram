@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/questions/questions",
     "pages/library/library",
     "pages/videos/videos",
-    "pages/index/index",
     "pages/my/mine/mine",
     "pages/logs/logs",
     "pages/details/details",
@@ -44,7 +44,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#19CCB0",
-    "navigationBarTitleText": "平台",
+    "navigationBarTitleText": "健康平台",
     "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json",

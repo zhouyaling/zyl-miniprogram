@@ -1,6 +1,6 @@
 <view class="wrap">
   <view class="question-header">
-    <view class="header-left">第一节 金科服务</view>
+    <view class="header-left">第一节 健康服务</view>
     <view class="header-right"><text>{{currentQuestion + 1}}</text>/<text>{{totalQuestion}}</text></view>
   </view>
   <view class="question-wrap">

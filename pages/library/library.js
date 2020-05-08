@@ -9,20 +9,20 @@ Page({
       id:1,
       status:true,
       totalInfo:{
-        name:'第一章 金科大社区',
+        name:'第一章大社区',
         total:100,
         actived:65,
       },
       children:[
         {
           id:11,
-          name:'第一节 金科大社区',
+          name:'第一节 大社区',
           total:50,
           actived:25,
         },
         {
           id:12,
-          name:'第二节 金科大社区',
+          name:'第二节 大社区',
           total:50,
           actived:40,
         }
@@ -32,14 +32,14 @@ Page({
       id:2,
       status:false,
       totalInfo:{
-        name:'第二章 金科大社区',
+        name:'第二章 大社区',
         total:100,
         actived:65,
       },
       children:[
         {
           id:21,
-          name:'第一节 金科大社区',
+          name:'第一节 大社区',
           total:50,
           actived:25,
         }
@@ -48,7 +48,7 @@ Page({
       id:3,
       status:false,
       totalInfo:{
-        name:'第三章 金科大社区',
+        name:'第三章 大社区',
         total:100,
         actived:65,
       },
