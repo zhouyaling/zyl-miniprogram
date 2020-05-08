@@ -7,7 +7,7 @@ Page({
   data: {
     list:[{
       id:1,
-      status:false,
+      status:true,
       totalInfo:{
         name:'第一章 金科大社区',
         total:100,
@@ -30,7 +30,7 @@ Page({
     },
     {
       id:2,
-      status:true,
+      status:false,
       totalInfo:{
         name:'第二章 金科大社区',
         total:100,
@@ -79,6 +79,9 @@ Page({
    * 开始答题
    */
   goQuestion(e){
+    if(!e.currentTarget.dataset.item){
+      return
+    }
     wx.navigateTo({
       url: '../questions/questions?id=' + e.currentTarget.dataset.item.id,
     })

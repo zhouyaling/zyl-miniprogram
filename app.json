@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/questions/questions",
     "pages/library/library",
+    "pages/questions/questions",
     "pages/videos/videos",
     "pages/index/index",
     "pages/my/mine/mine",

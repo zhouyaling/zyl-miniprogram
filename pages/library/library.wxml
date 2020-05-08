@@ -38,7 +38,7 @@
                   <progress percent="{{item.totalInfo.actived}}" color="#19CCB0" active stroke-width="3" />
                 </view>
               </view>
-              <image class="icon-edit" src="../images/icon-edit.png"></image>
+              <image class="icon-edit" src="../images/icon-edit.png" bindtap="goQuestion" data-item="{{item.children[0]}}"></image>
           </view>
           <view class="library-list-detail" wx:if="{{item.status}}" wx:for="{{item.children}}" wx:for-item="child" wx:key="id" >
             <view class="">
