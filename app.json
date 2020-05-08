@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/library/library",
     "pages/questions/questions",
+    "pages/library/library",
     "pages/videos/videos",
     "pages/index/index",
     "pages/my/mine/mine",
@@ -54,7 +54,9 @@
     "van-skeleton": "@vant/weapp/skeleton/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
-    "van-icon": "@vant/weapp/icon/index"
+    "van-icon": "@vant/weapp/icon/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-dialog": "@vant/weapp/dialog/index"
   },
   "permission": {
     "scope.userLocation": {

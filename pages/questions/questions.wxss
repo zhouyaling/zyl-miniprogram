@@ -17,12 +17,13 @@
 }
 
 .question-wrap{
-  padding:30rpx 30rpx 10rpx 30rpx;
+  padding:30rpx 40rpx 10rpx 40rpx;
 }
 
 .question-title{
   margin-bottom: 40rpx;
   font-size: 32rpx;
+  line-height: 52rpx;
 }
 
 .question-answer{
@@ -77,4 +78,53 @@
   color: #666;
   font-size: 30rpx;
   line-height: 52rpx;
+}
+
+.popup-wrap{
+  position: relative;
+  height: 100%;
+}
+
+.popup-card-head{
+  text-align: center;
+  border-bottom: 1px solid #F5F4F4;
+  padding: 30rpx 0;
+  font-size: 34rpx;
+}
+
+.popup-card-content{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.answer-number{
+  margin: 36rpx;
+}
+
+.popup-card-footer{
+  background-color: #19CCB0;
+  text-align: center;
+  color: #fff;
+  font-size: 34rpx;
+  padding:30rpx 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/* 测试 */
+.page-section-spacing{
+  margin-top: 60rpx;
+}
+.scroll-view_H{
+  white-space: nowrap;
+}
+.scroll-view-item{
+  height: 300rpx;
+}
+.scroll-view-item_H{
+  display: inline-block;
+  width: 100%;
+  height: 300rpx;
 }

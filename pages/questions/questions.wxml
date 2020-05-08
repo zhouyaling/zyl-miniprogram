@@ -1,31 +1,40 @@
 <view class="wrap">
   <view class="question-header">
     <view class="header-left">第一节 金科服务</view>
-    <view class="header-right">1/10</view>
+    <view class="header-right"><text>{{currentQuestion + 1}}</text>/<text>{{totalQuestion}}</text></view>
   </view>
   <view class="question-wrap">
-    <view class="question-title">
-    列表中唯一的字符串或者或者数字，且不会发生改变。
+    <block>
+      <view class="question-title">
+    {{questionList.list[currentQuestion].title}}
     </view>
     <view class="question-answer">
-      <view class="question-answer-item">
-        <text class="answer-a">A</text>
-        <text class="answer-text">大管家</text>
-      </view>
-      <view class="question-answer-item">
-        <text class="answer-a">B</text>
-        <text class="answer-text">大管家</text>
-      </view>
-      <view class="question-answer-item">
-        <text class="answer-a">A</text>
-        <text class="answer-text">大管家</text>
-      </view>
-      <view class="question-answer-item">
-        <text class="answer-a">B</text>
-        <text class="answer-text">大管家</text>
+      <view class="question-answer-item" wx:for="{{questionList.list[currentQuestion].answerList}}">
+        <text class="answer-a">{{item.id}}</text>
+        <text class="answer-text">{{item.title}}</text>
       </view>
     </view>
+    </block>
   </view>
+  <!-- 答题完毕 -->
+  <van-dialog id="van-dialog" />
+  <!-- 答题卡 -->
+  <van-popup
+    show="{{ showPops }}"
+    position="bottom"
+    round
+    duration="500"
+    custom-style="height: 80%;"
+    bind:close="popsOnClose"
+  >
+    <view class="popup-wrap">
+      <view class="popup-card-head">答题卡</view>
+      <view class="popup-card-content">
+        <text class="answer-a answer-number" wx:for="{{20}}">1</text>
+      </view>
+      <view class="popup-card-footer">提交答题</view>
+    </view>
+  </van-popup>
   <view class="question-result">
     <view class="question-result-all">
       <text>正确答案：<text class="result-b">A</text> </text>
@@ -37,11 +46,11 @@
     </view>
   </view>
   <view class="question-footer">
-    <van-tabbar>
-    <van-tabbar-item icon="exchange">返回</van-tabbar-item>
-    <van-tabbar-item icon="arrow-left">上一题</van-tabbar-item>
-    <van-tabbar-item icon="arrow">下一题</van-tabbar-item>
-    <van-tabbar-item icon="notes-o">答题卡</van-tabbar-item>
+    <van-tabbar  bind:change="menuOnChange">
+      <van-tabbar-item icon="exchange">返回</van-tabbar-item>
+      <van-tabbar-item icon="arrow-left">上一题</van-tabbar-item>
+      <van-tabbar-item icon="arrow">下一题</van-tabbar-item>
+      <van-tabbar-item icon="notes-o">答题卡</van-tabbar-item>
   </van-tabbar>
 </view>
 
