@@ -1,7 +1,7 @@
 /**app.wxss**/
 page{
   height: 100%;
-  background-color: #F9F8FE;
+  background-color: #ffffff;
 }
 .container {
   height: 100%;
@@ -16,3 +16,15 @@ page{
   
 
 } 
+
+/* tab样式重置 */
+.tab-reset{
+  font-size: 30rpx!important;
+  color:#777!important;
+  padding: 0 26rpx!important;
+}
+
+.tab-active-reset{
+  color:#444!important;
+  font-weight: 600!important;
+}

@@ -1,11 +1,11 @@
-// pages/my/study/study.js
+// pages/videoDetail/videoDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[1,2,3]
+
   },
 
   /**

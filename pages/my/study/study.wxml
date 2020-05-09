@@ -1,2 +1,11 @@
-<!--pages/my/study/study.wxml-->
-<text>pages/my/study/study.wxml</text>
+<view class="page">
+<view class="card" wx:for="{{list}}">
+		<image class="card-img" src="../../images/moren1.png"></image>
+		<view class="card-title">初级医护冲刺班</view>
+		<view class="card-des">
+			<text>¥ 2809元</text>
+			<text>已有300人参与</text>
+		</view>
+		<image class="card-recommend" src="../images/icon-tuijian1.png"></image>
+	</view>
+</view>

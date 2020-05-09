@@ -1,11 +1,17 @@
-// pages/my/study/study.js
+// pages/news/news.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[1,2,3]
+    activeName: '1',
+    list:[1,2,3,4]
+  },
+  onChange(event) {
+    this.setData({
+      activeName: event.detail,
+    });
   },
 
   /**

@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
 		<view class="topNav">
-			<van-tabs active="a" animated color="#19CCB0" swipeable bind:click="handlerOnChangeTab">
+			<van-tabs active="a" animated color="#19CCB0" swipeable bind:click="handlerOnChangeTab" ellipsis="{{false}}"   tab-class="tab-reset"  tab-active-class="tab-active-reset">
 				<van-tab title="临床" name="a"></van-tab>
 				<van-tab title="就业" name="b"></van-tab>
 				<van-tab title="实习" name="c"></van-tab>
@@ -22,7 +22,7 @@
 		</view>
 	<view class="topWrap">
 		<view class="swiperContent">
-			<swiper indicator-dots="{{true}}" indicator-color="transprant" indicator-active-color="#fff" autoplay="{{true}}" interval="4000" duration="500">
+			<swiper indicator-dots="{{true}}" indicator-color="transprant"  	previous-margin="30rpx" next-margin="30rpx" circular="{{true}}" indicator-active-color="#fff" autoplay="{{true}}" interval="4000" duration="500">
 				<block wx:for="{{bannerList}}" wx:key="*this">
 					<swiper-item>
 						<image src="{{item.url}}"></image>

@@ -1,17 +1,19 @@
 <!--index.wxml-->
 <view class="container">
 	<view class="topNav">
-			<van-tabs active="a" animated color="#19CCB0" swipeable bind:click="handlerOnChangeTab">
+			<van-tabs active="a" animated color="#19CCB0" swipeable bind:click="handlerOnChangeTab"  ellipsis="{{false}}"  tab-class="tab-reset" tab-active-class="tab-active-reset">
 				<van-tab title="护士资格证" name="a"></van-tab>
 				<van-tab title="初级护士" name="b"></van-tab>
 				<van-tab title="主管护士证" name="c"></van-tab>
 				<van-tab title="中级护士" name="d"></van-tab>
 				<van-tab title="特级" name="d"></van-tab>
+				<van-tab title="特级1" name="d"></van-tab>
 			</van-tabs>
 		</view>
 	<view class="topWrap">
 		<view class="swiperContent">
-			<swiper indicator-dots="{{true}}" indicator-color="transprant" indicator-active-color="#fff" autoplay="{{true}}" interval="7000" duration="500">
+			<swiper indicator-dots="{{true}}" indicator-color="transprant" 
+			previous-margin="0rpx" next-margin="0rpx" indicator-active-color="#fff" circular="{{true}}" autoplay="{{true}}" interval="3000" duration="600">
 				<block wx:for="{{bannerList}}" wx:key="*this">
 					<swiper-item>
 						<image src="{{item.url}}"></image>
@@ -47,7 +49,9 @@
 		<text class="card-bar-icon"></text>
 		<text>精品课程</text>
 	</view>
+
 	<view class="card" wx:for="{{list}}">
+		<navigator url="/pages/news/news">
 		<image class="card-img" src="../images/moren1.png"></image>
 		<view class="card-title">初级医护冲刺班</view>
 		<view class="card-des">
@@ -55,6 +59,7 @@
 			<text>已有300人参与</text>
 		</view>
 		<image class="card-recommend" src="../images/icon-tuijian1.png"></image>
+		</navigator>
 	</view>
 </view>
 </view>
