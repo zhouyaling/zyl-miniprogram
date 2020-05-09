@@ -24,11 +24,19 @@
     position="bottom"
     round
     duration="500"
-    custom-style="height: 80%;"
+    custom-style="height: 90%;"
     bind:close="popsOnClose"
   >
     <view class="popup-wrap">
       <view class="popup-card-head">答题卡</view>
+      <view class="popup-card-info">
+        <view class="title">第一节 护理知识</view>
+        <view class="grade-number">
+          <view> 总共13题</view>
+          <view> 答对13题</view>
+        </view>
+         <view class="grade">100分</view>
+      </view>
       <view class="popup-card-content">
         <text class="answer-a answer-number" wx:for="{{20}}">1</text>
       </view>
@@ -49,6 +57,7 @@
     <van-tabbar  bind:change="menuOnChange">
       <van-tabbar-item icon="exchange">返回</van-tabbar-item>
       <van-tabbar-item icon="arrow-left">上一题</van-tabbar-item>
+       <van-tabbar-item icon="arrow-left">收藏</van-tabbar-item>
       <van-tabbar-item icon="arrow">下一题</van-tabbar-item>
       <van-tabbar-item icon="notes-o">答题卡</van-tabbar-item>
   </van-tabbar>

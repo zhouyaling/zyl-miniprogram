@@ -9,6 +9,7 @@
   padding: 20rpx 20rpx 0rpx 20rpx;
   width: 100%;
   box-sizing: border-box;
+  margin-top: 100rpx;
   /* background-image: linear-gradient(-180deg, #fff 25%, #f5f7fc 100%); */
 }
 
@@ -69,6 +70,9 @@ swiper{
   width: 100%;
   min-height: 100rpx;
   margin-top: 0rpx;
+  position: fixed;
+  top: 0;
+  z-index: 999;
 }
 
 .topNav .navItem{
@@ -108,8 +112,8 @@ swiper{
 .list-item{
   height: 150rpx;
   /* background-color: #fff; */
-  /* border-radius: 8rpx; */
-  border-bottom:  1px solid #F6F6F6;
+  /* border-radius: 8rpx; f6f6f6*/
+  border-bottom:  1px solid #fff;
   padding: 30rpx 30rpx;
   display: flex;
   align-items: center;

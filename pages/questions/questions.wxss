@@ -1,3 +1,6 @@
+page{
+  background-color: #fff;
+}
 .question-header{
    border-bottom: 2rpx solid #F5F4F4;
    padding: 20rpx 30rpx;
@@ -90,6 +93,8 @@
   border-bottom: 1px solid #F5F4F4;
   padding: 30rpx 0;
   font-size: 34rpx;
+  color: #333;
+  /* background-color: #19CCB0; */
 }
 
 .popup-card-content{
@@ -127,4 +132,45 @@
   display: inline-block;
   width: 100%;
   height: 300rpx;
+}
+
+.popup-card-info{
+  background-color: #19CCB0;
+  padding: 30rpx 0;
+  color:#fff;
+  position: relative;
+}
+.popup-card-info .title{
+  font-size: 34rpx;
+  font-weight: 600;
+  padding-left: 30rpx;
+}
+
+.popup-card-info .grade{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34rpx;
+  text-align: center;
+  border: 8rpx solid rgba(255,255,255,0.2);
+  position: absolute;
+  right: 50rpx;
+  top: 25rpx;
+}
+
+.popup-card-info .grade-number{
+  text-align: center;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 30rpx;
+  margin-top: 30rpx;
+}
+
+.popup-card-info .grade-number view{
+  text-align: center;
+  margin-right: 40rpx;
 }

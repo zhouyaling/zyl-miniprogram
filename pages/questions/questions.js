@@ -69,15 +69,12 @@ Page({
             currentQuestion:this.data.currentQuestion<=1?0:this.data.currentQuestion - 1
           })
           break;
-        case 2:
-         this.setData({
-          currentQuestion:(this.data.currentQuestion + 1)>=this.data.totalQuestion?(this.data.totalQuestion-1):this.data.currentQuestion+1
-        })
+        case 3:
+         
         // 提示已经答完
         if(this.data.currentQuestion==this.data.totalQuestion-1){
           Dialog.confirm({
-            title: '标题',
-            message: '弹窗内容',
+            message: '已经是最后一题啦，是否提交？',
             asyncClose: true
           })
             .then(() => {
@@ -89,8 +86,12 @@ Page({
               Dialog.close();
             });
         }
+
+        this.setData({
+          currentQuestion:(this.data.currentQuestion + 1)>=this.data.totalQuestion?(this.data.totalQuestion-1):this.data.currentQuestion+1
+        })
         break;
-      case 3:
+      case 4:
         this.setData({
           showPops:true
         })

@@ -46,10 +46,11 @@
               </view>
               <view class="item-content">
                 <view class="item-title">{{child.name}}</view>
-                <view class="item-subtitle">{{child.actived}}/{{child.total}}道</view>
-                <view class="progress-box">
+                <view class="item-subtitle">共{{child.total}}道题</view>
+                <!-- <view class="item-subtitle">{{child.actived}}/{{child.total}}道</view> -->
+                <!-- <view class="progress-box">
                   <progress percent="{{child.actived/child.total * 100}}" color="#19CCB0" active stroke-width="3" />
-                </view>
+                </view> -->
               </view>
               <image class="icon-edit" src="../images/icon-edit.png" bindtap="goQuestion" data-item="{{child}}"></image>
           </view>

@@ -1,5 +1,7 @@
 /* pages/biz/mine/mine.wxss */
-
+page{
+  background-color: #fff;
+}
 .container {
   padding: 0;
 }

@@ -1,13 +1,14 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/my/mine/mine",
     "pages/questions/questions",
+    "pages/index/index",
     "pages/library/library",
     "pages/videos/videos",
-    "pages/my/mine/mine",
     "pages/logs/logs",
     "pages/details/details",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/my/study/study"
   ],
   "tabBar": {
     "color": "#CBCBCB",
