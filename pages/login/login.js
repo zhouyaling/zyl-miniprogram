@@ -24,7 +24,6 @@ Page({
       wx.getSetting({
         success(res){
           let authorizeList = res.authSetting;
-          debugger
           _this.setData({
               isUserAuth:authorizeList["scope.userInfo"]
             })
@@ -46,7 +45,6 @@ Page({
    * 微信一键登录
    */
   getPhoneNumber(e){
-    debugger
     if (e.detail.errMsg == 'getPhoneNumber:fail user deny') {
       wx.showModal({
         title: '提示',
@@ -74,7 +72,6 @@ Page({
    * 获取用户基本信息
    */
   getUserinfo(){
-    debugger
     let _this = this;
     wx.getUserInfo({
       success: async function (res) {

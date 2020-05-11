@@ -1,0 +1,11 @@
+<view class="form-box">
+  <van-cell-group>
+  <van-cell title="微信头像">
+  <image class="header" src="../../images/head.png"></image>
+  </van-cell>
+    <van-cell title="用户名" value="叮叮咚咚喵喵" />
+    <van-cell title="手机号码" value="13527430011"  />
+  </van-cell-group>
+</view>
+
+<van-button type="primary" block color="#19CCB0">退出登录</van-button>

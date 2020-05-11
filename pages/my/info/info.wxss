@@ -1,0 +1,19 @@
+page{
+  background-color: #F9F8FE;
+}
+
+.header{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 60rpx;
+}
+
+.van-cell{
+  display: flex;
+  align-items: center;
+}
+
+.form-box{
+  background-color: #fff;
+  margin-bottom: 150rpx;
+}

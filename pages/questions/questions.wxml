@@ -57,7 +57,7 @@
     <van-tabbar  bind:change="menuOnChange">
       <van-tabbar-item icon="exchange">返回</van-tabbar-item>
       <van-tabbar-item icon="arrow-left">上一题</van-tabbar-item>
-       <van-tabbar-item icon="arrow-left">收藏</van-tabbar-item>
+       <van-tabbar-item icon="star-o">收藏</van-tabbar-item>
       <van-tabbar-item icon="arrow">下一题</van-tabbar-item>
       <van-tabbar-item icon="notes-o">答题卡</van-tabbar-item>
   </van-tabbar>

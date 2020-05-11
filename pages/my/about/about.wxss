@@ -1,0 +1,44 @@
+page{
+  background-color: #F9F8FE;
+}
+
+.logo-box{
+  font-size: 30rpx;
+  color: #444;
+  text-align: center;
+  margin: 50rpx 0;
+}
+
+.logo{
+  width: 160rpx;
+height: 160rpx;
+border-radius: 50%;
+border: 6rpx solid #fff;
+margin: 0 auto 20rpx auto;
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+
+.logo image{
+  width: 117rpx;
+height: 117rpx;
+}
+
+.company-info{
+  background-color: #fff;
+  border-radius: 18rpx;
+  margin: 0 30rpx;
+}
+
+.company-info.des{
+  min-height: 200rpx;
+  margin-top: 40rpx;
+  padding: 30rpx 20rpx;
+}
+
+.van-cell{
+  border-radius: 18rpx;
+}
+

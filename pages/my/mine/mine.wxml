@@ -18,10 +18,10 @@
 			<image wx:if="{{isLogin==1}}" src="{{userInfo.headImgUrl?userInfo.headImgUrl:'../../images/default.png'}}"></image>
 			<image wx:if="{{isLogin==0}}" src="../../images/default.png"></image>
 			<view class="name">
-				<navigator src='#' url="../personalData/personalData" wx:if="{{isLogin==1}}">
+				<navigator src='#' url="../personalData/personalData" wx:if="{{isLogin==1}}" hover-class="none">
 					<text class="nickName">{{userInfo.nickName||userInfo.mobile}}</text>
 				</navigator>
-				<navigator   url="/pages/login/login" wx:elif="{{isLogin==0}}">
+				<navigator   url="/pages/login/login" wx:elif="{{isLogin==0}}" hover-class="none">
 					<text class="nickName"> 点击登录</text>
 				</navigator>
 			</view>
@@ -30,14 +30,15 @@
 
 
 	<view class='mineList radiusOne'>
+		<navigator url="/pages/my/info/info" hover-class="none">
 		<view class='cell mineCell'>
 			<image class="mineIcons" src="../../images/icon-collect.png"></image>
 			<text class="cenlie">个人资料</text>
 			<i class="icon-jiantou">
 				<image src="../../images/icon-arrow1.png"></image>
 			</i>
-		</view>
-		<navigator url="/pages/my/study/study">
+		</view></navigator>
+		<navigator url="/pages/my/study/study" hover-class="none">
 		<view class='cell mineCell' data-type="broker">
 			<image class="mineIcons" src="../../images/icon-yuyue.png"></image>
 			<text class="cenlie">我的课程</text>
@@ -60,6 +61,7 @@
 				<image src="../../images/icon-arrow1.png"></image>
 			</i>
 		</view>
+		<navigator url="/pages/my/about/about"  hover-class="none">
 		<view class='cell mineCell' data-url="/pages/biz/feedBack/feedBack" data-type="broker" bindtap="linkJump">
 			<image class="mineIcons" src="../../images/icon-attention.png"></image>
 			<text class="cenlie">关于我们</text>
@@ -67,5 +69,6 @@
 				<image src="../../images/icon-arrow1.png"></image>
 			</i>
 		</view>
+		</navigator>
 	</view>
 </view>

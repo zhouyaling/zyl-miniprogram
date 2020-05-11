@@ -1,0 +1,19 @@
+<view class>
+  <view class="logo-box">
+  <view class="logo">
+    <image src="../../images/logo.jpg"></image>
+  </view>
+  嘉护教育
+  </view>
+ <view class="company-info">
+  <view>
+      <van-cell title="235-58582587" is-link icon="phone-o" link-type="navigateTo"
+        url="/pages/dashboard/index" />
+          <van-cell title="重庆市江北区石马河街道" is-link icon="location-o" link-type="navigateTo"
+        url="/pages/dashboard/index" />
+  </view>
+ </view>
+  <view class="company-info des">
+  fafda
+  </view>
+</view>

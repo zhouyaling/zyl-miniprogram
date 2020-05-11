@@ -15,6 +15,9 @@
 <view class="container">
   <view class="login-box">
       <view class="wechart-login">
+      <view class="logo-box">
+      <image src="../images/logo.png"></image>健康平台
+      </view>
       <button type="default"  size="default" disabled="{{loginStatus}}"  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" hover-class="other-button-hover">微信一键登录</button>
       </view>
       <!-- <view class="{{loginStatus?'phone-login':'phone-login-active'}}" >
@@ -22,7 +25,7 @@
       </view> -->
       <view class="login-sub">
       <checkbox-group bindchange="checkboxChange">
-        <checkbox value="1" color="#19CCB0" />同意《用户注册协议》
+        <checkbox value="1" color="#19CCB0" />同意健康平台 <text style="color:#19CCB0">《隐私权政策》</text>
         </checkbox-group>
       </view>
   </view>

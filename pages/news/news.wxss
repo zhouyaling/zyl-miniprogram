@@ -27,7 +27,7 @@ page{
 }
 
 .van-collapse-item{
-  margin-bottom: 20rpx!important;
+  margin-bottom: 26rpx!important;
 }
 
 .van-cell{
