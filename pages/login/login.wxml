@@ -2,7 +2,7 @@
 <view wx:if="{{showModal}}" class='popup_modal'>
   <view class='mask'></view>
   <view class='modal_content'>
-     <view class="basicprofile"><image src='../images/basicprofile.png' style='width:100rpx;height:107rpx'></image> <text>健康平台</text></view>
+     <view class="basicprofile"><image src='../images/basicprofile.png' style='width:100rpx;height:107rpx'></image> <text>嘉护教育</text></view>
       
     <view class='modal_title'>请点击下方按钮获取您的微信权限</view>
     <view class='modal_foot'>
@@ -16,7 +16,7 @@
   <view class="login-box">
       <view class="wechart-login">
       <view class="logo-box">
-      <image src="../images/logo.png"></image>健康平台
+      <image src="../images/logo.png"></image>嘉护教育
       </view>
       <button type="default"  size="default" disabled="{{loginStatus}}"  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" hover-class="other-button-hover">微信一键登录</button>
       </view>
@@ -25,7 +25,7 @@
       </view> -->
       <view class="login-sub">
       <checkbox-group bindchange="checkboxChange">
-        <checkbox value="1" color="#19CCB0" />同意健康平台 <text style="color:#19CCB0">《隐私权政策》</text>
+        <checkbox value="1" color="#19CCB0" />同意嘉护教育平台 <text style="color:#19CCB0">《隐私权政策》</text>
         </checkbox-group>
       </view>
   </view>

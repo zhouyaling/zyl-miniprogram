@@ -58,13 +58,13 @@
 
 .swiperContent image{
   width: 98%;
-  height: 250rpx;
-  border-radius: 8rpx;
+  height: 280rpx;
+  border-radius: 16rpx;
   margin: 0 1%;
 }
 
 swiper{
-  height: 250rpx;
+  height: 280rpx;
 }
 
 .topNav{

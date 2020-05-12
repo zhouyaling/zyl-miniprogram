@@ -8,10 +8,16 @@ Page({
     mark:false,
     loading:false,
     bannerList:[
-      {id:1,url:"../images/moren1.png"},
-     {id:2,url:"../images/moren3.png"},
+      {id:1,url:"../images/moren2.png"},
+     {id:2,url:"../images/moren7.png"},
+     {id:2,url:"../images/moren6.png"}
   ],
     list:[],
+    listSpec:[
+      {id:1,url:"../images/img6.png"},
+      {id:1,url:"../images/img4.png"},
+    {id:2,url:"../images/img4.png"},
+    {id:3,url:"../images/img6.png"}],
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')

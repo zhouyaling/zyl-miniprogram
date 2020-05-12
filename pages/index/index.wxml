@@ -49,15 +49,15 @@
 		<text class="card-bar-icon"></text>
 		<text>精品课程</text>
 	</view>
-<view class="card" wx:for="{{list}}">
+<view class="card" wx:for="{{listSpec}}">
 		<navigator url="/pages/news/news" hover-class="none">
-		<image class="card-img" src="../images/moren1.png"></image>
+		<image class="card-img"src="{{item.url}}"></image>
 		<view class="card-title">初级医护冲刺班</view>
 		<view class="card-des">
 			<text>¥ 2809元</text>
 			<text>已有300人参与</text>
 		</view>
-		<image class="card-recommend" src="../images/icon-tuijian1.png"></image>
+		<!-- <image class="card-recommend" src="../images/icon-tuijian1.png"></image> -->
 		</navigator>
 	</view>
 	<!-- <view class="card" wx:for="{{list}}">
