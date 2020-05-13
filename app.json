@@ -1,23 +1,19 @@
 {
   "pages": [
+    "pages/my/mine/mine",
+    "pages/my/collection/collection",
     "pages/index/index",
     "pages/news/news",
     "pages/my/about/about",
-    "pages/my/mine/mine",
-   
-    
     "pages/library/library",
     "pages/my/study/study",
     "pages/login/login",
     "pages/questions/questions",
     "pages/videos/videos",
-    "pages/logs/logs",
     "pages/details/details",
     "pages/videoDetail/videoDetail",
     "pages/my/info/info",
-    "pages/about/about",
-    "pages/my/about"
-
+    "pages/my/record/record"
   ],
   "tabBar": {
     "color": "#CBCBCB",
@@ -34,8 +30,8 @@
       {
         "pagePath": "pages/videos/videos",
         "iconPath": "pages/images/bar_video.png",
-        "selectedIconPath": "pages/images/bar_video_active.png"
-        
+        "selectedIconPath": "pages/images/bar_video_active.png",
+        "text": "资讯"
       },
       {
         "pagePath": "pages/library/library",
@@ -71,7 +67,8 @@
     "van-collapse-item": "@vant/weapp/collapse-item/index",
     "van-cell": "@vant/weapp/cell/index",
     "van-cell-group": "@vant/weapp/cell-group/index",
-    "van-button": "@vant/weapp/button/index"
+    "van-button": "@vant/weapp/button/index",
+    "van-steps": "@vant/weapp/steps/index"
   },
   "permission": {
     "scope.userLocation": {

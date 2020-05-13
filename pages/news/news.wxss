@@ -32,8 +32,10 @@ page{
 
 .van-cell{
   border-radius: 14rpx!important;
-  font-size: 30rpx!important;
+  font-size: 32rpx!important;
   font-weight: 600;
+  color: #444!important;
+  padding:var(--cell-vertical-padding,16px) var(--cell-horizontal-padding,16px)!important;
 }
 
 

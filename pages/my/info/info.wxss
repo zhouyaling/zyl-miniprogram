@@ -11,6 +11,7 @@ page{
 .van-cell{
   display: flex;
   align-items: center;
+  font-size: 30rpx!important;
 }
 
 .form-box{

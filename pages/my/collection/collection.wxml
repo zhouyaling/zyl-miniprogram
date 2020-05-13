@@ -1,0 +1,10 @@
+<view>
+  <view class="question-list">
+    <navigator url="/pages/questions/questions" hover-class="none">
+      <view class="question-item" wx:for="{{list}}" wx:key="{{item.id}}">
+        <view class="item-number">{{item.id}}、</view>
+        <view>{{item.title}}</view>
+      </view>
+    </navigator>
+  </view>
+</view>

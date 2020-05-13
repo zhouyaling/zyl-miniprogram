@@ -1,11 +1,35 @@
-// pages/my/about.js
+// pages/my/record/record.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    steps: [
+      {
+        text: '2020-05-13',
+        desc: '观看视频健康管理师',
+      },
+      {
+        text: '2020-05-12',
+        desc: '心功能不全病人的护理',
+      },
+      {
+        text: '2020-05-06',
+        desc: '观看视频健康管理师',
+      },
+      {
+        text: '2020-05-02',
+        desc: '观看视频健康管理师',
+      },
+    ],
+  },
 
+  sss(e){
+    debugger
+    wx.navigateTo({
+      url: '/pages/videoDetail/videoDetail'
+    })
   },
 
   /**

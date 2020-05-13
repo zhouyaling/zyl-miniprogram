@@ -8,4 +8,4 @@
   </van-cell-group>
 </view>
 
-<van-button type="primary" block color="#19CCB0">退出登录</van-button>
+<van-button type="primary" block color="#19CCB0" custom-style="font-size:32rpx">退出登录</van-button>

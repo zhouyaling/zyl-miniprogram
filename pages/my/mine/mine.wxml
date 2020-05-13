@@ -47,6 +47,7 @@
 			</i>
 		</view>
 		</navigator>
+			<navigator   url="/pages/my/collection/collection" hover-class="none">
 		<view class='cell mineCell'>
 			<image class="mineIcons" src="../../images/icon-jingjiren.png"></image>
 			<text class="cenlie">我的收藏</text>
@@ -54,13 +55,16 @@
 				<image src="../../images/icon-arrow1.png"></image>
 			</i>
 		</view>
-		<view class='cell mineCell' data-url="/pages/biz/broker/broker" data-type="broker" bindtap="linkJump">
+		</navigator>
+			<navigator   url="/pages/my/record/record" hover-class="none">
+		<view class='cell mineCell'>
 			<image class="mineIcons" src="../../images/icon-hotphone.png"></image>
 			<text class="cenlie">学习记录</text>
 			<i class="icon-jiantou">
 				<image src="../../images/icon-arrow1.png"></image>
 			</i>
 		</view>
+		</navigator>
 		<navigator url="/pages/my/about/about"  hover-class="none">
 		<view class='cell mineCell' data-url="/pages/biz/feedBack/feedBack" data-type="broker" bindtap="linkJump">
 			<image class="mineIcons" src="../../images/icon-attention.png"></image>

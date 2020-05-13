@@ -1,0 +1,24 @@
+.desc{
+  margin-top: 10rpx!important;
+}
+
+.van-step--vertical .van-step__icon{
+  font-size: 32rpx!important;
+}
+
+.van-step__line{
+  background-color: #19CCB0!important;
+}
+
+.van-step--vertical{
+padding: 30rpx 10rpx 30rpx 0!important;
+}
+
+.van-icon-clock-o{
+  font-size: 32rpx!important;
+  color: #19CCB0!important;
+}
+
+.van-step__circle{
+  background-color: #19CCB0!important;
+}
