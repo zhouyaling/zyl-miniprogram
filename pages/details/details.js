@@ -24,7 +24,7 @@ Page({
    */
   loadArticleDetail(){
     this.setData({
-      detail:{title:"大社区新版上线啦",content:"<div><p>现支持两种节点，通过type来区分，分别是元素节点和文本节点，默认是元素节点，在富文本区域里显示的HTML节点 元素节点：type = node*</p><img style='width:100%' src='../images/img2.png'></img></div>",zan:22,time:"2020-05-04"}
+      detail:{title:"大社区新版上线啦",content:"<div><p>现支持两种节点，通过type来区分，分别是元素节点和文本节点，默认是元素节点，在富文本区域里显示的HTML节点 元素节点：type = node*</p><img style='width:100%' src='../images/img2.jpg'></img></div>",zan:22,time:"2020-05-04"}
     })
   },
 

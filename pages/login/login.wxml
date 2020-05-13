@@ -16,7 +16,7 @@
   <view class="login-box">
       <view class="wechart-login">
       <view class="logo-box">
-      <image src="../images/logo.png"></image>嘉护教育
+      <image src="../images/logo.jpg"></image>嘉护教育
       </view>
       <button type="default"  size="default" disabled="{{loginStatus}}"  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" hover-class="other-button-hover">微信一键登录</button>
       </view>

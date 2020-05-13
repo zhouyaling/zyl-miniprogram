@@ -38,7 +38,7 @@
 				<view class="list-item" wx:for="{{list}}">
 					<navigator url="/pages/details/details" hover-class="none">
 						<view class="list-item-image">
-							<image src="../images/img2.png"></image>
+							<image src="../images/img2.jpg"></image>
 						</view>
 					</navigator>
 					<view class="list-item-text">

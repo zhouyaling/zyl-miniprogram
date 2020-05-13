@@ -34,8 +34,8 @@
       {
         "pagePath": "pages/videos/videos",
         "iconPath": "pages/images/bar_video.png",
-        "selectedIconPath": "pages/images/bar_video_active.png",
-        "text": "咨讯"
+        "selectedIconPath": "pages/images/bar_video_active.png"
+        
       },
       {
         "pagePath": "pages/library/library",

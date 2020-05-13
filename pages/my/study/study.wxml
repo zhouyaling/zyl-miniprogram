@@ -1,7 +1,7 @@
 <view class="page">
 <navigator src='#' url="../../news/news"  hover-class="none">
 	<view class="card" wx:for="{{list}}">
-		<image class="card-img" src="../../images/moren1.png"></image>
+		<image class="card-img" src="../../images/moren1.jpg"></image>
 		<view class="card-title">初级医护冲刺班</view>
 		<view class="card-des">
 			<text>¥ 2809元</text>
