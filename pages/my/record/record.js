@@ -5,6 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    value: 95,
+    gradientColor: {
+      '0%': '#19CCB0',
+      '100%':'#19CCB0',
+    },
     steps: [
       {
         text: '2020-05-13',

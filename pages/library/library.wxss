@@ -58,6 +58,7 @@ justify-content: center;
   background-color: #fff;
   margin: 0 3%;
   box-sizing: border-box;
+  box-shadow: 0 4rpx 16rpx 0 rgba(0,0,0,.1);
   /* display: flex;
   align-items:center;
   flex-direction: column;

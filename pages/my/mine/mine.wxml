@@ -59,7 +59,7 @@
 			<navigator   url="/pages/my/record/record" hover-class="none">
 		<view class='cell mineCell'>
 			<image class="mineIcons" src="../../images/icon-hotphone.png"></image>
-			<text class="cenlie">学习记录</text>
+			<text class="cenlie">学习统计</text>
 			<i class="icon-jiantou">
 				<image src="../../images/icon-arrow1.png"></image>
 			</i>

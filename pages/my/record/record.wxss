@@ -1,3 +1,7 @@
+
+page{
+  background: #F9F8FE
+}
 .desc{
   margin-top: 10rpx!important;
 }
@@ -21,4 +25,42 @@ padding: 30rpx 10rpx 30rpx 0!important;
 
 .van-step__circle{
   background-color: #19CCB0!important;
+}
+
+.card{
+  align-items: center;
+  justify-content: space-around;
+  display: flex;
+  padding: 0 0 30rpx 0
+}
+
+.card-circle{
+  min-width: 200rpx;
+}
+
+.card-text{
+  font-size: 30rpx;
+  color: #444;
+}
+
+.card-text{
+  margin-right:20rpx;
+  margin-left:20rpx;
+}
+
+.card-text view{
+  margin-bottom: 10rpx;
+}
+
+.card-title{
+  padding: 30rpx 30px 20rpx 30rpx;
+  font-size: 32rpx;
+}
+
+.card-box{
+  background: #fff;
+margin: 20rpx;
+border-radius: 14rpx;
+box-shadow: 0 4rpx 16rpx 0 rgba(0,0,0,.1);
+
 }

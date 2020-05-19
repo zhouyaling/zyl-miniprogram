@@ -1,4 +1,20 @@
-<view>
+
+<view class="card-box">
+  <view class="card-title">学习统计</view>
+ <view class="card">
+  <view class="card-circle">
+      <van-circle value="{{ value }}" size="90" layer-color="#f2f2f2" color="{{ gradientColor }}" text="90分" stroke-width="5"/>
+  </view>
+  <view class="card-text">
+    <view>精讲视频 <text class="card-text"> 完成率0%</text></view>
+    <view>串讲视频 <text class="card-text"> 完成率0%</text></view>
+    <view>章节练习 <text class="card-text"> 正确率0%</text> 完成率0%</view>
+    <view>模拟考试 <text class="card-text"> 平均分0分</text> 完成率0%</view>
+    <view>串讲押题 <text class="card-text"> 正确率0%</text> 完成率0%</view>
+  </view>
+ </view>
+</view>
+<!-- <view>
 <van-steps
   steps="{{ steps }}"
   active="{{ -1 }}"
@@ -9,4 +25,4 @@
   bind:click-step="sss"
   desc-class="desc"
 />
-</view>
+</view> -->

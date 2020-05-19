@@ -1,5 +1,14 @@
 <view class="wrap">
-  <view class="library-head-bk"></view>
+  <view class="library-head-bk">
+  <van-tabs active="a" animated color="#19CCB0" swipeable bind:click="handlerOnChangeTab"  ellipsis="{{false}}"  tab-class="tab-reset" tab-active-class="tab-active-reset">
+				<van-tab title="护士资格证" name="a"></van-tab>
+				<van-tab title="初级护士" name="b"></van-tab>
+				<van-tab title="主管护士证" name="c"></van-tab>
+				<van-tab title="中级护士" name="d"></van-tab>
+				<van-tab title="特级" name="d"></van-tab>
+				<van-tab title="特级1" name="d"></van-tab>
+			</van-tabs>
+  </view>
   <!--分类 -->
     <view class="library-tab">
       <view class="library-tab-item">
