@@ -183,7 +183,7 @@ swiper{
 
 .card-content{
   width: 100%;
-  padding: 30rpx 20rpx;
+  padding: 25rpx 20rpx;
   box-sizing: border-box;
 }
 
@@ -309,5 +309,34 @@ color: #999;
   right: 0;
   width: 70rpx;
   height: 70rpx;
+}
+
+.news-bar{
+  background-color: #fff;
+border-radius: 10rpx;
+margin-top: 50rpx;
+width: 93%;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: flex-start;
+}
+
+.news-type{
+  display: inline-block;
+width: 76rpx;
+background-color: #EEEEEE;
+font-size: 26rpx;
+text-align: center;
+color: #444;
+border-top-left-radius: 10rpx;
+border-bottom-left-radius: 10rpx;
+padding: 10rpx 10rpx;
+}
+
+.news-content{
+  padding-left: 24rpx;
+  font-size: 28rpx;
+  color: #666;
 }
 

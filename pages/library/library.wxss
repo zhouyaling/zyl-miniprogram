@@ -11,7 +11,7 @@ position: relative;
 height: 150rpx;
 background-color: #19CCB0;
 position: relative;
-
+margin-top: 50rpx;
 }
 
 .library-content{
@@ -129,4 +129,39 @@ justify-content: center;
 .library-list-item .icon-edit{
   width: 68rpx;
   height: 60rpx;
+}
+
+
+.topNav{
+  width: 100%;
+  min-height: 100rpx;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
+
+.topNav .navItem{
+  width: 25%;
+  float: left;
+  /* padding: 40rpx 0 20rpx 0; */
+  text-align: center;
+  font-size: 30rpx;
+  color: #23252B;
+  font-weight: 600;
+}
+
+.topNav .navItem .label{
+  padding: 40rpx 0 20rpx 0;
+  
+}
+
+.topNav .navItem.active .label{
+  display: inline-block;
+  border-bottom: 4rpx solid #19CCB0;
+  color: #19CCB0;
+}
+
+.van-hairline--top-bottom:after{
+  border-width: none!important;
+  border-color: #19CCB0!important;
 }

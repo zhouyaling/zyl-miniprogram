@@ -24,7 +24,20 @@ page{
   padding: 0 26rpx!important;
 }
 
+.tab-reset-1{
+  background-color: #19CCB0!important;
+  font-size: 30rpx!important;
+  color:#ffffff!important;
+  padding: 0 26rpx!important;
+}
+
+.tab-active-reset1{
+  color:#ffffff!important;
+  font-weight: 600!important;
+}
+
 .tab-active-reset{
   color:#444!important;
   font-weight: 600!important;
 }
+
