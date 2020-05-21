@@ -9,13 +9,13 @@
     <van-collapse value="{{ activeName }}" bind:change="onChange" accordion custom-class="test1">
       <van-collapse-item title=" 第一章 基本药物知识" name="1" custom-class="col-head" content-class="col-con">
         <view class="list-item" wx:for="{{list}}">
-					<navigator url="/pages/videoDetail/videoDetail" hover-class="none">
+					<navigator url="/pages/videoDetail1/videoDetail1" hover-class="none">
 						<view class="list-item-image">
 							<image src="../images/img2.jpg"></image>
 						</view>
 					</navigator>
 					<view class="list-item-text">
-						<navigator url="/pages/videoDetail/videoDetail" hover-class="none">
+						<navigator url="/pages/videoDetail1/videoDetail1" hover-class="none">
 							<view class="text-title">疫情过后，这5类医疗专业将大火</view>
 						</navigator>
 						<view class="text-desc">

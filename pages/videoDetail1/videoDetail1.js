@@ -1,40 +1,11 @@
-// pages/my/record/record.js
+// pages/videoDetail1/videoDetail1.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    value: 95,
-    gradientColor: {
-      '0%': '#19CCB0',
-      '100%':'#19CCB0',
-    },
-    steps: [
-      {
-        text: '2020-05-13',
-        desc: '观看视频健康管理师',
-      },
-      {
-        text: '2020-05-12',
-        desc: '心功能不全病人的护理',
-      },
-      {
-        text: '2020-05-06',
-        desc: '观看视频健康管理师',
-      },
-      {
-        text: '2020-05-02',
-        desc: '观看视频健康管理师',
-      },
-    ],
-  },
 
-  sss(e){
-    debugger
-    wx.navigateTo({
-      url: '/pages/videoDetail1/videoDetail1'
-    })
   },
 
   /**

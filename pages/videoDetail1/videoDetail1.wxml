@@ -1,0 +1,5 @@
+<view class="page-body">
+  <view class="page-section page-section-gap" style="width:300px;height:300px" bindtap='clickIt'>
+    <web-view src="http://10.15.2.93:8092/video-play.html?id=208e14345786c376ea4cd8019f856c06_2"></web-view>
+  </view>
+</view>

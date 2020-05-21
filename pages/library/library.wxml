@@ -39,9 +39,11 @@
       <view class="library-list">
         <view class="library-list-item" wx:for="{{list}}" wx:key="id">
           <view class="library-list-total">
-              <view class="icon-check" class="{{item.status?'icon-check checked':'icon-check'}}" data-item="{{item}}" bindtap="arrowClick">
-                <van-icon wx:if="{{item.status}}" name="arrow-up" color="#ffffff" />
-                <van-icon wx:if="{{!item.status}}" name="arrow-down" color="#ffffff" />
+              <view style="height:90rpx;" data-item="{{item}}" bindtap="arrowClick">
+                <view class="icon-check" class="{{item.status?'icon-check checked':'icon-check'}}" >
+                  <van-icon wx:if="{{item.status}}" name="arrow-up" color="#ffffff" />
+                  <van-icon wx:if="{{!item.status}}" name="arrow-down" color="#ffffff" />
+                </view>
               </view>
               <view class="item-content">
                 <view class="item-title">{{item.totalInfo.name}}</view>

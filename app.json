@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/videos/videos",
+    "pages/videoDetail1/videoDetail1",
+    "pages/videoDetail/videoDetail",
+    
     "pages/index/index",
     "pages/library/library",
     "pages/my/mine/mine",
@@ -10,12 +13,10 @@
     "pages/my/study/study",
     "pages/login/login",
     "pages/questions/questions",
-    
     "pages/details/details",
-    "pages/videoDetail/videoDetail",
     "pages/my/info/info",
-
     "pages/my/record/record"
+ 
   ],
   "tabBar": {
     "color": "#CBCBCB",
