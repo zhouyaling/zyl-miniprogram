@@ -5,9 +5,10 @@ const app = getApp()
 Page({
   data: {
     loading:false,
+    currentTab:0,
     bannerList:[
-      {id:1,url:"../images/moren1.jpg"}
-  ],
+        {id:1,url:"http://image.beegoedu.com/Upload/haibaolink/2018103095288.jpg"}
+    ],
     list:[],
     userInfo: {},
     hasUserInfo: false,
@@ -39,8 +40,7 @@ Page({
     }
 
     this.setData({
-      list:[1,2,3,4],
-      loading:true
+      list:[1,2,3,4]
     });
   },
   getUserInfo: function(e) {
@@ -52,9 +52,25 @@ Page({
     })
   },
   handlerOnChangeTab:function(event){
+    var c = event.detail.index;
     this.setData({
-      list:[1,2,3,4],
-      loading:true
+      list:[c+1,c+2,c+3,c+4],
+      currentTab:event.detail.index
     });
-  }
+  },
+
+  // 加载更多数据
+  getDataList: function (){
+    var result = [[1,2,3,4]];
+    this.setData({
+      list:this.data.list.concat(result),
+      loading:false
+    });
+  },
+
+  // 触底加载
+  onReachBottom: function() {
+    this.setData({loading:true})
+    this.getDataList();
+  },
 })

@@ -46,7 +46,7 @@
 	<view class="news-bar">
 	<view class="news-type">
 		<text>即时</text>
-		<text style="color:red">快讯</text>
+		<text style="color:#E95321">快讯</text>
 	</view>
 	<view class="news-content">护士资格证考试开班啦</view>
 	</view>
@@ -70,7 +70,7 @@
 	</view>
 	<!-- <view class="card" wx:for="{{list}}">
 		<navigator url="/pages/news/news">
-		<image class="card-img" src="../images/moren1.jpg"></image>
+		<image class="card-img" src="../images/moren6.jpg"></image>
 		<view class="card-title">初级医护冲刺班</view>
 		<view class="card-des">
 			<text>¥ 2809元</text>

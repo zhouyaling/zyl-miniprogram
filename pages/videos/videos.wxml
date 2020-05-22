@@ -38,12 +38,12 @@
 				<view class="list-item" wx:for="{{list}}">
 					<navigator url="/pages/details/details" hover-class="none">
 						<view class="list-item-image">
-							<image src="../images/img2.jpg"></image>
+							<image src="../images/default-pic.jpg"></image>
 						</view>
 					</navigator>
 					<view class="list-item-text">
 						<navigator url="/pages/details/details?id={{item.id}}" hover-class="none">
-							<view class="text-title">疫情过后，这5类医疗专业将大火</view>
+							<view class="text-title">{{item}}疫情过后，这5类医疗专业将大火</view>
 						</navigator>
 						<view class="text-desc">
 						<view>2020-4-13</view>
@@ -55,5 +55,8 @@
 					</view>
 				</view>
 			</view>
+	</view>
+	<view  wx:if="{{loading}}" >
+	<van-loading size="24px">加载中...</van-loading>
 	</view>
 </view>

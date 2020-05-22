@@ -11,7 +11,7 @@
         <view class="list-item" wx:for="{{list}}">
 					<navigator url="/pages/videoDetail1/videoDetail1" hover-class="none">
 						<view class="list-item-image">
-							<image src="../images/img2.jpg"></image>
+							<image src="../images/default-video.jpg"></image>
 						</view>
 					</navigator>
 					<view class="list-item-text">

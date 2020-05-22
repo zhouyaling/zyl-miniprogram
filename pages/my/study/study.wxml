@@ -1,7 +1,8 @@
 <view class="page">
+<view wx:if="list.length>0">
 <navigator src='#' url="../../news/news"  hover-class="none">
 	<view class="card" wx:for="{{list}}">
-		<image class="card-img" src="../../images/moren1.jpg"></image>
+		<image class="card-img" src="http://ppt.beegoedu.com/Upload/haibaolink/2018103071588.jpg"></image>
 		<view class="card-title">初级医护冲刺班</view>
 		<view class="card-des">
 			<text>¥ 2809元</text>
@@ -10,4 +11,9 @@
 		<image class="card-recommend" src="../images/icon-tuijian1.png"></image>
 	</view>
 	</navigator>
+	</view>
+	  <view class="no-info" wx:else>
+    <image src="../../images/no-info2.png"></image>
+    <view>暂无数据，先看看其他的吧！</view>
+  </view>
 </view>

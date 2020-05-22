@@ -103,9 +103,9 @@ swiper{
   margin: 0 32rpx 50rpx 32rpx;
   border-top-left-radius: 60rpx;
   border-top-right-radius: 60rpx;
-  min-height: 400rpx;
   box-sizing: border-box;
   width: 100%;
+  display: inline-block;
 }
 
 .listBar{

@@ -41,3 +41,15 @@ page{
   font-weight: 600!important;
 }
 
+.no-info{
+  text-align: center;
+  margin-top: 250rpx;
+  color: #c2c2c2;
+  font-size: 30rpx;
+}
+
+.no-info image{
+  width: 246rpx;
+  height: 246rpx;
+  /* margin-bottom: 10rpx; */
+}

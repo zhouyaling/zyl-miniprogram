@@ -1,59 +1,12 @@
-// pages/library/library.js
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[{
-      id:1,
-      status:true,
-      totalInfo:{
-        name:'第一章大社区',
-        total:100,
-        actived:65,
-      },
-      children:[
-        {
-          id:11,
-          name:'第一节 大社区',
-          total:50,
-          actived:25,
-        },
-        {
-          id:12,
-          name:'第二节 大社区',
-          total:50,
-          actived:40,
-        }
-      ]
-    },
-    {
-      id:2,
-      status:false,
-      totalInfo:{
-        name:'第二章 大社区',
-        total:100,
-        actived:65,
-      },
-      children:[
-        {
-          id:21,
-          name:'第一节 大社区',
-          total:50,
-          actived:25,
-        }
-      ]
-    },{
-      id:3,
-      status:false,
-      totalInfo:{
-        name:'第三章 大社区',
-        total:100,
-        actived:65,
-      },
-        children:[]
-    }]
+    list:[]
   },
 
   /**
@@ -84,6 +37,68 @@ Page({
     }
     wx.navigateTo({
       url: '../questions/questions?id=' + e.currentTarget.dataset.item.id,
+    })
+  },
+
+  // 切换类型
+  changeType:function(e){
+    // Toast.loading({
+    //   message: '加载中...',
+    // });
+    this.setData({
+      list:[]
+    })
+
+    this.setData({
+      list:[{
+        id:1,
+        status:true,
+        totalInfo:{
+          name:'第一章大社区',
+          total:100,
+          actived:65,
+        },
+        children:[
+          {
+            id:11,
+            name:'第一节 大社区',
+            total:50,
+            actived:25,
+          },
+          {
+            id:12,
+            name:'第二节 大社区',
+            total:50,
+            actived:40,
+          }
+        ]
+      },
+      {
+        id:2,
+        status:false,
+        totalInfo:{
+          name:'第二章 大社区',
+          total:100,
+          actived:65,
+        },
+        children:[
+          {
+            id:21,
+            name:'第一节 大社区',
+            total:50,
+            actived:25,
+          }
+        ]
+      },{
+        id:3,
+        status:false,
+        totalInfo:{
+          name:'第三章 大社区',
+          total:100,
+          actived:65,
+        },
+          children:[]
+      }]
     })
   },
   

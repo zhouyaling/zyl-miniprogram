@@ -7,13 +7,12 @@
   </view>
  <view class="company-info">
   <view>
-      <van-cell title="235-58582587" is-link icon="phone-o" link-type="navigateTo"
-        url="/pages/dashboard/index" />
-          <van-cell title="重庆市江北区石马河街道" is-link icon="location-o" link-type="navigateTo"
+      <van-cell title="235-58582587" is-link icon="phone-o" bindtap="Tel" />
+      <van-cell title="重庆市江北区石马河街道" is-link icon="location-o" link-type="navigateTo"
         url="/pages/dashboard/index" />
   </view>
  </view>
   <view class="company-info des">
-    嘉护教育
+    重庆嘉护教育是致力于护理培训、能力开发、职业资格证考试培训的辅导机构。秉承传播先进教学思想，研究先进教学产品，提供先进教育服务，帮助个人和社会获得更好更多的教育和发展机会。
   </view>
 </view>

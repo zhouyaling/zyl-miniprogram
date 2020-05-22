@@ -36,6 +36,8 @@ height: 117rpx;
   min-height: 200rpx;
   margin-top: 40rpx;
   padding: 30rpx 20rpx;
+  line-height: 54rpx;
+  color: #444;
 }
 
 .van-cell{

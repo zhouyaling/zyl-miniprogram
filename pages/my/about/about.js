@@ -15,6 +15,18 @@ Page({
 
   },
 
+  Tel(){
+    wx.makePhoneCall({
+      phoneNumber: '235-58582587',
+      success: function () {
+        console.log("拨打电话成功！")
+      },
+      fail: function () {
+        console.log("拨打电话失败！")
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

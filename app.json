@@ -1,11 +1,10 @@
 {
   "pages": [
+    "pages/library/library",
     "pages/videos/videos",
     "pages/videoDetail1/videoDetail1",
     "pages/videoDetail/videoDetail",
-    
     "pages/index/index",
-    "pages/library/library",
     "pages/my/mine/mine",
     "pages/my/collection/collection",
     "pages/news/news",
@@ -19,7 +18,7 @@
  
   ],
   "tabBar": {
-    "color": "#CBCBCB",
+    "color": "#999999",
     "selectedColor": "#19CCB0",
     "backgroundColor": "#fff",
     "borderStyle": "black",
@@ -72,7 +71,9 @@
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-button": "@vant/weapp/button/index",
     "van-steps": "@vant/weapp/steps/index",
-    "van-circle": "@vant/weapp/circle/index"
+    "van-circle": "@vant/weapp/circle/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-loading": "@vant/weapp/loading/index"
   },
   "permission": {
     "scope.userLocation": {
