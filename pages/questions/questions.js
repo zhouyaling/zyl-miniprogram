@@ -17,25 +17,31 @@ Page({
           {
             id:1,
             showAnswer:false,
+            answered:false,
             title:'列表中唯一的字符串或者或者数字，且不会发生改变。',
             answerList:[{
               id:'A',
-              title:'大管家'
+              title:'大管家',
+              mark:0
             },{
               id:'B',
-              title:'大蛇去'
+              title:'大蛇去',
+              mark:0
             },
             {
               id:'C',
-              title:'周烤猫'
+              title:'周烤猫',
+              mark:1
             },{
               id:'D',
-              title:'安居客'
+              title:'安居客',
+              mark:0
             }],
           },
           {
             id:2,
             showAnswer:false,
+            answered:false,
             title:'当数据改变触发渲染层重新渲染的时候，会校正带有 key 的组件，框架会确保他们被重新排序，而不是重新创建，以确保使组件保持自身的状态，并且提高列表。',
             answerList:[{
               id:'A',

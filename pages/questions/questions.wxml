@@ -9,9 +9,9 @@
     {{questionList.list[currentQuestion].title}}
     </view>
     <view class="question-answer">
-      <view class="question-answer-item correct" wx:for="{{questionList.list[currentQuestion].answerList}}">
-        <text class="answer-a">{{item.id}}</text>
-        <text class="answer-text">{{item.title}}</text>
+      <view class="question-answer-item" wx:for="{{questionList.list[currentQuestion].answerList}}">
+          <text class="answer-a {{item.}}">{{item.id}}</text>
+          <text class="answer-text">{{item.title}}</text>
       </view>
     </view>
     </block>
