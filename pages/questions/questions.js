@@ -16,6 +16,7 @@ Page({
         list:[
           {
             id:1,
+            showAnswer:false,
             title:'列表中唯一的字符串或者或者数字，且不会发生改变。',
             answerList:[{
               id:'A',
@@ -34,6 +35,7 @@ Page({
           },
           {
             id:2,
+            showAnswer:false,
             title:'当数据改变触发渲染层重新渲染的时候，会校正带有 key 的组件，框架会确保他们被重新排序，而不是重新创建，以确保使组件保持自身的状态，并且提高列表。',
             answerList:[{
               id:'A',

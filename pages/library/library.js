@@ -42,9 +42,9 @@ Page({
 
   // 切换类型
   changeType:function(e){
-    // Toast.loading({
-    //   message: '加载中...',
-    // });
+    wx.showLoading({
+        title:'加载中...'
+    })
     this.setData({
       list:[]
     })
@@ -100,6 +100,7 @@ Page({
           children:[]
       }]
     })
+    wx.hideLoading()
   },
   
 

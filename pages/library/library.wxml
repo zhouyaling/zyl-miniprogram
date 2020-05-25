@@ -67,8 +67,6 @@
         </view>
       </view>
 
-      <van-toast id="van-toast" />
-
        <view class="no-info" wx:if="{{list.length<=0}}">
           <image src="../images/no-info2.png"></image>
           <view>暂无数据，先看看其他的吧！</view>

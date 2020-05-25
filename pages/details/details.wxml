@@ -1,4 +1,5 @@
 <!--pages/details/details.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
 <view>
   <view class="title">{{detail.title}}</view>
   <view class="sub-title">
@@ -7,6 +8,7 @@
   </view>
   <view class="detail-content">
   <!-- {{detail.content}} -->
-  <rich-text nodes="{{detail.content}}"></rich-text> 
+  <!-- <rich-text nodes="{{detail.content}}"></rich-text>  -->
+  <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
   </view>
 </view>

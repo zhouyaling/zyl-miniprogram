@@ -9,7 +9,7 @@
     {{questionList.list[currentQuestion].title}}
     </view>
     <view class="question-answer">
-      <view class="question-answer-item" wx:for="{{questionList.list[currentQuestion].answerList}}">
+      <view class="question-answer-item correct" wx:for="{{questionList.list[currentQuestion].answerList}}">
         <text class="answer-a">{{item.id}}</text>
         <text class="answer-text">{{item.title}}</text>
       </view>
@@ -43,7 +43,7 @@
       <view class="popup-card-footer">提交答题</view>
     </view>
   </van-popup>
-  <view class="question-result">
+  <view class="question-result" wx:if="{{item.showAnswer}}">
     <view class="question-result-all">
       <text>正确答案：<text class="result-b">A</text> </text>
       <text>你的答案：<text class="result-b">B</text> </text>

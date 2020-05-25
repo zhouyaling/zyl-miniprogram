@@ -60,14 +60,19 @@ page{
 }
 
 .swiperContent image{
-  width: 98%;
+  width: 100%;
   height: 280rpx;
   border-radius: 8rpx;
-  margin: 0 1%;
+  margin: 0;
 }
 
 swiper{
   height: 280rpx;
+  border-radius: 8rpx;
+}
+
+swiper-item{
+  border-radius: 8rpx;
 }
 
 .topNav{

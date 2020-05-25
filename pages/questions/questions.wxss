@@ -174,3 +174,13 @@ page{
   text-align: center;
   margin-right: 40rpx;
 }
+
+/* 选项样式 */
+.question-answer-item .answer-a {
+  color: #19CCB0;
+  border-color: #19CCB0;
+}
+
+.question-answer-item .answer-text{
+  color: #19CCB0;
+}
