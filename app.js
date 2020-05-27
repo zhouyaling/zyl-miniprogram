@@ -14,15 +14,15 @@ App({
     // })
 
     // 授权用户定位
-    wx.authorize({scope:"scope.userLocation",
-    success:function(){
-        wx.getLocation({
-          success:function(res){
-            console.log("纬度:"+res.latitude+"经度"+res.longitude);
-          }
-        })
-    }
-  })
+    // wx.authorize({scope:"scope.userLocation",
+    //   success:function(){
+    //       wx.getLocation({
+    //         success:function(res){
+    //           console.log("纬度:"+res.latitude+"经度"+res.longitude);
+    //         }
+    //       })
+    //   }
+    // })
 
     // 获取用户信息
     wx.getSetting({

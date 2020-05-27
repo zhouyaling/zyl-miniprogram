@@ -41,8 +41,8 @@ page{
 }
 
 .answer-a{
-  width: 46rpx;
-  height: 46rpx;
+  width: 50rpx;
+  height: 50rpx;
   border-radius: 50%;
   border: 2rpx solid #B0B3C0;
   display: flex;
@@ -50,7 +50,6 @@ page{
   justify-content: center;
   text-align: center;
   color: #B0B3C0;
-  display: inline-block;
 }
 
 .answer-text{
@@ -104,7 +103,12 @@ page{
 }
 
 .answer-number{
-  margin: 36rpx;
+  margin: 30rpx;
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .popup-card-footer{
@@ -176,11 +180,22 @@ page{
 }
 
 /* 选项样式 */
-.question-answer-item .answer-a {
-  color: #19CCB0;
+.answer-a.green{
+  color: #ffffff;
   border-color: #19CCB0;
+  background: #19CCB0;
 }
 
-.question-answer-item .answer-text{
-  color: #19CCB0;
+.answer-text.green{
+  /* color: #19CCB0; */
+}
+
+.answer-a.red{
+  color: #ffffff;
+  border-color: #CB534E;
+  background: #CB534E;
+}
+
+.answer-text.red{
+  /* color: #CB534E; */
 }

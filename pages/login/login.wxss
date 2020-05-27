@@ -85,7 +85,7 @@ color: #19CCB0;
 display: flex;
 align-items: center;
 justify-content: center;
-margin-bottom: 140rpx;
+margin-bottom: 120rpx;
 
 }
 
@@ -93,4 +93,20 @@ margin-bottom: 140rpx;
   width: 80rpx;
   height: 80rpx;
   margin-right: 20rpx;
+}
+
+.basicprofile{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10rpx;
+  font-size: 34rpx;
+
+}
+
+.basicprofile image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 10rpx;
+
 }

@@ -1,4 +1,5 @@
 <view class="wrap">
+  <!-- 问题区域 -->
   <view class="question-header">
     <view class="header-left">第一节 健康服务</view>
     <view class="header-right"><text>{{currentQuestion + 1}}</text>/<text>{{totalQuestion}}</text></view>
@@ -9,12 +10,27 @@
     {{questionList.list[currentQuestion].title}}
     </view>
     <view class="question-answer">
-      <view class="question-answer-item" wx:for="{{questionList.list[currentQuestion].answerList}}">
-          <text class="answer-a {{item.}}">{{item.id}}</text>
-          <text class="answer-text">{{item.title}}</text>
+      <!-- <view class="question-answer-item" wx:for="{{questionList.list[currentQuestion].answerList}}" bindtap="chooseAnswer" data-aid="{{item.id}}" data-qid="{{questionList.list[currentQuestion].id}}">
+          <view class="answer-a {{questionList.list[currentQuestion].choosedAnswer && item.id==questionList.list[currentQuestion].answer?'green':''}} {{questionList.list[currentQuestion].choosedAnswer ==item.id && item.id!=questionList.list[currentQuestion].answer?'red':''}} ">{{item.id}}</view>
+          <text class="answer-text ">{{item.title}}</text>
+      </view> -->
+      <view class="question-answer-item" wx:for="{{questionList.list[currentQuestion].answerList}}" bindtap="chooseAnswer" data-aid="{{item.id}}" data-qid="{{questionList.list[currentQuestion].id}}">
+          <view class="answer-a {{item.id==questionList.list[currentQuestion].choosedAnswer?'green':''}} ">{{item.id}}</view>
+          <text class="answer-text ">{{item.title}}</text>
       </view>
     </view>
     </block>
+  </view>
+  <!-- 答题解析 -->
+  <view class="question-result" wx:if="{{item.showAnswer}}">
+    <view class="question-result-all">
+      <text>正确答案：<text class="result-b">A</text> </text>
+      <text>你的答案：<text class="result-b">B</text> </text>
+    </view>
+    <view class="question-result-all title">解析：</view>
+    <view class="question-result-detail">
+    当数据改变触发渲染层重新渲染的时候，会校正带有 key 的组件，框架会确保他们被重新排序，而不是重新创建，以确保使组件保持自身的状态，并且提高列表渲染时的效率。
+    </view>
   </view>
   <!-- 答题完毕 -->
   <van-dialog id="van-dialog" />
@@ -38,29 +54,21 @@
          <view class="grade">100分</view>
       </view>
       <view class="popup-card-content">
-        <text class="answer-a answer-number" wx:for="{{20}}">1</text>
+        <view  wx:for="{{questionList.list}}" wx:key="{{item.id}}" class="answer-a answer-number {{item.choosedAnswer && item.choosedAnswer == item.answer?'green':''}}  {{item.choosedAnswer && item.choosedAnswer != item.answer?'red':''}}">{{item.id}}</view>
       </view>
-      <view class="popup-card-footer">提交答题</view>
+      <view class="popup-card-footer" bindtap="submitAnswer">提交答题</view>
     </view>
   </van-popup>
-  <view class="question-result" wx:if="{{item.showAnswer}}">
-    <view class="question-result-all">
-      <text>正确答案：<text class="result-b">A</text> </text>
-      <text>你的答案：<text class="result-b">B</text> </text>
-    </view>
-    <view class="question-result-all title">解析：</view>
-    <view class="question-result-detail">
-    当数据改变触发渲染层重新渲染的时候，会校正带有 key 的组件，框架会确保他们被重新排序，而不是重新创建，以确保使组件保持自身的状态，并且提高列表渲染时的效率。
-    </view>
-  </view>
+
+  <!-- 底部操作区域 -->
   <view class="question-footer">
     <van-tabbar  bind:change="menuOnChange">
       <van-tabbar-item icon="exchange">返回</van-tabbar-item>
       <van-tabbar-item icon="arrow-left">上一题</van-tabbar-item>
-       <van-tabbar-item icon="star-o">收藏</van-tabbar-item>
+      <van-tabbar-item icon="{{collection?'star':'star-o'}}">收藏</van-tabbar-item>
       <van-tabbar-item icon="arrow">下一题</van-tabbar-item>
       <van-tabbar-item icon="notes-o">答题卡</van-tabbar-item>
   </van-tabbar>
 </view>
-
+<van-toast id="van-toast" />
 </view>

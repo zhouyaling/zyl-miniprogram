@@ -1,5 +1,6 @@
 // pages/questions/questions.js
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
 
   /**
@@ -9,6 +10,7 @@ Page({
     id:0,
     showPops:false,
     currentQuestion:0,
+    collection:false,
     totalQuestion:2,
     questionList:
       {
@@ -17,31 +19,29 @@ Page({
           {
             id:1,
             showAnswer:false,
-            answered:false,
+            choosedAnswer:"",
+            answer:"C",
             title:'列表中唯一的字符串或者或者数字，且不会发生改变。',
             answerList:[{
               id:'A',
-              title:'大管家',
-              mark:0
+              title:'大管家'
             },{
               id:'B',
-              title:'大蛇去',
-              mark:0
+              title:'大蛇去'
             },
             {
               id:'C',
-              title:'周烤猫',
-              mark:1
+              title:'周烤猫'
             },{
               id:'D',
-              title:'安居客',
-              mark:0
+              title:'安居客'
             }],
           },
           {
             id:2,
             showAnswer:false,
-            answered:false,
+            choosedAnswer:"",
+            answer:"D",
             title:'当数据改变触发渲染层重新渲染的时候，会校正带有 key 的组件，框架会确保他们被重新排序，而不是重新创建，以确保使组件保持自身的状态，并且提高列表。',
             answerList:[{
               id:'A',
@@ -62,10 +62,36 @@ Page({
       }
   },
 
-  /**
-   * 答题菜单切换
-   */
-  menuOnChange(event){
+  // 答题
+  chooseAnswer:function(e){
+    this.data.questionList.list.forEach(element => {
+      if(element.id==e.currentTarget.dataset.qid){
+        element.choosedAnswer = e.currentTarget.dataset.aid
+      }
+    });
+
+    this.setData({
+      questionList:this.data.questionList
+    })
+  },
+
+  // 提交答案
+  submitAnswer:function(){
+    this.popsOnClose();
+  },
+
+  // 查看答题解析
+
+  
+  // 关闭答题卡
+  popsOnClose(){
+    this.setData({
+      showPops:false
+    })
+  },
+
+  // 答题菜单切换
+  menuOnChange:function(event){
     switch(event.detail){
       case 0:
          wx.navigateBack({
@@ -73,31 +99,13 @@ Page({
         })
         break;
         case 1:
-          this.setData({
-            currentQuestion:this.data.currentQuestion<=1?0:this.data.currentQuestion - 1
-          })
+         this.backAction();
+          break;
+        case 2:
+          this.collectionAction();
           break;
         case 3:
-         
-        // 提示已经答完
-        if(this.data.currentQuestion==this.data.totalQuestion-1){
-          Dialog.confirm({
-            message: '已经是最后一题啦，是否提交？',
-            asyncClose: true
-          })
-            .then(() => {
-              setTimeout(() => {
-                Dialog.close();
-              }, 1000);
-            })
-            .catch(() => {
-              Dialog.close();
-            });
-        }
-
-        this.setData({
-          currentQuestion:(this.data.currentQuestion + 1)>=this.data.totalQuestion?(this.data.totalQuestion-1):this.data.currentQuestion+1
-        })
+        this.nextAction();
         break;
       case 4:
         this.setData({
@@ -105,13 +113,50 @@ Page({
         })
     }
   },
-
-  /**
-   * 关闭答题卡
-   */
-  popsOnClose(){
+  
+  // 上一题
+  backAction:function (){
     this.setData({
-      showPops:false
+      currentQuestion:this.data.currentQuestion<=1?0:this.data.currentQuestion - 1
+    })
+  },
+
+  // 下一题
+  nextAction:function (){
+
+    // 提示已经答完
+    if(this.data.currentQuestion==this.data.totalQuestion-1){
+      Dialog.confirm({
+        message: '已经是最后一题啦，是否提交？',
+        asyncClose: true
+      })
+        .then(() => {
+          setTimeout(() => {
+            Dialog.close();
+          }, 1000);
+        })
+        .catch(() => {
+          Dialog.close();
+        });
+    }
+    this.setData({
+      currentQuestion:(this.data.currentQuestion + 1)>=this.data.totalQuestion?(this.data.totalQuestion-1):this.data.currentQuestion+1
+    })
+  },
+
+  // 收藏
+  collectionAction:function(){
+    Toast({
+      mask: false,
+      forbidClick:true,
+      message: '收藏成功!',
+      duration:1000,
+      onClose:function(){
+
+      }
+    });
+    this.setData({
+      collection:!this.data.collection
     })
   },
 
