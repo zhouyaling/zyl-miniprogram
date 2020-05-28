@@ -14,8 +14,8 @@
     "pages/questions/questions",
     "pages/details/details",
     "pages/my/info/info",
-    "pages/my/record/record"
- 
+    "pages/my/record/record",
+    "pages/answers/answers"
   ],
   "tabBar": {
     "color": "#999999",
@@ -72,8 +72,8 @@
     "van-button": "@vant/weapp/button/index",
     "van-steps": "@vant/weapp/steps/index",
     "van-circle": "@vant/weapp/circle/index",
-     "van-loading": "@vant/weapp/loading/index",
-     "van-toast": "@vant/weapp/toast/index"
+    "van-loading": "@vant/weapp/loading/index",
+    "van-toast": "@vant/weapp/toast/index"
   },
   "permission": {
     "scope.userLocation": {

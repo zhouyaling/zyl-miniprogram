@@ -205,6 +205,9 @@ page{
   background: #19CCB0;
 }
 
+.answer-text.green{
+  /* color: #19CCB0; */
+}
 
 .answer-a.red{
   color: #ffffff;
@@ -212,6 +215,9 @@ page{
   background: #CB534E;
 }
 
+.answer-text.red{
+  /* color: #CB534E; */
+}
 
 .van-button__text{
   color: #19CCB0!important;

@@ -7,7 +7,6 @@ Page({
    */
   data: {
     id:0,
-    answeredStatus:false, // 是否提交答题
     showPops:false, // 展示答题卡弹窗
     currentQuestion:0, // 当前题目
     collection:false, // 收藏状态
@@ -19,7 +18,7 @@ Page({
           {
             id:1,
             showAnswer:false,
-            choosedAnswer:"",
+            choosedAnswer:"B",
             answer:"C",
             title:'列表中唯一的字符串或者或者数字，且不会发生改变。',
             answerList:[{
@@ -40,7 +39,7 @@ Page({
           {
             id:2,
             showAnswer:false,
-            choosedAnswer:"",
+            choosedAnswer:"D",
             answer:"D",
             title:'当数据改变触发渲染层重新渲染的时候，会校正带有 key 的组件，框架会确保他们被重新排序，而不是重新创建，以确保使组件保持自身的状态，并且提高列表。',
             answerList:[{
@@ -75,22 +74,7 @@ Page({
     })
   },
 
-  // 提交答案
-  submitAnswer:function(){
-    if(!this.data.answeredStatus){
-      Toast.loading({
-        mask: false,
-        forbidClick:true,
-        duration:500,
-        message: '答案提交中...',
-      });
-      this.setData({
-        answeredStatus:true
-      })
-    }
-   
-  },
-
+  
   // 查看答题解析、关闭弹窗
   showAnswerDetail: function(e){
     if(e.currentTarget.dataset.type==1){
@@ -148,31 +132,11 @@ Page({
 
     // 提示已经答完
     if(this.data.currentQuestion==this.data.totalQuestion-1){
-      if(this.data.answeredStatus){
-        Dialog.confirm({
-          message: '你已经提交过答案啦，是否查看解析？',
-        })
-        .then(() => {
-          this.setData({ showPops:true })
-            Dialog.close();
-        })
-        .catch(() => {
-          Dialog.close();
-        });
-        
-      }else{
-        Dialog.confirm({
-          message: '已经是最后一题啦，是否提交？',
-        })
-          .then(() => {
-            this.submitAnswer();
-              Dialog.close();
-          })
-          .catch(() => {
-            Dialog.close();
-          });
-      }
-     
+      Dialog.alert({
+        className:'test',
+        message: '已经是最后一题啦~',
+      }).then(() => {
+      });
     }
     this.setData({
       currentQuestion:(this.data.currentQuestion + 1)>=this.data.totalQuestion?(this.data.totalQuestion-1):this.data.currentQuestion+1
