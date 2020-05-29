@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/my/mine/mine",
     "pages/library/library",
     "pages/videos/videos",
     "pages/videoDetail1/videoDetail1",
     "pages/videoDetail/videoDetail",
     "pages/index/index",
-    "pages/my/mine/mine",
     "pages/my/collection/collection",
     "pages/news/news",
     "pages/my/about/about",
@@ -15,7 +15,8 @@
     "pages/details/details",
     "pages/my/info/info",
     "pages/my/record/record",
-    "pages/answers/answers"
+    "pages/answers/answers",
+    "pages/wrongQuestions/wrongQuestions"
   ],
   "tabBar": {
     "color": "#999999",

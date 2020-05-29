@@ -15,7 +15,7 @@
 <view class="container">
 	<view class="mineInfo radiusOne">
 		<view class='top'>
-			<image wx:if="{{isLogin==1}}" src="{{userInfo.headImgUrl?userInfo.headImgUrl:'../../images/head.png'}}"></image>
+			<image wx:if="{{isLogin==1}}" src="{{userInfo.avatarUrl?userInfo.avatarUrl:'../../images/head.png'}}"></image>
 			<image wx:if="{{isLogin==0}}" src="../../images/head.png"></image>
 			<view class="name">
 				<navigator src='#' url="../personalData/personalData" wx:if="{{isLogin==1}}" hover-class="none">

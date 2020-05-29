@@ -90,8 +90,8 @@ margin-bottom: 120rpx;
 }
 
 .logo-box image{
-  width: 80rpx;
-  height: 80rpx;
+  width: 400rpx;
+  height: 100rpx;
   margin-right: 20rpx;
 }
 

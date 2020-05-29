@@ -85,7 +85,8 @@ Page({
         message: '答案提交中...',
       });
       this.setData({
-        answeredStatus:true
+        answeredStatus:true,
+        showPops:true
       })
     }
    

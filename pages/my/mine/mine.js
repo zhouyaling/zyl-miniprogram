@@ -55,18 +55,16 @@ Page({
     }
   },
     // 获取用户信息
-    async getUserInfo(params) {
-      let resule = await Serv.getUserInfo(params)
-      if (resule.success) { // 用户信息获取成功
-        this.setData({ userInfo: resule.data })
-      }
-    },
-  // getUserInfo: function(e) {
-  //   console.log(e)
-  //   app.globalData.userInfo = e.detail.userInfo
-  //   this.setData({
-  //     userInfo: e.detail.userInfo,
-  //     hasUserInfo: true
-  //   })
-  // }
+    // async getUserInfo(params) {
+    //   let resule = await Serv.getUserInfo(params)
+    //   if (resule.success) { // 用户信息获取成功
+    //     this.setData({ userInfo: resule.data })
+    //   }
+    // },
+  getUserInfo: function() {
+    this.setData({
+      userInfo:  app.globalData.userInfo,
+      hasUserInfo: true
+    })
+  }
 })

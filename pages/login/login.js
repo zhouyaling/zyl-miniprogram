@@ -9,8 +9,8 @@ Page({
    */
   data: {
     showModal:false, // 微信确认授权弹窗
-    isUserAuth:false, // 是否授权用户信息
-    loginStatus:true, // 是否登录
+    isUserAuth:false, // 是否已授权用户信息
+    loginStatus:true, // 是否勾选
     encryptedData:"",
     iv:""
   },
@@ -19,6 +19,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    debugger
     // 判断是否同意授权
     let _this = this;
       wx.getSetting({
@@ -60,7 +61,6 @@ Page({
       if(this.data.isUserAuth){
         this.getUserinfo()
        }else{
-         // TODO: 提示用户先授权用户信息
          this.setData({
            showModal: true
          });
@@ -71,7 +71,8 @@ Page({
   /**
    * 获取用户基本信息
    */
-  getUserinfo(){
+  getUserinfo(e){
+    debugger
     let _this = this;
     wx.getUserInfo({
       success: async function (res) {
@@ -93,8 +94,9 @@ Page({
         }).then((data) => {
           wx.setStorageSync(Config.openIdKey, data.openid)
           wx.setStorageSync(Config.sessionKey, data.session_key)
-          wx.setStorageSync(Config.userInfoKey, res.userInfo)
-          wx.setStorageSync(Config.authName, 1)
+          // wx.setStorageSync(Config.userInfoKey, res.userInfo)
+          wx.setStorageSync(Config.authName, data.userid)
+          app.globalData.userInfo = res.userInfo
           wx.navigateBack({
             delta: 1
           })

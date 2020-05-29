@@ -1,6 +1,7 @@
 // 基础共同的配置
 let baseConfig = {
   // auth名，登陆后得到的令牌缓存的名字
+  token:'token',
   authName: 'authName',
   jsCodeKey: 'jsCodeName',
   phoneNoKey: 'phoneNo',
@@ -67,8 +68,9 @@ let envConfig = {
   },
   prod: {
     // api接口主机地址，演示阶段，先用本地，且开启mock
-    //https://rend-sale-test.tq-service.com/app/
-    host: 'http://118.190.217.38/ys_jhjy/',
+    //https://rend-sale-test.tq-service.com/app/ 
+    // http://118.190.217.38/ys_jhjy/
+    host: 'http://feidie.tech:5001/',
     ossHost: 'https://zmzj-pro.oss-cn-shenzhen.aliyuncs.com/mideadc-miniprogram/',
     IntergralH5Url: 'https://jfsc.mideazy.com',
     // 只能在本地生效
