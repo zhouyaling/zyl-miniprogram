@@ -33,7 +33,7 @@
 		<text>精品课程</text>
 	</view>
 	<view class="card" wx:for="{{listSpec}}">
-			<navigator url="/pages/news/news" hover-class="none">
+			<navigator url="/pages/videos/videos" hover-class="none">
 			<image class="card-img"src="{{item.url}}"></image>
 			<view class="card-title">初级医护冲刺班</view>
 			<view class="card-des">
