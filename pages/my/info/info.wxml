@@ -1,11 +1,11 @@
 <view class="form-box">
   <van-cell-group>
   <van-cell title="微信头像">
-  <image class="header" src="../../images/head.png"></image>
+  <image class="header" src="{{userInfo.avatarUrl?userInfo.avatarUrl:'../../images/head.png'}}"></image>
   </van-cell>
-    <van-cell title="用户名" value="叮叮咚咚喵喵" />
-    <van-cell title="手机号码" value="13527430011"  />
+    <van-cell title="用户名" value="{{userInfo.nickName}}" />
+    <van-cell title="手机号码" value=""  />
   </van-cell-group>
 </view>
 
-<van-button type="primary" block color="#19CCB0" custom-style="font-size:32rpx">退出登录</van-button>
+<van-button type="primary" block color="#19CCB0"  bind:click="loginOut" custom-style="font-size:32rpx">退出登录</van-button>

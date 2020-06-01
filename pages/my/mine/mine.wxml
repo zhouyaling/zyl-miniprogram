@@ -18,7 +18,7 @@
 			<image wx:if="{{isLogin==1}}" src="{{userInfo.avatarUrl?userInfo.avatarUrl:'../../images/head.png'}}"></image>
 			<image wx:if="{{isLogin==0}}" src="../../images/head.png"></image>
 			<view class="name">
-				<navigator src='#' url="../personalData/personalData" wx:if="{{isLogin==1}}" hover-class="none">
+				<navigator src='#' url="/pages/my/info/info" wx:if="{{isLogin==1}}" hover-class="none">
 					<text class="nickName">{{userInfo.nickName||userInfo.mobile}}</text>
 				</navigator>
 				<navigator   url="/pages/login/login" wx:elif="{{isLogin==0}}" hover-class="none">

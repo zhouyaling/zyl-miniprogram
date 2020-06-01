@@ -40,7 +40,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let wxSession = wx.getStorageSync("authName") // token是否存在
+    let wxSession = wx.getStorageSync("authToken") // token是否存在
 
     if(wxSession=="" || wxSession==null || wxSession == undefined){
         this.setData({

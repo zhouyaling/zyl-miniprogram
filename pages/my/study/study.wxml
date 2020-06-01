@@ -8,7 +8,7 @@
 			<text>¥ 2809元</text>
 			<text>已有300人参与</text>
 		</view>
-		<image class="card-recommend" src="../images/icon-tuijian1.png"></image>
+		<!-- <image class="card-recommend" src="../images/icon-tuijian1.png"></image> -->
 	</view>
 	</navigator>
 	</view>

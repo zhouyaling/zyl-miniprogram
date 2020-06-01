@@ -1,18 +1,36 @@
-// pages/my/info/info.js
+var app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userInfo:{},
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let wxSession = wx.getStorageSync("authToken") // token是否存在
+     if(wxSession=="" || wxSession==null || wxSession == undefined){
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+     }else{
+      this.setData({
+        userInfo:app.globalData.userInfo
+      })
+     }
+  },
 
+  // 退出登录
+  loginOut(){
+    wx.clearStorageSync();
+    wx.switchTab({
+      url: '/pages/my/mine/mine',
+    })
   },
 
   /**

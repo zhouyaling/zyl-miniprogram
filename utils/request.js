@@ -17,7 +17,7 @@ export default function(obj) {
   //将config文件中的常量整合进来
   parameter.headers = Object.assign(parameter.headers, Config.headers);
   if (parameter.url.indexOf('app/weixin/login') == -1) {
-    // parameter.headers.token = wx.getStorageSync(Config.authName) || '';
+    // parameter.headers.token = wx.getStorageSync(Config.authToken) || '';
     // parameter.headers.userId = wx.getStorageSync(Config.userIdKey) || '';
   }
 
@@ -100,7 +100,6 @@ export default function(obj) {
   //       })
   //     },
   //     success: function ({ data, statusCode}) {
-  //       debugger
   //       console.log('后端返回数据:', data)
   //       if (statusCode == 502 || statusCode== 503){
   //         wx.showToast({

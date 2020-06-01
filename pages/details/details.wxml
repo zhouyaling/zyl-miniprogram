@@ -1,10 +1,10 @@
 <!--pages/details/details.wxml-->
 <import src="../../wxParse/wxParse.wxml"/>
 <view>
-  <view class="title">{{detail.title}}</view>
+  <view class="title">{{detail.NewsTitle}}</view>
   <view class="sub-title">
-    <text class="detail-time">发布于：{{detail.time}}</text>
-    <text>点赞量：{{detail.zan}}</text>
+    <text class="detail-time">发布于：{{detail.NewsDate}}</text>
+    <text>阅读量：{{detail.ViewTimes}}</text>
   </view>
   <view class="detail-content">
   <!-- {{detail.content}} -->

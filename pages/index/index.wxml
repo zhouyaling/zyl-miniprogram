@@ -1,13 +1,8 @@
 <!--index.wxml-->
 <view class="container">
 	<view class="topNav">
-			<van-tabs active="a" animated color="#19CCB0" swipeable bind:click="handlerOnChangeTab"  ellipsis="{{false}}"  tab-class="tab-reset" tab-active-class="tab-active-reset">
-				<van-tab title="护士资格证" name="a"></van-tab>
-				<van-tab title="初级护士" name="b"></van-tab>
-				<van-tab title="主管护士证" name="c"></van-tab>
-				<van-tab title="中级护士" name="d"></van-tab>
-				<van-tab title="特级" name="d"></van-tab>
-				<van-tab title="特级1" name="d"></van-tab>
+			<van-tabs active="{{currentTab}}" animated color="#19CCB0" swipeable bind:click="handlerOnChangeTab"  ellipsis="{{false}}"  tab-class="tab-reset" tab-active-class="tab-active-reset">
+				<van-tab wx:for="{{videoType}}" title="{{item.DictValue}}" name="{{item.DictKey}}"></van-tab>
 			</van-tabs>
 		</view>
 	<view class="topWrap">
@@ -21,26 +16,6 @@
 				</block>
 			</swiper>
 		</view>
-		<!-- <view class="topNav">
-			<van-tabbar active="{{active}}" bind:change="handlerOnChangeTab" fixed="{{mark}}" active-color="#19CCB0">
-				<van-tabbar-item icon="star">临床</van-tabbar-item>
-				<van-tabbar-item icon="diamond">实习</van-tabbar-item>
-				<van-tabbar-item icon="service">就业</van-tabbar-item>
-				<van-tabbar-item icon="fire">视频</van-tabbar-item>
-			</van-tabbar>
-			<view class="navItem active">
-				<view class="label">临床</view>
-			</view>
-			<view class="navItem">
-				<view class="label">实习</view>
-			</view>
-			<view class="navItem">
-				<view class="label">就业</view>
-			</view>
-			<view class="navItem">
-				<view class="label">视频</view>
-			</view>
-		</view> -->
 	</view>
 
 	<view class="news-bar">

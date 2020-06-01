@@ -177,7 +177,7 @@ swiper-item{
 }
 
 .text-zan image{
-  width: 32rpx;
+  width: 40rpx;
   height: 32rpx;
   margin-right: 4rpx;
 }

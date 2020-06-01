@@ -11,6 +11,7 @@ Page({
     showModal:false, // 微信确认授权弹窗
     isUserAuth:false, // 是否已授权用户信息
     loginStatus:true, // 是否勾选
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     encryptedData:"",
     iv:""
   },
@@ -19,7 +20,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    debugger
     // 判断是否同意授权
     let _this = this;
       wx.getSetting({
@@ -42,9 +42,7 @@ Page({
       })
   },
 
-  /**
-   * 微信一键登录
-   */
+  // 获取手机号（X）
   getPhoneNumber(e){
     if (e.detail.errMsg == 'getPhoneNumber:fail user deny') {
       wx.showModal({
@@ -68,63 +66,64 @@ Page({
     }
   },
 
-  /**
-   * 获取用户基本信息
-   */
-  getUserinfo(e){
-    debugger
+  // 获取用户基本信息
+  bindGetUserInfo(e){
+    this.setData({ showModal: false });
+    if (e.detail.errMsg == 'getUserInfo:fail auth deny') {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '未授权',
+        success: function (res) { 
+        }
+      })
+    } else{
+      console.log("1111",e.detail.userInfo)
+      app.globalData.userInfo = e.detail.userInfo
+      this.userLogin();
+    }
+  },
+
+  // 获取用户基本信息
+  getUserinfo(){
     let _this = this;
     wx.getUserInfo({
       success: async function (res) {
-        _this.setData({
-          showModal: false
-        });
-        wx.showLoading({
-          title: '数据获取中...',
-        });
-
-         // code换取登录态信息（openid,sessionKey）
-        const params = {
-          "code": wx.getStorageSync(Config.jsCodeKey)
-        };
-        Request({
-          url: "Weixin/get",
-          type: "get",
-          data: params
-        }).then((data) => {
-          wx.setStorageSync(Config.openIdKey, data.openid)
-          wx.setStorageSync(Config.sessionKey, data.session_key)
-          // wx.setStorageSync(Config.userInfoKey, res.userInfo)
-          wx.setStorageSync(Config.authName, data.userid)
-          app.globalData.userInfo = res.userInfo
-          wx.navigateBack({
-            delta: 1
-          })
-
-          // if(result.success){
-          //   let data = result.data;
-          //   wx.setStorageSync(Config.openIdKey, data.openId)
-          //   wx.setStorageSync(Config.sessionKey, data.sessionKey)
-
-          //   wx.navigateBack({
-          //     delta: 1
-          //   })
-          // }else{
-          //   wx.login({
-          //     success: res => {
-          //       wx.setStorageSync(Config.jsCodeKey, res.code)
-          //     }
-          //   })
-          // }
-        })
-        wx.hideLoading();
+        console.log("222222",res.userInfo)
+        app.globalData.userInfo = res.userInfo
+        _this.userLogin();
       },
       fail:function(){
         _this.setData({
-          showModal: false
+          showModal: true
         });
       }
     })
+  },
+
+  // 登录 code换取登录态信息（openid,sessionKey）
+  userLogin(){
+    console.log("33333")
+    wx.showLoading({
+      title: '数据获取中...',
+    });
+
+    const params = {
+      "code": wx.getStorageSync(Config.jsCodeKey)
+    };
+    Request({
+      url: "Weixin/get",
+      type: "get",
+      data: params
+    }).then((data) => {
+      wx.setStorageSync(Config.openIdKey, data.openid)
+      wx.setStorageSync(Config.sessionKey, data.session_key)
+      wx.setStorageSync(Config.authToken, data.userid)
+      wx.navigateBack({
+        delta: 1
+      })
+    })
+    wx.hideLoading();
   },
    
 

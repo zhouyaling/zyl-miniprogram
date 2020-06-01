@@ -31,7 +31,6 @@ Page({
   },
 
   sss(e){
-    debugger
     wx.navigateTo({
       url: '/pages/videoDetail1/videoDetail1'
     })

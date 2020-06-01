@@ -1,35 +1,54 @@
-<view class="wrap">
-  <view class="news-header">
-    <view class="title">执业药师无忧班</view>
-    <view class="des">
-      <text>已有39394人参与</text>
-    </view>
-  </view>
-  <view class="list">
-    <van-collapse value="{{ activeName }}" bind:change="onChange" accordion custom-class="test1">
-      <van-collapse-item title=" 第一章 基本药物知识" name="1" custom-class="col-head" content-class="col-con">
-        <view class="list-item" wx:for="{{list}}">
-					<navigator url="/pages/videoDetail1/videoDetail1" hover-class="none">
+<!--index.wxml-->
+<view class="container">
+		<view class="topNav">
+			<van-tabs active="{{currentTab}}" animated color="#19CCB0" swipeable bind:click="handlerOnChangeTab" ellipsis="{{false}}"   tab-class="tab-reset"  tab-active-class="tab-active-reset">
+			<van-tab wx:for="{{videoType}}" title="{{item.DictValue}}" name="{{item.DictKey}}"></van-tab>
+			</van-tabs>
+		</view>
+	<view class="topWrap">
+		<view class="swiperContent">
+			<swiper indicator-dots="{{true}}" indicator-color="transprant"  	previous-margin="0rpx" next-margin="0rpx" circular="{{true}}" indicator-active-color="#fff" autoplay="{{true}}" interval="4000" duration="500">
+				<block wx:for="{{bannerList}}" wx:key="*this">
+					<swiper-item>
+						<image src="{{item.url}}"></image>
+					</swiper-item>
+				</block>
+			</swiper>
+		</view>
+
+	</view>
+	<!-- 列表 -->
+	<view class="listContent">
+			<view>
+				<view class="list-item" wx:for="{{list}}">
+					<navigator url="/pages/details/details?id={{item.Id}}" hover-class="none">
 						<view class="list-item-image">
-							<image src="../images/default-video.jpg"></image>
+							<image src="{{item.ThumbImage?item.ThumbImage:'../images/default-pic.jpg'}}"></image>
 						</view>
 					</navigator>
 					<view class="list-item-text">
-						<navigator url="/pages/videoDetail1/videoDetail1" hover-class="none">
-							<view class="text-title">疫情过后，这5类医疗专业将大火</view>
+						<navigator url="/pages/details/details?id={{item.Id}}" hover-class="none">
+							<view class="text-title">{{item.NewsTitle}}</view>
 						</navigator>
 						<view class="text-desc">
-						<view>120人已学习</view>
+						<view>{{item.NewsDate}}</view>
+							<view class="text-zan">
+								<image src="../images/icon-view.png"></image>
+								{{item.ViewTimes}}
+							</view>
 						</view>
 					</view>
 				</view>
-      </van-collapse-item>
-      <van-collapse-item title=" 第二章 基本药物知识" name="2">
-       第二章 基本药物知识
-      </van-collapse-item>
-      <van-collapse-item title="第三章 基本药物知识" name="3">
-        第三章 基本药物知识
-      </van-collapse-item>
-    </van-collapse>
-  </view>
+			</view>
+	</view>
+	<!-- 暂无数据 -->
+	<view class="no-info" style="margin-top:100rpx" wx:if="{{list.length<=0 && !loading}}">
+		<image src="../images/no-info2.png"></image>
+		<view>暂无数据，先看看其他的吧！</view>
+	</view>
+	<!-- 加载状态 -->
+	<view  wx:if="{{loading}}" >
+		<van-loading size="24px">加载中...</van-loading>
+	</view>
+	
 </view>

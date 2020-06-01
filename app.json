@@ -1,13 +1,13 @@
 {
   "pages": [
+    "pages/news/news",
+    "pages/index/index",
     "pages/my/mine/mine",
-    "pages/library/library",
     "pages/videos/videos",
+    "pages/library/library",
     "pages/videoDetail1/videoDetail1",
     "pages/videoDetail/videoDetail",
-    "pages/index/index",
     "pages/my/collection/collection",
-    "pages/news/news",
     "pages/my/about/about",
     "pages/my/study/study",
     "pages/login/login",
@@ -25,7 +25,7 @@
     "borderStyle": "black",
     "list": [
       {
-        "pagePath": "pages/videos/videos",
+        "pagePath": "pages/news/news",
         "iconPath": "pages/images/bar_zixun.png",
         "selectedIconPath": "pages/images/bar_zixun_active.png",
         "text": "资讯"
