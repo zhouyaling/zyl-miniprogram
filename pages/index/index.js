@@ -10,16 +10,9 @@ Page({
     loading:false,
     videoType:[], // 栏目列表
     bannerList:[
-      {id:1,url:"../images/moren2.jpg"},
-     {id:2,url:"../images/moren7.jpg"},
-     {id:2,url:"../images/moren6.jpg"}
-  ],
+      {Id:1,imgurl:""}],
     list:[],
-    listSpec:[
-      {id:1,url:"../images/img6.jpg"},
-      {id:1,url:"../images/img4.jpg"},
-    {id:2,url:"../images/img4.jpg"},
-    {id:3,url:"../images/img6.jpg"}],
+    listSpec:[],
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -27,6 +20,7 @@ Page({
 
   onLoad: function () {
     this.getVideoType();
+    this.getBanner();
     this.setData({
       list:[1,2,3,4],
       loading:true
@@ -50,14 +44,41 @@ Page({
     // }
   },
 
+   // 获取轮播图
+   async getBanner(){
+    let _this = this;
+    let res = await Server.getBannerList({module:'视频'});
+      if(res.Result && res.Result.length>0){
+        _this.setData({
+          bannerList:res.Result
+        })
+      }
+  },
     
-  // 获取栏目
+  // 获取专题栏目
   async getVideoType() {
     let _this = this;
     let res = await Server.getVideoType({DictType:'VideoType'});
       if(res.Result && res.Result.length>0){
         _this.setData({
           videoType:res.Result[0].Detail,
+          currentTab:res.Result[0].Detail[0].DictKey
+        })
+        _this.getClassList()
+      }
+  },
+
+    // 获取精品课程班
+  async getClassList(){
+    let _this = this;
+    let res = await Server.getClassList({'课程专题Code':_this.data.currentTab});
+      if(res.Result && res.Result.length>0){
+        _this.setData({
+          listSpec:res.Result,
+        })
+      }else{
+        _this.setData({
+          listSpec:[],
         })
       }
   },
@@ -77,11 +98,14 @@ Page({
       hasUserInfo: true
     })
   },
+
+  // 切换顶部专题
   handlerOnChangeTab:function(event){
     this.setData({
       list:[1,2,3,4],
       loading:true,
       currentTab:event.detail.name
     });
+    this.getClassList()
   }
 })

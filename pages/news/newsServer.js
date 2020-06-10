@@ -1,5 +1,16 @@
 import Request from "../../utils/request.js";
 export default class {
+  // 获取轮播图
+  static getBannerList(params){
+    return Request({
+      url: "Banner/GetList",
+      type: "GET",
+      data: params,
+      // headers: {
+      //   "Content-type": "application/json"
+      // },
+    })
+  }
   // 获取新闻栏目
   static getNewsType(params) {
     return Request({

@@ -7,7 +7,7 @@ Page({
     currentTab:1, // 当前类型
     videoType:[], // 类型
     bannerList:[
-        {id:1,url:"http://image.beegoedu.com/Upload/haibaolink/2018103095288.jpg"}
+        {Id:1,护士资格证:"http://image.beegoedu.com/Upload/haibaolink/2018103095288.jpg"}
     ],
     list:[],
     
@@ -20,7 +20,19 @@ Page({
   onLoad: function () {
     this.getNewsType();
     this.getNewsList();
+    this.getBanner();
 
+  },
+
+  // 获取轮播图
+  async getBanner(){
+    let _this = this;
+    let res = await Server.getBannerList({module:'资讯'});
+      if(res.Result && res.Result.length>0){
+        _this.setData({
+          bannerList:res.Result
+        })
+      }
   },
   
   // 获取栏目

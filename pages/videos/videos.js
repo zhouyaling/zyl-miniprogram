@@ -1,24 +1,65 @@
 // pages/news/news.js
+import Server from './videosServer' 
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    activeName: '1',
-    list:[1,2,3,4]
+    classId:"", // 班级类别id
+    className:'',
+    classPeopleNum:0,
+    activeZhangId: '', // 章节id
+    zhangList:[],
+    list:[]
   },
   onChange(event) {
     this.setData({
-      activeName: event.detail,
+      activeZhangId: event.detail,
     });
+    this.getPageList()
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(options.classId){
+      this.setData({
+        classId:options.classId,
+        className:options.name,
+        classPeopleNum:options.num
+      })
+    }
+    this.getZhangList()
+  },
 
+  // 查询章节列表
+  async getZhangList(){
+    let _this = this;
+    let res = await Server.getZhangList({'课程类别id': _this.data.classId});
+      if(res.Result && res.Result.length>0){
+        _this.setData({
+          zhangList:res.Result,
+          activeZhangId:res.Result[0].Id
+        })
+
+        _this.getPageList()
+      }
+  },
+
+  // 查询视频列表
+  async getPageList(){
+    let _this = this;
+    _this.setData({
+      list:[]
+    })
+    let res = await Server.getPageList({'课程章节id': _this.data.activeZhangId});
+      if(res.Result && res.Result.length>0){
+        _this.setData({
+          list:res.Result
+        })
+      }
   },
 
   /**
