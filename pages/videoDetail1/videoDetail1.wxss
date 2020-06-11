@@ -1,1 +1,4 @@
 /* pages/videoDetail1/videoDetail1.wxss */
+video{
+  width: 100%;
+}

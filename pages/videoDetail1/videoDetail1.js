@@ -1,11 +1,17 @@
 // pages/videoDetail1/videoDetail1.js
+import polyv from '../../utils/polyv.js';
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    src:"",
+    videoOption: {
+      mode: 'vod',
+      vodVid: '88083abbf5535a4d7b4d8614427559e0_8' // 播回放时vodVid为videoPoolId
+    }
   },
 
   /**
@@ -19,7 +25,34 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    let vid = '88083abbf5535a4d7b4d8614427559e0_8';
 
+    /*获取视频数据*/
+    let obj = {
+      vid: vid,
+      viewerInfo: {
+        viewerId: '38770077709', // 播放观看日志学员ID
+        viewerName: 'polyv' // 播放观看日志学员昵称
+      },
+      callback: videoInfo => {
+        if (videoInfo.type === 'error') {
+          console.log('videoInfo', videoInfo);
+          return;
+        }
+
+        debugger
+        this.setData({
+          src: videoInfo.src[0],
+        });
+      }
+    };
+
+    this.player = polyv.getVideo(obj);
+
+  },
+
+  timeupdate: function(e) {
+    this.player.timeUpdate(e);
   },
 
   /**
@@ -40,7 +73,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    this.player.destroy();
   },
 
   /**

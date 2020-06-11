@@ -1,5 +1,7 @@
 <view class="page-body">
-  <view class="page-section page-section-gap" style="width:300px;height:300px" bindtap='clickIt'>
-    <web-view src="https://feidie.tech/ys_jhjy/ol/v/vindex?id=208e14345786c376ea4cd8019f856c06_2"></web-view>
-  </view>
+
+	<view class="page-section page-section-gap" style="width:100%;height:300px" bindtap='clickIt'>
+		<video class="vp-v" src="{{ src }}" custom-cache="{{false}}" autoplay bindtimeupdate="timeupdate"></video>
+	</view>
+	<!-- <web-view src="https://feidie.tech/ys_jhjy/ol/v/vindex?id=208e14345786c376ea4cd8019f856c06_2"></web-view> -->
 </view>

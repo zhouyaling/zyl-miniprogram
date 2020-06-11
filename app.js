@@ -1,6 +1,14 @@
 //app.js
+// import plv from '/lib/polyv-sdk/index';
+
 App({
   onLaunch: function () {
+    // TODO: 传入直播后台获取的appId、appSecret
+    // plv.setApp({
+    //   apiId:'fo9ej350u0',
+    //   apiSecret:'67180890349bd8851d3da33223ae4'
+    // });
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())

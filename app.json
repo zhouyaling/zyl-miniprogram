@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/news/news",
-    
     "pages/my/mine/mine",
     "pages/videos/videos",
     "pages/library/library",
