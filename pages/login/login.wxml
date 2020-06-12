@@ -18,8 +18,8 @@
       <view class="logo-box">
       <image src="../images/logo-text.png"></image>
       </view>
-      <!-- <button type="default"  size="default" disabled="{{loginStatus}}"  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" hover-class="other-button-hover">微信一键登录</button> -->
-      <button type="default"  size="default" disabled="{{loginStatus}}" bindtap='getUserinfo'  hover-class="other-button-hover">微信一键登录</button> 
+      <button type="default"  size="default" disabled="{{loginStatus}}"  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" hover-class="other-button-hover">微信一键登录</button>
+      <!-- <button type="default"  size="default" disabled="{{loginStatus}}" bindtap='getUserinfo'  hover-class="other-button-hover">微信一键登录</button>  -->
       </view>
       <!-- <view class="{{loginStatus?'phone-login':'phone-login-active'}}" >
       <button type="default" plain="true" disabled="{{loginStatus}}"  size="default"  bindtap="default" hover-class="other-button-hover">手机号登录/注册</button>

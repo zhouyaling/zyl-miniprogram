@@ -1,0 +1,42 @@
+
+.library-class-item{
+  width: 94%;
+  min-height: 180rpx;
+  border-radius:20rpx;
+  background-color: #fff;
+  margin: 0 3%;
+  box-sizing: border-box;
+  box-shadow: 0 4rpx 16rpx 0 rgba(0,0,0,.1);
+  padding: 10rpx 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.library-class-item .item-content{
+  width: 100%;
+}
+
+.library-class-total{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30rpx 0;
+}
+
+.library-class-total .item-title{
+  font-weight: 600;
+  font-size: 34rpx;
+  color: #333;
+}
+
+.library-class-total .subtitle{
+  font-size: 30rpx;
+  color: #8B8B8B;
+}
+
+.go-study{
+  color: #19CCB0;
+  font-size: 24rpx;
+  border: 1px solid #19CCB0;
+  padding: 6rpx;
+}

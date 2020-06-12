@@ -1,3 +1,5 @@
+@import "../template/libraryClassCard/libraryClassCard.wxss";
+
 page{
   background-color: #F9F8FE;
 }

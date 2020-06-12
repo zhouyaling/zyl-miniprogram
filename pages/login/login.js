@@ -25,6 +25,7 @@ Page({
       wx.getSetting({
         success(res){
           let authorizeList = res.authSetting;
+          debugger
           _this.setData({
               isUserAuth:authorizeList["scope.userInfo"]
             })
@@ -42,8 +43,9 @@ Page({
       })
   },
 
-  // 获取手机号（X）
+  // 获取手机号
   getPhoneNumber(e){
+    debugger
     if (e.detail.errMsg == 'getPhoneNumber:fail user deny') {
       wx.showModal({
         title: '提示',
@@ -68,6 +70,7 @@ Page({
 
   // 获取用户基本信息
   bindGetUserInfo(e){
+    debugger
     this.setData({ showModal: false });
     if (e.detail.errMsg == 'getUserInfo:fail auth deny') {
       wx.showModal({
@@ -86,6 +89,7 @@ Page({
 
   // 获取用户基本信息
   getUserinfo(){
+    debugger
     let _this = this;
     wx.getUserInfo({
       success: async function (res) {
@@ -116,9 +120,9 @@ Page({
       type: "get",
       data: params
     }).then((data) => {
-      wx.setStorageSync(Config.openIdKey, data.openid)
-      wx.setStorageSync(Config.sessionKey, data.session_key)
-      wx.setStorageSync(Config.authToken, data.userid)
+      //wx.setStorageSync(Config.openIdKey, data.openid)
+      //wx.setStorageSync(Config.sessionKey, data.session_key)
+      wx.setStorageSync(Config.authToken, data.token)
       wx.navigateBack({
         delta: 1
       })

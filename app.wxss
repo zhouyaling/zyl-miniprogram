@@ -53,3 +53,7 @@ page{
   height: 246rpx;
   /* margin-bottom: 10rpx; */
 }
+
+.color-green{
+  color: #19CCB0;
+}

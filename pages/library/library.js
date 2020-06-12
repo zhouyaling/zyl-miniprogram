@@ -1,4 +1,4 @@
-import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+import Server from './libraryServer'
 
 Page({
 
@@ -6,12 +6,48 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list:[]
+    currentTab: 1,
+    videoType:[], // 栏目列表 
+    list:[],
+    listSpec:[]
   },
 
-  /**
-   * 章节展开
+   /**
+   * 生命周期函数--监听页面加载
    */
+  onLoad: function (options) {
+    this.getVideoType();
+  },
+
+  // 获取专题栏目
+  async getVideoType() {
+    let _this = this;
+    let res = await Server.getVideoType({DictType:'VideoType'});
+      if(res.Result && res.Result.length>0){
+        _this.setData({
+          videoType:res.Result[0].Detail,
+          currentTab:res.Result[0].Detail[0].DictKey
+        })
+        _this.getClassList()
+      }
+  },
+
+  // 获取班次列表
+  async getClassList(){
+    let _this = this;
+    let res = await Server.getClassList({'课程专题Code':_this.data.currentTab});
+      if(res.Result && res.Result.length>0){
+        _this.setData({
+          listSpec:res.Result,
+        })
+      }else{
+        _this.setData({
+          listSpec:[],
+        })
+      }
+  },
+
+  // 章节展开
   arrowClick(e){
     let currid = e.currentTarget.dataset.item.id;
     let qq = this.data.list.map(function(ele){
@@ -28,9 +64,7 @@ Page({
     })
   },
 
-  /**
-   * 开始答题
-   */
+  // 开始答题
   goQuestion(e){
     if(!e.currentTarget.dataset.item){
       return
@@ -104,12 +138,7 @@ Page({
   },
   
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
+ 
 
   /**
    * 生命周期函数--监听页面初次渲染完成

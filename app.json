@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/library/library",
+    "pages/my/mine/mine",
     "pages/index/index",
     "pages/news/news",
-    "pages/my/mine/mine",
     "pages/videos/videos",
-    "pages/library/library",
     "pages/videoDetail1/videoDetail1",
     "pages/videoDetail/videoDetail",
     "pages/my/collection/collection",
@@ -16,7 +16,8 @@
     "pages/my/info/info",
     "pages/my/record/record",
     "pages/answers/answers",
-    "pages/wrongQuestions/wrongQuestions"
+    "pages/wrongQuestions/wrongQuestions",
+    "pages/template/libraryClassCard/libraryClassCard"
   ],
   "tabBar": {
     "color": "#999999",
@@ -74,7 +75,8 @@
     "van-steps": "@vant/weapp/steps/index",
     "van-circle": "@vant/weapp/circle/index",
     "van-loading": "@vant/weapp/loading/index",
-    "van-toast": "@vant/weapp/toast/index"
+    "van-toast": "@vant/weapp/toast/index",
+    "van-notice-bar": "@vant/weapp/notice-bar/index"
   },
   "permission": {
     "scope.userLocation": {
