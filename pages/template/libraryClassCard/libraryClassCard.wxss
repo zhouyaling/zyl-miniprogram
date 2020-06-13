@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 30rpx 0;
+  margin: 20rpx 0;
 }
 
 .library-class-total .item-title{
@@ -29,14 +29,24 @@
   color: #333;
 }
 
-.library-class-total .subtitle{
-  font-size: 30rpx;
+.library-class-total .item-subtitle{
+  font-size: 28rpx;
   color: #8B8B8B;
+  margin: 20rpx 0;
+}
+
+.library-class-total .item-footer{
+  font-size: 26rpx;
+  color: #8B8B8B;
+  padding-top: 20rpx;
+border-top: 1px solid #f2f2f2;
+
 }
 
 .go-study{
   color: #19CCB0;
   font-size: 24rpx;
   border: 1px solid #19CCB0;
-  padding: 6rpx;
+  padding:4rpx 10rpx;
+  float: right;
 }

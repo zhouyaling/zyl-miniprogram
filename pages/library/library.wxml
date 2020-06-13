@@ -5,9 +5,9 @@
       <van-tab wx:for="{{videoType}}" title="{{item.DictValue}}" name="{{item.DictKey}}"></van-tab>
     </van-tabs>
   </view>
-  <view class="library-head-bk"> </view>
+  <!-- <view class="library-head-bk"> </view> -->
   <!--分类 -->
-  <view class="library-tab">
+  <!-- <view class="library-tab">
     <view class="library-tab-item">
       <image src="../images/icon-lianxi.png" bindtap="changeType" data-type="1"></image>
       <view class="label">章节练习</view>
@@ -28,10 +28,10 @@
         <image src="../images/icon-cuoti.png" bindtap="changeType" data-type="5"></image>
           <view class="label">我的错题</view>
         </view>
-    </view>
+    </view> -->
     <!-- 内容区域 -->
     <view class="library-list">
-    <template is="classCard" data="{{list}}"></template>
+    <template is="classCard" data="{{listSpec}}"></template>
       <!-- <view class="library-list-item" wx:for="{{list}}" wx:key="id">
         <view class="library-list-total">
             <view style="height:90rpx;" data-item="{{item}}" bindtap="arrowClick">
@@ -62,7 +62,7 @@
       </view> -->
     </view>
 
-      <view class="no-info" wx:if="{{list.length<=0}}">
+      <view class="no-info" wx:if="{{listSpec.length<=0 && !loading}}">
         <image src="../images/no-info2.png"></image>
         <view>暂无数据，先看看其他的吧！</view>
       </view>

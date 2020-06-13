@@ -8,12 +8,15 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userInfo:{},
     showModal:false, // 微信确认授权弹窗
     isUserAuth:false, // 是否已授权用户信息
     loginStatus:true, // 是否勾选
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     encryptedData:"",
-    iv:""
+    iv:"",
+    rawData:"",
+    signature:"",
   },
 
   /**
@@ -25,7 +28,6 @@ Page({
       wx.getSetting({
         success(res){
           let authorizeList = res.authSetting;
-          debugger
           _this.setData({
               isUserAuth:authorizeList["scope.userInfo"]
             })
@@ -45,12 +47,11 @@ Page({
 
   // 获取手机号
   getPhoneNumber(e){
-    debugger
     if (e.detail.errMsg == 'getPhoneNumber:fail user deny') {
       wx.showModal({
         title: '提示',
         showCancel: false,
-        content: '未授权',
+        content: '未授权获取手机号',
         success: function (res) { }
       })
     } else {
@@ -58,74 +59,117 @@ Page({
         encryptedData:e.detail.encryptedData,
         iv:e.detail.iv
       })
-      if(this.data.isUserAuth){
-        this.getUserinfo()
-       }else{
-         this.setData({
-           showModal: true
-         });
-       }
+      this.getPhoneNumberShow()
     }
   },
 
-  // 获取用户基本信息
+  // 解密手机号
+  getPhoneNumberShow:function(){
+    var _this = this;
+      wx.showLoading({
+        title: '数据获取中...',
+      });
+
+      const params = {
+        "rawData":this.data.rawData,
+        "signature":this.data.signature,
+        "encryptedData":this.data.encryptedData,
+        "iv":this.data.iv,
+        "token":wx.getStorageSync(Config.authToken)
+      };
+      debugger
+      Request({
+        url: "Weixin/GetPhone",
+        type: "post",
+        data: params
+      }).then((data) => {
+        if(data.mobile){
+          app.globalData.mobile = data.mobile;
+          app.globalData.userInfo = _this.data.userInfo;
+          wx.navigateBack({
+            delta: 1
+          })
+        }
+        _this.setData({
+          showModal:false
+        })
+      })
+      wx.hideLoading();
+  },
+
+  // 获取用户基本信息，一键登录
   bindGetUserInfo(e){
-    debugger
     this.setData({ showModal: false });
     if (e.detail.errMsg == 'getUserInfo:fail auth deny') {
       wx.showModal({
         title: '提示',
         showCancel: false,
-        content: '未授权',
+        content: '未授权获取用户信息',
         success: function (res) { 
         }
       })
     } else{
-      console.log("1111",e.detail.userInfo)
-      app.globalData.userInfo = e.detail.userInfo
+      this.setData({
+        signature:e.detail.signature,
+        rawData:e.detail.rawData,
+        userInfo: e.detail.userInfo
+      })
       this.userLogin();
     }
   },
 
   // 获取用户基本信息
-  getUserinfo(){
-    debugger
-    let _this = this;
-    wx.getUserInfo({
-      success: async function (res) {
-        console.log("222222",res.userInfo)
-        app.globalData.userInfo = res.userInfo
-        _this.userLogin();
-      },
-      fail:function(){
-        _this.setData({
-          showModal: true
-        });
-      }
-    })
-  },
+  // getUserinfo(){
+  //   let _this = this;
+  //   wx.getUserInfo({
+  //     success: async function (res) {
+  //       console.log("222222",res.userInfo)
+  //       app.globalData.userInfo = res.userInfo
+  //       _this.setData({
+  //         signature:res.signature,
+  //         rawData:res.rawData
+  //       })
+  //       _this.userLogin();
+  //     },
+  //     fail:function(){
+  //       _this.setData({
+  //         showModal: true
+  //       });
+  //     }
+  //   })
+  // },
 
   // 登录 code换取登录态信息（openid,sessionKey）
   userLogin(){
-    console.log("33333")
+    var _this = this;
     wx.showLoading({
       title: '数据获取中...',
     });
-
     const params = {
-      "code": wx.getStorageSync(Config.jsCodeKey)
+      "code": wx.getStorageSync(Config.jsCodeKey),
+      // "rawData":this.data.rawData,
+      // "signature":this.data.signature,
+      // encryptedData:this.data.encryptedData,
+      // iv:this.data.iv
     };
     Request({
-      url: "Weixin/get",
-      type: "get",
+      url: "Weixin/Lonin",
+      type: "post",
       data: params
     }).then((data) => {
+      debugger
       //wx.setStorageSync(Config.openIdKey, data.openid)
       //wx.setStorageSync(Config.sessionKey, data.session_key)
       wx.setStorageSync(Config.authToken, data.token)
-      wx.navigateBack({
-        delta: 1
-      })
+      if(data.mobile!="" && data.mobile!=null){
+        app.globalData.mobile = data.mobile
+        app.globalData.userInfo = _this.data.userInfo;
+        wx.navigateBack({
+          delta: 1
+        })
+      }else{
+        this.setData({showModal:true})
+      }
     })
     wx.hideLoading();
   },

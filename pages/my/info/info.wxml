@@ -4,7 +4,7 @@
   <image class="header" src="{{userInfo.avatarUrl?userInfo.avatarUrl:'../../images/head.png'}}"></image>
   </van-cell>
     <van-cell title="用户名" value="{{userInfo.nickName}}" />
-    <van-cell title="手机号码" value=""  />
+    <van-cell title="手机号码" value="{{mobile}}"  />
   </van-cell-group>
 </view>
 

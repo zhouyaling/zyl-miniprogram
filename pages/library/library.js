@@ -6,10 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentTab: 1,
-    videoType:[], // 栏目列表 
-    list:[],
-    listSpec:[]
+    loading:false,
+    currentTab: 1, // 当前专题
+    videoType:[], // 专题列表 
+    list:[], // 章列表
+    listSpec:[] // 班次列表
   },
 
    /**
@@ -38,13 +39,25 @@ Page({
     let res = await Server.getClassList({'课程专题Code':_this.data.currentTab});
       if(res.Result && res.Result.length>0){
         _this.setData({
+          loading:false,
           listSpec:res.Result,
         })
       }else{
         _this.setData({
+          loading:false,
           listSpec:[],
         })
       }
+  },
+
+   // 切换顶部专题
+   handlerOnChangeTab:function(event){
+    this.setData({
+      listSpec:[],
+      loading:true,
+      currentTab:event.detail.name
+    });
+    this.getClassList()
   },
 
   // 章节展开
@@ -61,6 +74,14 @@ Page({
     })
     this.setData({
       list:qq
+    })
+  },
+
+  // 去学
+  goStudy:function(e){
+    var res = e.currentTarget.dataset.item;
+    wx.navigateTo({
+      url: '/pages/libraryGroups/libraryGruops?name='+ res.Class + '&price='+res.ClassPrice + '&prople=' + res.ClassPeopleNum + '&Id=' + res.Id,
     })
   },
 

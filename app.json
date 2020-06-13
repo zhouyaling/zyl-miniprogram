@@ -17,7 +17,8 @@
     "pages/my/record/record",
     "pages/answers/answers",
     "pages/wrongQuestions/wrongQuestions",
-    "pages/template/libraryClassCard/libraryClassCard"
+    "pages/template/libraryClassCard/libraryClassCard",
+    "pages/libraryGroups/libraryGruops"
   ],
   "tabBar": {
     "color": "#999999",

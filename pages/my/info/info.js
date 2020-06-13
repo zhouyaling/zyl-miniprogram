@@ -7,6 +7,7 @@ Page({
    */
   data: {
     userInfo:{},
+    mobile:null,
   },
 
   /**
@@ -20,7 +21,8 @@ Page({
       })
      }else{
       this.setData({
-        userInfo:app.globalData.userInfo
+        userInfo:app.globalData.userInfo,
+        mobile:app.globalData.mobile
       })
      }
   },

@@ -101,6 +101,7 @@ margin-bottom: 120rpx;
   justify-content: center;
   margin-top: 10rpx;
   font-size: 34rpx;
+  margin-bottom: 20rpx;
 
 }
 
