@@ -7,19 +7,22 @@ page{
 }
 .news-header{
   background-color: #fff;
-  padding: 32rpx 30rpx;
+  padding: 32rpx 0 0 ;
 }
 
 .news-header .title{
   font-size: 36rpx;
   color: #444;
   font-weight: 600;
-  margin-bottom: 26rpx;
+  margin-bottom: 20rpx;
+  padding: 0rpx 30rpx;
 }
 
 .news-header .des{
   font-size: 24rpx;
   color: #666;
+  padding: 0rpx 30rpx;
+  margin-bottom: 20rpx;
 }
 
 .col-con{

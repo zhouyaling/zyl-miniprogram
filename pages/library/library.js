@@ -8,6 +8,7 @@ Page({
   data: {
     loading:false,
     currentTab: 1, // 当前专题
+    activeZhangId:"", // 当前选择的章id
     videoType:[], // 专题列表 
     list:[], // 章列表
     listSpec:[] // 班次列表
@@ -41,11 +42,27 @@ Page({
         _this.setData({
           loading:false,
           listSpec:res.Result,
+          activeZhangId:res.Result[0].Id
         })
       }else{
         _this.setData({
           loading:false,
           listSpec:[],
+        })
+      }
+  },
+
+  
+  // 查小节列表
+  async getPageList(){
+    let _this = this;
+    _this.setData({
+      list:[]
+    })
+    let res = await Server.getPageList({'课程章节id': _this.data.activeZhangId});
+      if(res.Result && res.Result.length>0){
+        _this.setData({
+          list:res.Result
         })
       }
   },

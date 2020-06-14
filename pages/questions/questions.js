@@ -1,5 +1,6 @@
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+import Server from './questionsServer'
 Page({
 
   /**
@@ -61,6 +62,41 @@ Page({
         ]
       }
   },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    debugger
+    console.log(options)
+    if(options.id){
+      this.setData({
+        id:options.id
+      })
+      this.getExamList();
+    }
+  },
+
+  // 获取试题列表
+  async getExamList(){
+    debugger
+    let _this = this;
+    let res = await Server.getExamList({'章节名称':_this.data.id});
+    debugger
+      if(res.Result && res.Result.length>0){
+        _this.setData({
+          loading:false,
+          listSpec:res.Result,
+        })
+      }else{
+        _this.setData({
+          loading:false,
+          listSpec:[],
+        })
+      }
+  },
+
+  
 
   // 答题
   chooseAnswer:function(e){
@@ -196,18 +232,7 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    console.log(options)
-    if(options.id){
-      this.setData({
-        id:options.id
-      })
-    }
-  },
-
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

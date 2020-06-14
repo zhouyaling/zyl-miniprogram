@@ -23,4 +23,16 @@ export default class {
       // },
     })
   }
+
+  // 查询试卷列表
+  static getPaperList(params){
+    return Request({
+      url: "Exam/GetPaperList",
+      type: "GET",
+      data: params,
+      // headers: {
+      //   "Content-type": "application/json"
+      // },
+    })
+  }
 }

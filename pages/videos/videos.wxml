@@ -8,8 +8,8 @@
   <view class="list">
     <van-collapse value="{{ activeZhangId }}" bind:change="onChange" accordion custom-class="test1">
      <van-collapse-item   wx:for="{{zhangList}}" title="{{item.Chapter}}" name="{{item.Id}}" custom-class="col-head" content-class="col-con">
-        <block wx-if="{{list.length>0 && list[0].ChapterId==item.Id}}">
-        <view class="list-item" wx:for="{{list}}"  wx:for-item="videoItem">
+        <block >
+        <view class="list-item" wx:for="{{item.children}}"  wx:for-item="videoItem">
 					<navigator url="/pages/videoDetail1/videoDetail1" hover-class="none">
 						<view class="list-item-image">
 							<image src="../images/default-video.jpg"></image>

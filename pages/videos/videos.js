@@ -13,7 +13,10 @@ Page({
     zhangList:[],
     list:[]
   },
+
+  // 切换手风琴卡
   onChange(event) {
+    debugger
     this.setData({
       activeZhangId: event.detail,
     });
@@ -39,11 +42,14 @@ Page({
     let _this = this;
     let res = await Server.getZhangList({'课程类别id': _this.data.classId});
       if(res.Result && res.Result.length>0){
+        let cacheRes = [];
+        res.Result.forEach(element => {
+          cacheRes.push({...element,requested:false})
+        });
         _this.setData({
-          zhangList:res.Result,
-          activeZhangId:res.Result[0].Id
+          zhangList:cacheRes,
+          activeZhangId:cacheRes[0].Id
         })
-
         _this.getPageList()
       }
   },
@@ -51,13 +57,18 @@ Page({
   // 查询视频列表
   async getPageList(){
     let _this = this;
-    _this.setData({
-      list:[]
-    })
     let res = await Server.getPageList({'课程章节id': _this.data.activeZhangId});
       if(res.Result && res.Result.length>0){
+        let cacheRes = _this.data.zhangList.map(element => {
+          if(element.Id == _this.data.activeZhangId){
+              element.children = res.Result,
+              element.requested = true
+          }
+          return element;
+        });
+        debugger
         _this.setData({
-          list:res.Result
+          zhangList:cacheRes
         })
       }
   },
