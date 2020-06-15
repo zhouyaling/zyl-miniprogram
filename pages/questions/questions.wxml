@@ -1,58 +1,138 @@
 <view class="wrap">
-  <!-- 问题区域 -->
+  <!-- 标题 -->
   <view class="question-header">
-    <view class="header-left">第一节 健康服务</view>
-    <view class="header-right"><text>{{currentQuestion + 1}}</text>/<text>{{totalQuestion}}</text></view>
+    <view class="header-left">{{title}}</view>
+    <view class="header-right"><text>{{currQ + 1}}</text>/<text>{{totalQuestion}}</text></view>
   </view>
+
+  <!-- 答题区域 -->
   <view class="question-wrap">
     <block>
       <view class="question-title">
-    {{questionList.list[currentQuestion].title}}
-    </view>
-    <view class="question-answer">
+        <text class="color-green">({{list[currQ].QuestionType}})</text>
+        {{list[currQ].Question}}
+      </view>
+      <view class="question-answer">
       <!-- 答题状态 -->
-      <block>
-        <view class="question-answer-item" wx:for="{{questionList.list[currentQuestion].answerList}}"  wx:key="index" bindtap="chooseAnswer" data-aid="{{item.id}}" data-qid="{{questionList.list[currentQuestion].id}}">
-            <view class="answer-a {{item.id==questionList.list[currentQuestion].choosedAnswer?'green':''}} ">{{item.id}}</view>
+        <!-- <view class="question-answer-item" wx:for="{{list[currQ].answerList}}"  wx:key="index" bindtap="chooseAnswer" data-aid="{{item.id}}" data-qid="{{list[currQ].id}}">
+            <view class="answer-a {{item.id==list[currQ].choosedAnswer?'green':''}} ">{{item.id}}</view>
             <text class="answer-text ">{{item.title}}</text>
-        </view>
-      </block>
-    </view>
+        </view> -->
+        <!-- 解析模式 -->
+        <block wx:if="{{type==1}}">
+          <view class="question-answer-item" wx:if="{{list[currQ].A}}"  wx:key="index">
+            <view class="answer-a {{list[currQ].A==list[currQ].Answer?'green':''}} {{list[currQ].Answer !=list[currQ].A && 'A'==list[currQ].choosedText?'red':''}} ">A</view>
+            <text class="answer-text ">{{list[currQ].A}}</text>
+          </view>
+
+          <view class="question-answer-item" wx:if="{{list[currQ].B}}"  wx:key="index">
+            <view class="answer-a {{list[currQ].B==list[currQ].Answer?'green':''}} {{list[currQ].Answer !=list[currQ].B && 'B'==list[currQ].choosedText?'red':''}} ">B</view>
+            <text class="answer-text ">{{list[currQ].B}}</text>
+          </view>
+          <view class="question-answer-item" wx:if="{{list[currQ].C}}"  wx:key="index">
+            <view class="answer-a {{list[currQ].C==list[currQ].Answer?'green':''}} {{list[currQ].Answer !=list[currQ].C && 'C'==list[currQ].choosedText?'red':''}} ">C</view>
+            <text class="answer-text ">{{list[currQ].C}}</text>
+          </view>
+          <view class="question-answer-item" wx:if="{{list[currQ].D}}"  wx:key="index">
+            <view class="answer-a {{list[currQ].D==list[currQ].Answer?'green':''}} {{list[currQ].Answer !=list[currQ].D && 'D'==list[currQ].choosedText?'red':''}} ">D</view>
+            <text class="answer-text ">{{list[currQ].D}}</text>
+          </view>
+          <view class="question-answer-item" wx:if="{{list[currQ].E}}"  wx:key="index">
+            <view class="answer-a {{list[currQ].E==list[currQ].Answer?'green':''}} {{list[currQ].Answer !=list[currQ].E && 'E'==list[currQ].choosedText?'red':''}} ">E</view>
+            <text class="answer-text ">{{list[currQ].E}}</text>
+          </view>
+          <view class="question-answer-item" wx:if="{{list[currQ].F}}"  wx:key="index">
+            <view class="answer-a {{list[currQ].F==list[currQ].Answer?'green':''}} {{list[currQ].Answer !=list[currQ].F && 'F'==list[currQ].choosedText?'red':''}} ">F</view>
+            <text class="answer-text ">{{list[currQ].F}}</text>
+          </view>
+          <view class="question-answer-item" wx:if="{{list[currQ].G}}"  wx:key="index">
+            <view class="answer-a {{list[currQ].G==list[currQ].Answer?'green':''}} {{list[currQ].Answer !=list[currQ].A && 'G'==list[currQ].choosedText?'red':''}} ">G</view>
+            <text class="answer-text ">{{list[currQ].G}}</text>
+          </view>
+        </block>
+        <!-- 答题模式 -->
+        <block wx:if="{{type==0}}">
+          <view class="question-answer-item" wx:if="{{list[currQ].A}}"  wx:key="{{list[currQ].A}}" bindtap="chooseAnswer" data-aid="A" data-atext="{{list[currQ].A}}" data-qid="{{list[currQ].Id}}">
+              <view class="answer-a {{'A'==list[currQ].choosedAnswer?'green':''}} ">A</view>
+              <text class="answer-text ">{{list[currQ].A}}</text>
+          </view>
+          <view class="question-answer-item" wx:if="{{list[currQ].B}}"  wx:key="{{list[currQ].B}}" bindtap="chooseAnswer" data-aid="B" data-atext="{{list[currQ].A}}" data-qid="{{list[currQ].Id}}">
+              <view class="answer-a {{'B'==list[currQ].choosedAnswer?'green':''}} ">B</view>
+              <text class="answer-text ">{{list[currQ].B}}</text>
+          </view>
+          <view class="question-answer-item" wx:if="{{list[currQ].C}}"  wx:key="{{list[currQ].C}}" bindtap="chooseAnswer" data-aid="C" data-atext="{{list[currQ].A}}" data-qid="{{list[currQ].Id}}">
+              <view class="answer-a {{'C'==list[currQ].choosedAnswer?'green':''}} ">C</view>
+              <text class="answer-text ">{{list[currQ].C}}</text>
+          </view>
+          <view class="question-answer-item" wx:if="{{list[currQ].D}}"  wx:key="{{list[currQ].D}}" bindtap="chooseAnswer" data-aid="D" data-atext="{{list[currQ].A}}" data-qid="{{list[currQ].Id}}">
+              <view class="answer-a {{'D'==list[currQ].choosedAnswer?'green':''}} ">D</view>
+              <text class="answer-text ">{{list[currQ].D}}</text>
+          </view>
+          <view class="question-answer-item" wx:if="{{list[currQ].E}}"  wx:key="{{list[currQ].E}}" bindtap="chooseAnswer" data-aid="E" data-atext="{{list[currQ].E}}" data-qid="{{list[currQ].Id}}">
+              <view class="answer-a {{'E'==list[currQ].choosedAnswer?'green':''}} ">E</view>
+              <text class="answer-text ">{{list[currQ].E}}</text>
+          </view>
+          <view class="question-answer-item" wx:if="{{list[currQ].F}}"  wx:key="{{list[currQ].F}}" bindtap="chooseAnswer" data-aid="F" data-atext="{{list[currQ].F}}" data-qid="{{list[currQ].Id}}">
+              <view class="answer-a {'F'==list[currQ].choosedAnswer?'green':''}} ">F</view>
+              <text class="answer-text ">{{list[currQ].F}}</text>
+          </view>
+          <view class="question-answer-item" wx:if="{{list[currQ].G}}"  wx:key="{{list[currQ].G}}" bindtap="chooseAnswer"  data-aid="G" data-atext="{{list[currQ].G}}" data-qid="{{list[currQ].Id}}">
+              <view class="answer-a {'G'==list[currQ].choosedAnswer?'green':''}} ">G</view>
+              <text class="answer-text ">{{list[currQ].G}}</text>
+          </view>
+        </block>
+      </view>
     </block>
   </view>
-  <!-- 答题完毕 -->
-  <van-dialog id="van-dialog" />
-  <van-toast id="van-toast" />
+
+    <!-- 答题解析 -->
+  <view class="question-result" wx:if="{{type==1}}">
+    <view class="question-result-all">
+      <text>正确答案：<text class="result-a">{{list[currQ].Answer}}</text> </text>
+      <text>你的答案：<text class="result-b">{{list[currQ].choosedAnswer}}</text> </text>
+    </view>
+    <view class="question-result-all title">解析：</view>
+    <view class="question-result-detail">
+    {{list[currQ].Analysis}}
+    </view>
+  </view>
+
   <!-- 答题卡 -->
   <van-popup
     show="{{ showPops }}"
     position="bottom"
     round
+    close-on-click-overlay="{{false}}"
     duration="500"
     custom-style="height: 90%;"
     bind:close="popsOnClose"
   >
-  <!-- 答题状态 -->
-      <view class="popup-wrap">
-        <view class="popup-card-head">答题卡</view>
-        <view class="popup-card-info">
-          <view class="title">第一节 护理知识</view>
-          <view class="grade-number">
-            <view> 总共13题</view>
-          </view>
+    <view class="popup-wrap">
+      <view class="popup-card-head">答题卡</view>
+      <view class="popup-card-info">
+        <view class="title">{{title}}</view>
+        <view class="grade-number">
+          <view> 总共{{totalQuestion}}题  |  已答{{currQ + 1}}题</view>
+          <view wx:if="{{type==1}}"> 答对13题</view>
         </view>
-        <view class="popup-card-content">
-          <view  wx:for="{{questionList.list}}" wx:key="{{item.id}}" class="answer-a answer-number {{item.choosedAnswer ?'green':''}} ">{{item.id}}</view>
-        </view>
-        <view wx-if="{{!answeredStatus}}" class="popup-card-footer" >
-         <view class="popup-footer-item" bindtap="popsOnClose" data-type="1">关闭答题卡</view>
-          <view class="popup-footer-item" bindtap="submitAnswer">提交答题</view></view>
-        
-        <view wx-if="{{answeredStatus}}" class="popup-card-footer">
+        <view wx:if="{{type==1}}" class="grade">100分</view>
+      </view>
+      <view class="popup-card-content">
+        <view  wx:for="{{list}}" wx:key="{{index}}" class="answer-a answer-number {{item.choosedText && item.choosedText == item.Answer?'green':''}}  {{item.choosedText && item.choosedText != item.Answer?'red':''}}">{{item.choosedAnswer}}</view>
+      </view>
+      <view wx-if="{{ type==0 && !answeredStatus}}" class="popup-card-footer" >
+        <view class="popup-footer-item" bindtap="popsOnClose" data-type="1">关闭答题卡</view>
+        <view class="popup-footer-item" bindtap="submitAnswer">提交答题</view>
+      </view>
+      <view wx-if="{{type==0 && answeredStatus}}" class="popup-card-footer">
+        <view class="popup-footer-item" bindtap="showAnswerDetail" data-type="1">关闭答题卡</view>
+        <view class="popup-footer-item" bindtap="showAnswerDetail" data-type="0">查看答题解析</view>
+      </view>
+      <view class="popup-card-footer" wx:if="{{type==1}}">
           <view class="popup-footer-item" bindtap="showAnswerDetail" data-type="1">关闭答题卡</view>
           <view class="popup-footer-item" bindtap="showAnswerDetail" data-type="0">查看答题解析</view>
         </view>
-      </view>
+    </view>
   </van-popup>
 
   <!-- 底部操作区域 -->
@@ -63,7 +143,10 @@
       <van-tabbar-item icon="{{collection?'star':'star-o'}}">收藏</van-tabbar-item>
       <van-tabbar-item icon="arrow">下一题</van-tabbar-item>
       <van-tabbar-item icon="notes-o">答题卡</van-tabbar-item>
-  </van-tabbar>
-</view>
+    </van-tabbar>
+  </view>
 
+  <!-- 答题完毕 -->
+  <van-dialog id="van-dialog" />
+  <van-toast id="van-toast" />
 </view>

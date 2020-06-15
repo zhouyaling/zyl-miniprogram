@@ -7,16 +7,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id:0,
+    type:0, // 0 答题模式 1 解析模式
+    id:0, // 试卷id
+    paperid:0, // 试卷id
+    title:"", // 名称
     answeredStatus:false, // 是否提交答题
     showPops:false, // 展示答题卡弹窗
-    currentQuestion:0, // 当前题目
+    currQ:0, // 当前题目
     collection:false, // 收藏状态
-    totalQuestion:2, // 题目总数
-    questionList: // 题目集合
-      {
-        total:10,
-        list:[
+    totalQuestion:0, // 题目总数
+    list: // 题目集合
+      [
           {
             id:1,
             showAnswer:false,
@@ -60,38 +61,38 @@ Page({
             }],
           }
         ]
-      }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    debugger
-    console.log(options)
-    if(options.id){
+    let params = {};
+   
+    if(options.paperid){
       this.setData({
-        id:options.id
+        paperid:options.paperid
       })
-      this.getExamList();
+      params = {'试卷id': this.data.paperid}
     }
+    this.getExamList(params);
   },
 
   // 获取试题列表
-  async getExamList(){
-    debugger
+  async getExamList(params){
     let _this = this;
-    let res = await Server.getExamList({'章节名称':_this.data.id});
-    debugger
+    let res = await Server.getExamList(params);
+    console.log(res)
       if(res.Result && res.Result.length>0){
+        let cacheRes = res.Result.map(element => {
+            return {...element,choosedAnswer:"",choosedText:""}
+        });
+
         _this.setData({
           loading:false,
-          listSpec:res.Result,
-        })
-      }else{
-        _this.setData({
-          loading:false,
-          listSpec:[],
+          totalQuestion:res.TotalCount,
+          title:cacheRes[0].Paper,
+          list:cacheRes,
         })
       }
   },
@@ -100,14 +101,15 @@ Page({
 
   // 答题
   chooseAnswer:function(e){
-    this.data.questionList.list.forEach(element => {
-      if(element.id==e.currentTarget.dataset.qid){
-        element.choosedAnswer = e.currentTarget.dataset.aid
+    this.data.list.forEach(element => {
+      if(element.Id==e.currentTarget.dataset.qid){
+        element.choosedAnswer = e.currentTarget.dataset.aid,
+        element.choosedText = e.currentTarget.dataset.atext
       }
     });
 
     this.setData({
-      questionList:this.data.questionList
+      list:this.data.list
     })
   },
 
@@ -121,6 +123,8 @@ Page({
         message: '答案提交中...',
       });
       this.setData({
+        type:1,
+        currQ:0,
         answeredStatus:true,
         showPops:true
       })
@@ -133,12 +137,12 @@ Page({
     if(e.currentTarget.dataset.type==1){
       this.popsOnClose();
     }
-    else{
-      this.popsOnClose();
-      wx.redirectTo({
-        url: '/pages/answers/answers',
-      })
-    }
+    // else{
+    //   this.popsOnClose();
+    //   wx.redirectTo({
+    //     url: '/pages/answers/answers',
+    //   })
+    // }
   },
 
   
@@ -176,7 +180,7 @@ Page({
   // 上一题
   backAction:function (){
     this.setData({
-      currentQuestion:this.data.currentQuestion<=1?0:this.data.currentQuestion - 1
+      currQ:this.data.currQ<=1?0:this.data.currQ - 1
     })
   },
 
@@ -184,7 +188,7 @@ Page({
   nextAction:function (){
 
     // 提示已经答完
-    if(this.data.currentQuestion==this.data.totalQuestion-1){
+    if(this.data.currQ==this.data.totalQuestion-1){
       if(this.data.answeredStatus){
         Dialog.confirm({
           message: '你已经提交过答案啦，是否查看解析？',
@@ -212,7 +216,7 @@ Page({
      
     }
     this.setData({
-      currentQuestion:(this.data.currentQuestion + 1)>=this.data.totalQuestion?(this.data.totalQuestion-1):this.data.currentQuestion+1
+      currQ:(this.data.currQ + 1)>=this.data.totalQuestion?(this.data.totalQuestion-1):this.data.currQ+1
     })
   },
 

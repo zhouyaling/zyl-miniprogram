@@ -69,7 +69,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    debugger
     if(options.Id){
       this.setData({
         classId:options.Id,
@@ -82,12 +81,15 @@ Page({
 
   // 开始答题
    goQuestion(e){
-    if(!e.currentTarget.dataset.chapter){
-      return
+     debugger
+    if(e.currentTarget.dataset.paperid){
+      wx.navigateTo({
+        url: '../questions/questions?paperid=' + e.currentTarget.dataset.paperid,
+      })
     }
-    wx.navigateTo({
-      url: '../questions/questions?id=' + e.currentTarget.dataset.chapter,
-    })
+    // wx.navigateTo({
+    //   url: '../questions/questions?id=' + e.currentTarget.dataset.chapter,
+    // })
   },
 
   // 切换顶部菜单
