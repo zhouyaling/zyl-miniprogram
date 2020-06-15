@@ -77,7 +77,6 @@ Page({
         "iv":this.data.iv,
         "token":wx.getStorageSync(Config.authToken)
       };
-      debugger
       Request({
         url: "Weixin/GetPhone",
         type: "post",
@@ -157,7 +156,6 @@ Page({
       type: "post",
       data: params
     }).then((data) => {
-      debugger
       //wx.setStorageSync(Config.openIdKey, data.openid)
       //wx.setStorageSync(Config.sessionKey, data.session_key)
       wx.setStorageSync(Config.authToken, data.token)

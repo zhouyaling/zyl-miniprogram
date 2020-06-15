@@ -112,8 +112,8 @@
       <view class="popup-card-info">
         <view class="title">{{title}}</view>
         <view class="grade-number">
-          <view> 总共{{totalQuestion}}题  |  已答{{currQ + 1}}题</view>
-          <view wx:if="{{type==1}}"> 答对13题</view>
+          <view> 总共{{totalQuestion}}题 <text wx:if="{{type==0}}"> |  已答{{currQ + 1}}题</text></view>
+          <view wx:if="{{type==1}}"> 答对{{totalQuestion}}题</view>
         </view>
         <view wx:if="{{type==1}}" class="grade">100分</view>
       </view>
@@ -121,17 +121,17 @@
         <view  wx:for="{{list}}" wx:key="{{index}}" class="answer-a answer-number {{item.choosedText && item.choosedText == item.Answer?'green':''}}  {{item.choosedText && item.choosedText != item.Answer?'red':''}}">{{item.choosedAnswer}}</view>
       </view>
       <view wx-if="{{ type==0 && !answeredStatus}}" class="popup-card-footer" >
-        <view class="popup-footer-item" bindtap="popsOnClose" data-type="1">关闭答题卡</view>
+        <view class="popup-footer-item" bindtap="showAnswerDetail" data-type="1">关闭答题卡</view>
         <view class="popup-footer-item" bindtap="submitAnswer">提交答题</view>
       </view>
-      <view wx-if="{{type==0 && answeredStatus}}" class="popup-card-footer">
+      <view wx-if="{{answeredStatus}}" class="popup-card-footer">
         <view class="popup-footer-item" bindtap="showAnswerDetail" data-type="1">关闭答题卡</view>
         <view class="popup-footer-item" bindtap="showAnswerDetail" data-type="0">查看答题解析</view>
       </view>
-      <view class="popup-card-footer" wx:if="{{type==1}}">
+      <!-- <view class="popup-card-footer" wx:if="{{type==1}}">
           <view class="popup-footer-item" bindtap="showAnswerDetail" data-type="1">关闭答题卡</view>
           <view class="popup-footer-item" bindtap="showAnswerDetail" data-type="0">查看答题解析</view>
-        </view>
+        </view> -->
     </view>
   </van-popup>
 

@@ -81,10 +81,9 @@ Page({
 
   // 开始答题
    goQuestion(e){
-     debugger
-    if(e.currentTarget.dataset.paperid){
+    if(e.currentTarget.dataset.paperid || e.currentTarget.dataset.chapter){
       wx.navigateTo({
-        url: '../questions/questions?paperid=' + e.currentTarget.dataset.paperid,
+        url: '../questions/questions?paperid=' + e.currentTarget.dataset.paperid + '&chapter=' +  e.currentTarget.dataset.chapter,
       })
     }
     // wx.navigateTo({

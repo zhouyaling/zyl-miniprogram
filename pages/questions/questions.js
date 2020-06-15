@@ -10,6 +10,7 @@ Page({
     type:0, // 0 答题模式 1 解析模式
     id:0, // 试卷id
     paperid:0, // 试卷id
+    chapter:"", // 章节名称
     title:"", // 名称
     answeredStatus:false, // 是否提交答题
     showPops:false, // 展示答题卡弹窗
@@ -68,12 +69,15 @@ Page({
    */
   onLoad: function (options) {
     let params = {};
-   
-    if(options.paperid){
+    if(options.paperid && options.paperid!="undefined"){
       this.setData({
         paperid:options.paperid
       })
       params = {'试卷id': this.data.paperid}
+    }
+    if(options.chapter && options.chapter!="undefined"){
+      this.setData({chapter:options.chapter})
+      params = {...params,'章节名称': this.data.chapter}
     }
     this.getExamList(params);
   },
@@ -123,8 +127,6 @@ Page({
         message: '答案提交中...',
       });
       this.setData({
-        type:1,
-        currQ:0,
         answeredStatus:true,
         showPops:true
       })
@@ -135,7 +137,22 @@ Page({
   // 查看答题解析、关闭弹窗
   showAnswerDetail: function(e){
     if(e.currentTarget.dataset.type==1){
+     
+     if(this.data.answeredStatus){
       this.popsOnClose();
+      wx.navigateBack({
+        delta:1,
+      });
+     }else{
+      this.setData({currQ:0})
+       this.popsOnClose();
+     }
+    }else if(e.currentTarget.dataset.type==0){
+      this.popsOnClose();
+      this.setData({
+        currQ:0,
+        type:1
+      })
     }
     // else{
     //   this.popsOnClose();
