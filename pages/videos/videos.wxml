@@ -7,16 +7,16 @@
   </view>
   <view class="list">
     <van-collapse value="{{ activeZhangId }}" bind:change="onChange" accordion custom-class="test1">
-     <van-collapse-item   wx:for="{{zhangList}}" title="{{item.Chapter}}" name="{{item.Id}}" custom-class="col-head" content-class="col-con">
+     <van-collapse-item   wx:for="{{zhangList}}"  wx:key="index" title="{{item.Chapter}}" name="{{item.Id}}" custom-class="col-head" content-class="col-con">
         <block >
-        <view class="list-item" wx:for="{{item.children}}"  wx:for-item="videoItem">
-					<navigator url="/pages/videoDetail1/videoDetail1" hover-class="none">
+        <view class="list-item" wx:for="{{item.children}}"  wx:key="key"  wx:for-item="videoItem">
+					<navigator url="/pages/videoDetail/videoDetail" hover-class="none">
 						<view class="list-item-image">
 							<image src="../images/default-video.jpg"></image>
 						</view>
 					</navigator>
 					<view class="list-item-text">
-						<navigator url="/pages/videoDetail1/videoDetail1" hover-class="none">
+						<navigator url="/pages/videoDetail/videoDetail" hover-class="none">
 							<view class="text-title">{{videoItem.Section}}</view>
 						</navigator>
 						<view class="text-desc">
@@ -26,29 +26,6 @@
 				</view>
         </block>
       </van-collapse-item>
-      <!-- <van-collapse-item  title=" 第一章 基本药物知识" name="1" custom-class="col-head" content-class="col-con">
-        <view class="list-item" wx:for="{{list}}">
-					<navigator url="/pages/videoDetail1/videoDetail1" hover-class="none">
-						<view class="list-item-image">
-							<image src="../images/default-video.jpg"></image>
-						</view>
-					</navigator>
-					<view class="list-item-text">
-						<navigator url="/pages/videoDetail1/videoDetail1" hover-class="none">
-							<view class="text-title">疫情过后，这5类医疗专业将大火</view>
-						</navigator>
-						<view class="text-desc">
-						<view>120人已学习</view>
-						</view>
-					</view>
-				</view>
-      </van-collapse-item>
-      <van-collapse-item title=" 第二章 基本药物知识" name="2">
-       第二章 基本药物知识
-      </van-collapse-item>
-      <van-collapse-item title="第三章 基本药物知识" name="3">
-        第三章 基本药物知识
-      </van-collapse-item> -->
     </van-collapse>
   </view>
 </view>

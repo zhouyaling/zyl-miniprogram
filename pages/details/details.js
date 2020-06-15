@@ -23,12 +23,6 @@ Page({
 
   //  加载咨询详情
   async loadArticleDetail(){
-    // var article = "<div><p style='line-height:50rpx'>现支持两种节点，通过type来区分，分别是元素节点和文本节点，默认是元素节点，在富文本区域里显示的HTML节点 元素节点：type = node*</p><img style='width:100%;height:200px' src='../images/img6.jpg'></img></div>";
-    // WxParse.wxParse('article', 'html', article, this,0)
-    // this.setData({
-    //   detail:{title:"大社区新版上线啦",zan:22,time:"2020-05-04"}
-    // })
-
     let _this = this;
     let res = await Server.getNewForm({id:this.data.id});
       if(res.Result){

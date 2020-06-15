@@ -42,7 +42,9 @@ export default function(obj) {
           duration: 2000
         })
       },
-      success: function ({ data, statusCode}) {
+      success: function (res) {
+        let  data = res.data;
+        let statusCode = res.statusCode;
         console.log('后端返回数据:', data)
         if (statusCode == 502 || statusCode== 503){
           wx.showToast({
@@ -52,31 +54,31 @@ export default function(obj) {
           })
           reject("失败了");
         } else{
-          if(!data || !data.succeed) {
-            console.log('请求接口报错-->', parameter.url, data.errmsg)
-            if (data.errmsg == "request header的token参数不能为空,请先登录" || data.errmsg == "token 校验失败，请先登录"){
-              //过期清除所有缓存
-              let referrerId = wx.getStorageSync(Config.referrerIdKey);
-              wx.clearStorageSync();
-              wx.setStorageSync(Config.referrerIdKey, referrerId);
+          // if(!data || !data.succeed) {
+          //   console.log('请求接口报错-->', parameter.url, data.errmsg)
+          //   if (data.errmsg == "request header的token参数不能为空,请先登录" || data.errmsg == "token 校验失败，请先登录"){
+          //     //过期清除所有缓存
+          //     let referrerId = wx.getStorageSync(Config.referrerIdKey);
+          //     wx.clearStorageSync();
+          //     wx.setStorageSync(Config.referrerIdKey, referrerId);
               
-              let pages = getCurrentPages();
-              if (app.globalData.isReturnLogin !== true) {
-                app.globalData.isReturnLogin = true;
-                wx.navigateTo({
-                  url: '/pages/login/login?from=' + pages[pages.length - 1].route,
-                })
-                setTimeout(() => {
-                  app.globalData.isReturnLogin = false;
-                }, 2000)
-              } else {
-                //解决页面触发太多需要校验token的请求，重复跳转到登录页问题
-                setTimeout(() => {
-                  app.globalData.isReturnLogin = false;
-                }, 2000 )
-              }
-            }
-          }
+          //     let pages = getCurrentPages();
+          //     if (app.globalData.isReturnLogin !== true) {
+          //       app.globalData.isReturnLogin = true;
+          //       wx.navigateTo({
+          //         url: '/pages/login/login?from=' + pages[pages.length - 1].route,
+          //       })
+          //       setTimeout(() => {
+          //         app.globalData.isReturnLogin = false;
+          //       }, 2000)
+          //     } else {
+          //       //解决页面触发太多需要校验token的请求，重复跳转到登录页问题
+          //       setTimeout(() => {
+          //         app.globalData.isReturnLogin = false;
+          //       }, 2000 )
+          //     }
+          //   }
+          // }
           resolve(data);
         }
       }

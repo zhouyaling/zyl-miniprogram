@@ -33,7 +33,7 @@
 				<image class="icon-edit" src="../images/icon-edit.png" bindtap="goQuestion" data-chapter="{{item.Chapter}}"></image>
 			</view>
 			<block wx:if="{{currentTab==1}}">
-				<view class="library-list-detail" wx:if="{{item.status}}" wx:for="{{item.children}}" wx:for-item="child" wx:key="id">
+				<view class="library-list-detail" wx:if="{{item.status}}" wx:for="{{item.children}}" wx:for-item="child" wx:key="index">
 					<view class="">
 						<van-icon name="circle" color="#19CCB0" />
 					</view>
@@ -50,7 +50,7 @@
 <!-- 模拟考试和模拟真题模板 -->
 <block wx:if="{{currentTab==2 || currentTab==4}}">
 	<view class="library-list">
-		<view class="library-list-item" wx:for="{{examList}}" wx:key="id">
+		<view class="library-list-item" wx:for="{{examList}}" wx:key="index">
 			<view class="library-list-total" style="margin:20rpx 0">
 				<view class="item-content">
 					<view class="item-title">{{item.Paper}}</view>

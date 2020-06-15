@@ -2,7 +2,7 @@
 <view class="container">
 		<view class="topNav">
 			<van-tabs active="{{currentTab}}" animated color="#19CCB0" swipeable bind:click="handlerOnChangeTab" ellipsis="{{false}}"   tab-class="tab-reset"  tab-active-class="tab-active-reset">
-			<van-tab wx:for="{{videoType}}" title="{{item.DictValue}}" name="{{item.DictKey}}"></van-tab>
+			<van-tab wx:for="{{videoType}}" title="{{item.DictValue}}" name="{{item.DictKey}}"  wx:key="index"></van-tab>
 			</van-tabs>
 		</view>
 	<view class="topWrap">
@@ -20,7 +20,7 @@
 	<!-- 列表 -->
 	<view class="listContent">
 			<view>
-				<view class="list-item" wx:for="{{list}}">
+				<view class="list-item" wx:for="{{list}}"  wx:key="index">
 					<navigator url="/pages/details/details?id={{item.Id}}" hover-class="none">
 						<view class="list-item-image">
 							<image src="{{item.ThumbImage?item.ThumbImage:'../images/default-pic.jpg'}}"></image>

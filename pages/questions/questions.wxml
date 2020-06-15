@@ -12,7 +12,7 @@
     <view class="question-answer">
       <!-- 答题状态 -->
       <block>
-        <view class="question-answer-item" wx:for="{{questionList.list[currentQuestion].answerList}}" bindtap="chooseAnswer" data-aid="{{item.id}}" data-qid="{{questionList.list[currentQuestion].id}}">
+        <view class="question-answer-item" wx:for="{{questionList.list[currentQuestion].answerList}}"  wx:key="index" bindtap="chooseAnswer" data-aid="{{item.id}}" data-qid="{{questionList.list[currentQuestion].id}}">
             <view class="answer-a {{item.id==questionList.list[currentQuestion].choosedAnswer?'green':''}} ">{{item.id}}</view>
             <text class="answer-text ">{{item.title}}</text>
         </view>

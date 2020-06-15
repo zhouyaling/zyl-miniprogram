@@ -16,11 +16,16 @@ Page({
 
   // 切换手风琴卡
   onChange(event) {
-    debugger
     this.setData({
       activeZhangId: event.detail,
     });
-    this.getPageList()
+
+    this.data.zhangList.forEach(element => {
+        if(element.Id==this.data.activeZhangId && !element.requested){
+          this.getPageList()
+        }
+    });
+    
   },
 
   /**
@@ -66,7 +71,6 @@ Page({
           }
           return element;
         });
-        debugger
         _this.setData({
           zhangList:cacheRes
         })

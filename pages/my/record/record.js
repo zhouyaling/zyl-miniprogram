@@ -32,7 +32,7 @@ Page({
 
   sss(e){
     wx.navigateTo({
-      url: '/pages/videoDetail1/videoDetail1'
+      url: '/pages/videoDetail/videoDetail'
     })
   },
 

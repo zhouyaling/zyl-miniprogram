@@ -2,7 +2,7 @@
 <view class="wrap">
   <view class="topNav">
     <van-tabs active="{{currentTab}}" animated color="#ffffff" swipeable bind:click="handlerOnChangeTab"  ellipsis="{{false}}"  tab-class="tab-reset-1" tab-active-class="tab-active-reset1">
-      <van-tab wx:for="{{videoType}}" title="{{item.DictValue}}" name="{{item.DictKey}}"></van-tab>
+      <van-tab wx:for="{{videoType}}" title="{{item.DictValue}}" name="{{item.DictKey}}" wx:key="index"></van-tab>
     </van-tabs>
   </view>
   <!-- <view class="library-head-bk"> </view> -->

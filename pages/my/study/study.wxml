@@ -1,7 +1,7 @@
 <view class="page">
 <view wx:if="list.length>0">
 <navigator src='#' url="../../news/news"  hover-class="none">
-	<view class="card" wx:for="{{list}}">
+	<view class="card" wx:for="{{list}}"  wx:key="index">
 		<image class="card-img" src="http://ppt.beegoedu.com/Upload/haibaolink/2018103071588.jpg"></image>
 		<view class="card-title">初级医护冲刺班</view>
 		<view class="card-des">

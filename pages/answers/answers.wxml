@@ -10,7 +10,7 @@
     {{questionList.list[currentQuestion].title}}
     </view>
     <view class="question-answer">
-      <view class="question-answer-item" wx:for="{{questionList.list[currentQuestion].answerList}}" >
+      <view class="question-answer-item" wx:for="{{questionList.list[currentQuestion].answerList}}" wx:key="index">
         <view class="answer-a {{item.id==questionList.list[currentQuestion].answer?'green':''}} {{questionList.list[currentQuestion].choosedAnswer ==item.id && item.id!=questionList.list[currentQuestion].answer?'red':''}} ">{{item.id}}</view>
         <text class="answer-text ">{{item.title}}</text>
       </view>

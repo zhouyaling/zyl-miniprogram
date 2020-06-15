@@ -98,7 +98,7 @@ Page({
   goStudy:function(e){
     var res = e.currentTarget.dataset.item;
     wx.navigateTo({
-      url: '/pages/libraryGroups/libraryGruops?name='+ res.Class + '&price='+res.ClassPrice + '&prople=' + res.ClassPeopleNum + '&Id=' + res.Id,
+      url: '/pages/libraryGroups/libraryGruops?name='+ res.Class + '&price='+res.ClassPrice + '&people=' + res.ClassPeopleNum + '&Id=' + res.Id,
     })
   },
 

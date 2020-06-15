@@ -69,6 +69,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    debugger
     if(options.Id){
       this.setData({
         classId:options.Id,
@@ -126,15 +127,9 @@ Page({
   // 查询小结列表
   async getPageList(){
     let _this = this;
-    _this.setData({
-      list:[]
-    })
+    
     let res = await Server.getPageList({'课程章节id': _this.data.activeZhangId});
       if(res.Result && res.Result.length>0){
-        _this.setData({
-          list:res.Result
-        })
-
         _this.setData( {
             zhangList:_this.data.zhangList.map(function(item){
               if(item.Id==_this.data.activeZhangId){
@@ -151,7 +146,6 @@ Page({
   // 查询试卷列表
   async getPaperList(){
     let _this = this;
-    debugger
     let res = await Server.getPaperList({});
       if(res.Result && res.Result.length>0){
         _this.setData({

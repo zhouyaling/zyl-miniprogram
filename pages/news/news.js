@@ -21,7 +21,6 @@ Page({
     this.getNewsType();
     this.getNewsList();
     this.getBanner();
-
   },
 
   // 获取轮播图

@@ -1,56 +1,16 @@
 // pages/videoDetail/videoDetail.js
-function getRandomColor() {
-  const rgb = []
-  for (let i = 0; i < 3; ++i) {
-    let color = Math.floor(Math.random() * 256).toString(16)
-    color = color.length === 1 ? '0' + color : color
-    rgb.push(color)
-  }
-  return '#' + rgb.join('')
-}
-
+import polyv from '../../utils/polyv.js';
 
 Page({
 
   /**
    * 页面的初始数据
    */
-  inputValue: '',
   data: {
-    src: '',
-    danmuList:
-    [{
-      text: '第 1s 出现的弹幕',
-      color: '#ff0000',
-      time: 1
-    }, {
-      text: '第 3s 出现的弹幕',
-      color: '#ff00ff',
-      time: 3
-    }],
-
+    showRateStatus:false,
+    src:"", // 视频地址
+    videoC:null, // 视频实例
   },
-
-  bindButtonTap() {
-    const that = this
-    wx.chooseVideo({
-      sourceType: ['album', 'camera'],
-      maxDuration: 60,
-      camera: ['front', 'back'],
-      success(res) {
-        that.setData({
-          src: res.tempFilePath
-        })
-      }
-    })
-  },
-
-
-  videoErrorCallback(e) {
-    console.log('视频错误信息:')
-    console.log(e.detail.errMsg)
-  },
-
 
   /**
    * 生命周期函数--监听页面加载
@@ -62,11 +22,57 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  
-  onReady() {
-    this.videoContext = wx.createVideoContext('myVideo')
+  onReady: function () {
+    let vid = '88083abbf5535a4d7b4d8614427559e0_8';
+
+    /*获取视频数据*/
+    let obj = {
+      vid: vid,
+      viewerInfo: {},
+      callback: videoInfo => {
+        if (videoInfo.type === 'error') {
+          console.log('videoInfo', videoInfo);
+          return;
+        }
+
+        this.setData({
+          src: videoInfo.src[0],
+        });
+
+       
+      }
+    };
+
+    this.player = polyv.getVideo(obj);
+    this.getVideoContext();
   },
 
+  // 实例化一个操作视频组件示例
+  getVideoContext: function () {
+    var _this = this
+    this.setData({
+      videoC:wx.createVideoContext('myVideo', this)
+    })
+  },
+
+  // 显示倍数
+  setRate:function (){
+    this.setData({
+      showRateStatus:!this.data.showRateStatus
+    })
+  },
+
+  // 设置倍数
+  changeRate:function (e){
+    var num  = e.currentTarget.dataset.rate ? parseFloat(e.currentTarget.dataset.rate) : 1
+    this.data.videoC.playbackRate(num)
+    this.setData({ showRateStatus: false })
+  },
+
+  // 视频被打断
+  timeupdate: function(e) {
+    this.player.timeUpdate(e);
+  },
 
   /**
    * 生命周期函数--监听页面显示
@@ -86,7 +92,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    this.player.destroy();
   },
 
   /**
@@ -106,10 +112,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
-    return {
-      title: 'video',
-      path: 'page/component/pages/video/video'
-    }
-  },
+  onShareAppMessage: function () {
+
+  }
 })

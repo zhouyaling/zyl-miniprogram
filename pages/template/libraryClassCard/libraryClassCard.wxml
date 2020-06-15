@@ -1,6 +1,6 @@
 <!--题库中 班次卡片模板-->
 <template name="classCard">
-  <view class="library-class-item" wx:for="{{listSpec}}" wx:key="id">
+  <view class="library-class-item" wx:for="{{listSpec}}" wx:key="index">
     <view class="library-class-total">
       <view class="item-content">
         <view class="item-title">{{item.Class}}</view>
