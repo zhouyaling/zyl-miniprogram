@@ -11,57 +11,14 @@ Page({
     id:0, // 试卷id
     paperid:0, // 试卷id
     chapter:"", // 章节名称
+    jieid:"", // 小结id
     title:"", // 名称
     answeredStatus:false, // 是否提交答题
     showPops:false, // 展示答题卡弹窗
     currQ:0, // 当前题目
     collection:false, // 收藏状态
     totalQuestion:0, // 题目总数
-    list: // 题目集合
-      [
-          {
-            id:1,
-            showAnswer:false,
-            choosedAnswer:"",
-            answer:"C",
-            title:'列表中唯一的字符串或者或者数字，且不会发生改变。',
-            answerList:[{
-              id:'A',
-              title:'大管家'
-            },{
-              id:'B',
-              title:'大蛇去'
-            },
-            {
-              id:'C',
-              title:'周烤猫'
-            },{
-              id:'D',
-              title:'安居客'
-            }],
-          },
-          {
-            id:2,
-            showAnswer:false,
-            choosedAnswer:"",
-            answer:"D",
-            title:'当数据改变触发渲染层重新渲染的时候，会校正带有 key 的组件，框架会确保他们被重新排序，而不是重新创建，以确保使组件保持自身的状态，并且提高列表。',
-            answerList:[{
-              id:'A',
-              title:'大管家'
-            },{
-              id:'B',
-              title:'大蛇去'
-            },
-            {
-              id:'C',
-              title:'周烤猫'
-            },{
-              id:'D',
-              title:'安居客'
-            }],
-          }
-        ]
+    list:[] // 题目集合
   },
 
   /**
@@ -79,6 +36,10 @@ Page({
       this.setData({chapter:options.chapter})
       params = {...params,'章节名称': this.data.chapter}
     }
+    if(options.jieid && options.jieid!="undefined"){
+      this.setData({jieid:options.jieid})
+      params = {...params,'课程id': this.data.jieid}
+    }
     this.getExamList(params);
   },
 
@@ -87,18 +48,19 @@ Page({
     let _this = this;
     let res = await Server.getExamList(params);
     console.log(res)
-      if(res.Result && res.Result.length>0){
-        let cacheRes = res.Result.map(element => {
-            return {...element,choosedAnswer:"",choosedText:""}
-        });
+    let cacheRes=[]
+    if(res.Result && res.Result.length>0){
+      cacheRes = res.Result.map(element => {
+          return {...element,choosedAnswer:"",choosedText:""}
+      });
 
-        _this.setData({
-          loading:false,
-          totalQuestion:res.TotalCount,
-          title:cacheRes[0].Paper,
-          list:cacheRes,
-        })
-      }
+      _this.setData({
+        loading:false,
+        totalQuestion:res.TotalCount,
+        title:cacheRes[0].Paper,
+        list:cacheRes,
+      })
+    }
   },
 
   
