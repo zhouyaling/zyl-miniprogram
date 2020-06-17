@@ -39,16 +39,16 @@
 		<text class="card-bar-icon"></text>
 		<text>精品课程</text>
 	</view>
-	<view class="card" wx:for="{{listSpec}}"  wx:key="index">
-			<navigator url="/pages/videos/videos?classId={{item.Id}}&name={{item.Class}}&num={{item.ClassPeopleNum}}" hover-class="none">
-			<image class="card-img"src="{{item.ClassImg}}"></image>
+	<view class="card" wx:for="{{listSpec}}"  wx:key="index" bindtap ="goVideo" data-item = "{{item}}">
+			<!-- <navigator bind:click ="goVideo" data-item = "{{item}}" hover-class="none"> -->
+			<image class="card-img" src="{{item.ClassImg}}"   ></image>
 			<view class="card-title">{{item.Class}}</view>
 			<view class="card-des">
 				<text>¥ {{item.ClassPrice}}元</text>
 				<text>已有{{item.ClassPeopleNum}}人参与</text>
 			</view>
 			<!-- <image class="card-recommend" src="../images/icon-tuijian1.png"></image> -->
-			</navigator>
+			<!-- </navigator> -->
 		</view>
 	</view>
 	<!-- 暂无数据 -->

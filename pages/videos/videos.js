@@ -32,11 +32,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(options.classId){
+    debugger
+    let params = JSON.parse(options.item)
+    debugger
+    if(params.Id){
       this.setData({
-        classId:options.classId,
-        className:options.name,
-        classPeopleNum:options.num
+        classId:params.Id,
+        className:params.Class,
+        classPeopleNum:params.ClassPeopleNum
       })
     }
     this.getZhangList()

@@ -83,6 +83,14 @@ Page({
       }
   },
 
+
+  // 跳转到视频也没
+  goVideo:function (e){
+    wx.navigateTo({
+      url: '/pages/videos/videos?item=' + JSON.stringify(e.currentTarget.dataset.item), // url="/pages/videos/videos?item={{}}"
+    })
+  },
+
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
