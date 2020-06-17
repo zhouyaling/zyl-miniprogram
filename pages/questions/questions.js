@@ -60,6 +60,13 @@ Page({
         title:cacheRes[0].Paper,
         list:cacheRes,
       })
+    }else{
+      _this.setData({
+        loading:false,
+        totalQuestion:0,
+        title:"",
+        list:[],
+      })
     }
   },
 

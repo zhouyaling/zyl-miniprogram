@@ -10,7 +10,7 @@
      <van-collapse-item   wx:for="{{zhangList}}"  wx:key="index" title="{{item.Chapter}}" name="{{item.Id}}" custom-class="col-head" content-class="col-con">
         <block >
         <view class="list-item" wx:for="{{item.children}}"  wx:key="key"  wx:for-item="videoItem">
-					<navigator url="/pages/videoDetail/videoDetail" hover-class="none">
+					<navigator url="/pages/videoDetail/videoDetail?vid={{videoItem.VideoUrl}}" hover-class="none">
 						<view class="list-item-image">
 							<image src="../images/default-video.jpg"></image>
 						</view>

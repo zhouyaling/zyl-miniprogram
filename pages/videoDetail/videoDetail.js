@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    vid:"88083abbf5535a4d7b4d8614427559e0_8",
     showRateStatus:false,
     src:"", // 视频地址
     videoC:null, // 视频实例
@@ -16,18 +17,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+debugger
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    let vid = '88083abbf5535a4d7b4d8614427559e0_8';
 
     /*获取视频数据*/
     let obj = {
-      vid: vid,
+      vid: this.data.vid,
       viewerInfo: {},
       callback: videoInfo => {
         if (videoInfo.type === 'error') {

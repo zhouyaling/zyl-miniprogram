@@ -63,6 +63,7 @@ Page({
   async getPageList(){
     let _this = this;
     let res = await Server.getPageList({'课程章节id': _this.data.activeZhangId});
+    debugger
       if(res.Result && res.Result.length>0){
         let cacheRes = _this.data.zhangList.map(element => {
           if(element.Id == _this.data.activeZhangId){

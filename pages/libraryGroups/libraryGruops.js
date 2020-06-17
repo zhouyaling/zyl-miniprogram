@@ -14,6 +14,7 @@ Page({
     currentTab:"1", // 当前菜单
     zhangList:[], // 章节数据集合
     examList:[], // 模拟试卷数据集合
+    examList1:[], // 真题试卷数据集合
     list:[{
         id:1,
         status:true,
@@ -99,7 +100,9 @@ Page({
     
     if((this.data.currentTab==1 || this.data.currentTab==3) && this.data.zhangList.length<=0){
       this.getZhangList();
-    }else if((this.data.currentTab==2 || this.data.currentTab==4) && this.data.examList.length<=0){
+    }else if(this.data.currentTab==2 && this.data.examList.length<=0){
+      this.getPaperList()
+    }else if(this.data.currentTab==4  && this.data.examList1.length<=0){
       this.getPaperList()
     }
   },
@@ -147,7 +150,13 @@ Page({
   // 查询试卷列表
   async getPaperList(){
     let _this = this;
-    let res = await Server.getPaperList({});
+    let params = {}; //'课程班次id':this.data.classId
+    if(this.data.currentTab==2){
+      params = {...params,'试卷类型':'模拟考试'};
+    } else if(this.data.currentTab==4){
+      params = {...params,'试卷类型':'历年真题'};
+    }
+    let res = await Server.getPaperList(params);
       if(res.Result && res.Result.length>0){
         _this.setData({
           examList:res.Result

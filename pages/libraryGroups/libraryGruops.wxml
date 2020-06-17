@@ -41,7 +41,7 @@
 						<view class="item-title">{{child.Section}}</view>
 						<!-- <view class="item-subtitle">共{{child.PeopleNum}}道题</view> -->
 					</view>
-					<image class="icon-edit" src="../images/icon-edit.png" bindtap="goQuestion" data-jieid="{{item.Id}}"></image>
+					<image class="icon-edit" src="../images/icon-edit.png" bindtap="goQuestion" data-jieid="{{child.Id}}"></image>
 				</view>
 			</block>
 		</view>
