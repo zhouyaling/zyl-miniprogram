@@ -6,9 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    currentTab:"1",
     classId:"", // 班级类别id
     className:'',
     classPeopleNum:0,
+    classInfo:{},
     activeZhangId: '', // 章节id
     zhangList:[],
     list:[]
@@ -28,18 +30,25 @@ Page({
     
   },
 
+  // 切换顶部菜单
+  onChangeNav(event) {
+    this.setData({
+      currentTab:event.detail.name
+    });
+  },
+
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    debugger
     let params = JSON.parse(options.item)
-    debugger
     if(params.Id){
       this.setData({
         classId:params.Id,
         className:params.Class,
-        classPeopleNum:params.ClassPeopleNum
+        classPeopleNum:params.ClassPeopleNum,
+        classInfo:params,
       })
     }
     this.getZhangList()
@@ -66,7 +75,6 @@ Page({
   async getPageList(){
     let _this = this;
     let res = await Server.getPageList({'课程章节id': _this.data.activeZhangId});
-    debugger
       if(res.Result && res.Result.length>0){
         let cacheRes = _this.data.zhangList.map(element => {
           if(element.Id == _this.data.activeZhangId){
@@ -79,6 +87,14 @@ Page({
           zhangList:cacheRes
         })
       }
+  },
+
+  // 跳转视频详情
+  goVideoDetail: function (e){
+    var videoItem = e.currentTarget.dataset.item;
+    wx.navigateTo({
+      url: '/pages/videoDetail/videoDetail?itemInfo=' + JSON.stringify(videoItem) + '&des=' + e.currentTarget.dataset.des,
+    })
   },
 
   /**

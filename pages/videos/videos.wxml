@@ -1,20 +1,27 @@
 <view class="wrap">
+<view class="img-box"><image src="{{classInfo.ClassImg}}"></image></view>
   <view class="news-header">
+  
     <view class="title">{{className}}</view>
     <view class="des">
       <text>已有{{classPeopleNum}}人参与</text>
     </view>
+    <van-tabs active="{{ currentTab }}" bind:change="onChangeNav" color="#19CCB0">
+      <van-tab title="简介"  name="1"></van-tab>
+      <van-tab title="网课" name="2"></van-tab>
+    </van-tabs>
   </view>
-  <view class="list">
+  <view wx:if="{{currentTab==1}}" class="description">
+  {{classInfo.ClassDescription}}
+  </view>
+  <view class="list" wx:if="{{currentTab!=1}}">
     <van-collapse value="{{ activeZhangId }}" bind:change="onChange" accordion custom-class="test1">
      <van-collapse-item   wx:for="{{zhangList}}"  wx:key="index" title="{{item.Chapter}}" name="{{item.Id}}" custom-class="col-head" content-class="col-con">
         <block >
-        <view class="list-item" wx:for="{{item.children}}"  wx:key="key"  wx:for-item="videoItem">
-					<navigator url="/pages/videoDetail/videoDetail?vid={{videoItem.VideoUrl}}" hover-class="none">
+        <view class="list-item" wx:for="{{item.children}}"  wx:key="key"  wx:for-item="videoItem" bindtap="goVideoDetail" data-item="{{videoItem}}" data-des="{{classInfo.ClassDescription}}">
 						<view class="list-item-image">
 							<image src="../images/default-video.jpg"></image>
 						</view>
-					</navigator>
 					<view class="list-item-text">
 						<navigator url="/pages/videoDetail/videoDetail" hover-class="none">
 							<view class="text-title">{{videoItem.Section}}</view>

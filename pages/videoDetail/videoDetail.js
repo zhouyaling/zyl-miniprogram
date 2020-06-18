@@ -11,12 +11,21 @@ Page({
     showRateStatus:false,
     src:"", // 视频地址
     videoC:null, // 视频实例
+    itemInfo:{}, // 
+    banDes:"",
+    src1: 'https://www.w3school.com.cn/i/movie.mp4',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(options.itemInfo){
+      this.setData({
+        itemInfo:JSON.parse(options.itemInfo),
+        banDes:options.des
+      })
+    }
   },
 
   /**
@@ -33,12 +42,9 @@ Page({
           console.log('videoInfo', videoInfo);
           return;
         }
-
         this.setData({
           src: videoInfo.src[0],
         });
-
-       
       }
     };
 
@@ -66,6 +72,30 @@ Page({
     var num  = e.currentTarget.dataset.rate ? parseFloat(e.currentTarget.dataset.rate) : 1
     this.data.videoC.playbackRate(num)
     this.setData({ showRateStatus: false })
+  },
+
+  bindVideoEnterPictureInPicture() {
+    console.log('进入小窗模式')
+  },
+
+  bindVideoLeavePictureInPicture() {
+    console.log('退出小窗模式')
+  },
+
+  bindPlayVideo() {
+    console.log('1')
+    this.videoContext.play()
+  },
+  bindSendDanmu() {
+    this.videoContext.sendDanmu({
+      text: this.inputValue,
+      color: getRandomColor()
+    })
+  },
+
+  videoErrorCallback(e) {
+    console.log('视频错误信息:')
+    console.log(e.detail.errMsg)
   },
 
   // 视频被打断
