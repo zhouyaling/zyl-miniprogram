@@ -74,10 +74,22 @@ Page({
 
   // 答题
   chooseAnswer:function(e){
-    this.data.list.forEach(element => {
+      let aid = e.currentTarget.dataset.aid;
+      let atext = e.currentTarget.dataset.atext;
+      this.data.list.forEach(element => {
       if(element.Id==e.currentTarget.dataset.qid){
-        element.choosedAnswer = e.currentTarget.dataset.aid,
-        element.choosedText = e.currentTarget.dataset.atext
+        if(e.currentTarget.dataset.type=="单选题"){
+          element.choosedAnswer = aid,
+          element.choosedText = atext
+        }else{
+          if(element.choosedAnswer.indexOf(aid)<0){
+            element.choosedAnswer +=(( element.choosedAnswer ? ',':'') + aid)
+          }
+          if(element.choosedText.indexOf(atext)<0){
+            element.choosedText +=(( element.choosedText ? ',':'') + atext)
+          }
+          
+        }
       }
     });
 

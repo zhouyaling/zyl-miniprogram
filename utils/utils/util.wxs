@@ -15,7 +15,14 @@ var isInArray = function(arr, value) {
   return false;
 }
 
+var fnIndexOf = function (arr, arg){
+  var result= false,
+  result = arr.indexOf(arg) > -1;
+  return result;
+}
+
 module.exports = {
   includes : includes,
-  isInArray: isInArray
+  isInArray: isInArray,
+  fnIndexOf:fnIndexOf
 }
