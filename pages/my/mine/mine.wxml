@@ -47,10 +47,19 @@
 			</i>
 		</view>
 		</navigator>
-			<navigator   url="/pages/my/collection/collection" hover-class="none">
+		<navigator   url="/pages/my/collection/collection" hover-class="none">
 		<view class='cell mineCell'>
 			<image class="mineIcons" src="../../images/icon-jingjiren.png"></image>
 			<text class="cenlie">我的收藏</text>
+			<i class="icon-jiantou">
+				<image src="../../images/icon-arrow1.png"></image>
+			</i>
+		</view>
+		</navigator>
+		<navigator   url="/pages/my/wrongQuestions/wrongQuestions" hover-class="none">
+		<view class='cell mineCell'>
+			<image class="mineIcons" src="../../images/icon-wrong.png"></image>
+			<text class="cenlie">我的错题</text>
 			<i class="icon-jiantou">
 				<image src="../../images/icon-arrow1.png"></image>
 			</i>

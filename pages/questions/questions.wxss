@@ -212,6 +212,12 @@ page{
   background: #CB534E;
 }
 
+.answer-a.green-0{
+  color: #ffffff;
+  border-color: #0BAC92;
+  background: #0BAC92;
+}
+
 
 .van-button__text{
   color: #19CCB0!important;

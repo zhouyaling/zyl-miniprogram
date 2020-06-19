@@ -111,36 +111,33 @@ Page({
         answeredStatus:true,
         showPops:true
       })
-    }
-   
+    }else{
+        Toast.loading({
+          mask: false,
+          forbidClick:true,
+          duration:500,
+          message: '您已提交过答案了哦~',
+        });
+      }
   },
 
   // 查看答题解析、关闭弹窗
   showAnswerDetail: function(e){
-    if(e.currentTarget.dataset.type==1){
-     
-     if(this.data.answeredStatus){
+  
+    if(e.currentTarget.dataset.type==1){  // 关闭
       this.popsOnClose();
-      wx.navigateBack({
-        delta:1,
-      });
-     }else{
-      this.setData({currQ:0})
-       this.popsOnClose();
-     }
-    }else if(e.currentTarget.dataset.type==0){
+    //  if(this.data.answeredStatus){
+    //   wx.navigateBack({
+    //     delta:1,
+    //   });
+    //  }
+    }else if(e.currentTarget.dataset.type==0){ // 查看答题解析
       this.popsOnClose();
       this.setData({
         currQ:0,
         type:1
       })
     }
-    // else{
-    //   this.popsOnClose();
-    //   wx.redirectTo({
-    //     url: '/pages/answers/answers',
-    //   })
-    // }
   },
 
   

@@ -112,7 +112,7 @@
 	</view>
 
 	<!-- 答题卡 -->
-	<van-popup show="{{ showPops }}" position="bottom" round close-on-click-overlay="{{false}}" duration="500" custom-style="height: 90%;" bind:close="popsOnClose">
+	<van-popup show="{{ showPops }}" position="bottom" round close-on-click-overlay="{{true}}" duration="500" custom-style="height: 90%;" bind:close="popsOnClose">
 		<view class="popup-wrap">
 			<view class="popup-card-head">答题卡</view>
 			<view class="popup-card-info">
@@ -125,10 +125,10 @@
 			</view>
 			<view class="popup-card-content">
 				<block wx:if="{{type==0}}">
-				<view wx:for="{{list}}" wx:key="{{index}}" class="answer-a answer-number {{item.choosedAnswer ?'green':''}}">{{index + 1}}</view>
+				<view wx:for="{{list}}" wx:key="{{index}}" class="answer-a answer-number {{item.choosedAnswer ?'green-0':''}}">{{index + 1}}</view>
 				</block>
 				<block wx:if="{{type==1}}">
-				<view wx:for="{{list}}" wx:key="{{index}}" class="answer-a answer-number {{item.choosedText && item.choosedText == item.Answer?'green':''}}  {{item.choosedText && item.choosedText != item.Answer?'red':''}}">{{index + 1}}</view>
+				<view wx:for="{{list}}" wx:key="{{index}}" class="answer-a answer-number {{item.choosedText && item.choosedText == item.Answer?'green-0':''}}  {{item.choosedText && item.choosedText != item.Answer?'red':''}}">{{index + 1}}</view>
 				</block>
 			</view>
 			<view wx-if="{{ type==0 && !answeredStatus}}" class="popup-card-footer">

@@ -1,4 +1,4 @@
-// pages/wrongQuestions/wrongQuestions.js
+// pages/my/wrongQuestions/wrongQuestions.js
 Page({
 
   /**
