@@ -26,4 +26,5 @@ margin-top: 6rpx;
 .item-number{
   display: inline-block;
 font-size: 32rpx;
+margin-right: 20rpx;
 }

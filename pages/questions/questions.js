@@ -18,7 +18,9 @@ Page({
     currQ:0, // 当前题目
     collection:false, // 收藏状态
     totalQuestion:0, // 题目总数
-    list:[] // 题目集合
+    list:[], // 题目集合
+    rightAnswerNum:0, // 正确答案个数
+    rightAnswerRate:0, // 得分
   },
 
   /**
@@ -111,6 +113,7 @@ Page({
         answeredStatus:true,
         showPops:true
       })
+      this.staticsRightAnswer();
     }else{
         Toast.loading({
           mask: false,
@@ -119,6 +122,20 @@ Page({
           message: '您已提交过答案了哦~',
         });
       }
+  },
+
+  // 统计答案
+  staticsRightAnswer:function (){
+    let cacheNum  =0;
+    this.data.list.forEach(element => {
+        if(element.Answer==element.chooseAnswer){
+            cacheNum +=1;
+        }
+    });
+    this.setData({
+      rightAnswerNum:cacheNum,
+      rightAnswerRate:parseFloat(cacheNum / this.data.totalQuestion).toFixed(2) * 100
+    })
   },
 
   // 查看答题解析、关闭弹窗
@@ -184,31 +201,38 @@ Page({
 
     // 提示已经答完
     if(this.data.currQ==this.data.totalQuestion-1){
-      if(this.data.answeredStatus){
-        Dialog.confirm({
-          message: '你已经提交过答案啦，是否查看解析？',
-        })
-        .then(() => {
-          this.setData({ showPops:true })
-            Dialog.close();
-        })
-        .catch(() => {
-          Dialog.close();
+      if(this.data.type==1 ){
+        Dialog.alert({
+          className:'test',
+          message: '已经是最后一题啦~',
+        }).then(() => {
         });
-        
       }else{
-        Dialog.confirm({
-          message: '已经是最后一题啦，是否提交？',
-        })
+        if(this.data.answeredStatus){
+          Dialog.confirm({
+            message: '你已经提交过答案啦，是否查看解析？',
+          })
           .then(() => {
-            this.submitAnswer();
+            this.setData({ showPops:true })
               Dialog.close();
           })
           .catch(() => {
             Dialog.close();
           });
+          
+        }else{
+          Dialog.confirm({
+            message: '已经是最后一题啦，是否提交？',
+          })
+            .then(() => {
+              this.submitAnswer();
+                Dialog.close();
+            })
+            .catch(() => {
+              Dialog.close();
+            });
+        }
       }
-     
     }
     this.setData({
       currQ:(this.data.currQ + 1)>=this.data.totalQuestion?(this.data.totalQuestion-1):this.data.currQ+1

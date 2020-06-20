@@ -175,15 +175,15 @@ page{
 
 .mineList .cell {
   width: 670rpx;
-  height: 114rpx;
+  height: 100rpx;
   position: relative;
   font-size: 32rpx;
   color: #29292b;
-  line-height: 132rpx;
+  line-height: 100rpx;
   margin-left: 12rpx;
   background: #fafafc;
   border-radius: 11rpx;
-  margin-bottom: 24rpx;
+  margin-bottom: 20rpx;
   display: flex;
   align-items: center;
 }

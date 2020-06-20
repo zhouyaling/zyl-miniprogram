@@ -2,7 +2,7 @@
   <view class="question-list" wx:if="list.length>0">
     <navigator url="/pages/questions/questions" hover-class="none" >
       <view class="question-item" wx:for="{{list}}" wx:key="{{item.id}}">
-        <view class="item-number">{{item.id}}、</view>
+        <view class="item-number">{{item.id}}</view>
         <view>{{item.title}}</view>
       </view>
     </navigator>
