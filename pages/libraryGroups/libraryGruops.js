@@ -82,7 +82,7 @@ Page({
   async getPageList(){
     let _this = this;
     
-    let res = await Server.getPageList({'课程章节id': _this.data.activeZhangId});
+    let res = await Server.getPageList({'课程章节id': _this.data.activeZhangId,"课程班次id":_this.data.classId});
       if(res.Result && res.Result.length>0){
         _this.setData( {
             zhangList:_this.data.zhangList.map(function(item){
@@ -107,7 +107,6 @@ Page({
     } else if(this.data.currentTab==4){
       params = {...params,'试卷类型':'历年真题'};
     }
-    
     let res = await Server.getPaperList(params);
       if(res.Result && res.Result.length>0){
         if(this.data.currentTab=='2'){
@@ -126,6 +125,14 @@ Page({
         }
       }else{
         this.setData({loading:false})
+        if(res.Result==null){
+          wx.showModal({
+            title: '提示',
+            showCancel: false,
+            content: res.Message,
+            success: function (res) { }
+          })
+        }
       }
   },
   

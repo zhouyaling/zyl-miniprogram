@@ -96,7 +96,28 @@ Page({
 
   // 去学
   goStudy:function(e){
+    var loginStatus = wx.getStorageSync('authToken')
+    if(!loginStatus){
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: "您还未登录",
+        success: function (res) { }
+      })
+      return;
+    }
     var res = e.currentTarget.dataset.item;
+    var classIds = wx.getStorageSync("userClasses");
+    if(classIds.indexOf(res.Id)<0){
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: "您没有查看当前班次权限，请联系您的老师",
+        success: function (res) { }
+      })
+      return;
+    }
+
     wx.navigateTo({
       url: '/pages/libraryGroups/libraryGruops?name='+ res.Class + '&price='+res.ClassPrice + '&people=' + res.ClassPeopleNum + '&Id=' + res.Id,
     })

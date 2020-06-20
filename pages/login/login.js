@@ -158,7 +158,8 @@ Page({
     }).then((data) => {
       //wx.setStorageSync(Config.openIdKey, data.openid)
       //wx.setStorageSync(Config.sessionKey, data.session_key)
-      wx.setStorageSync(Config.authToken, data.token)
+      wx.setStorageSync(Config.authToken, data.token);
+      wx.setStorageSync(Config.userClasses, data.userclasses);
       if(data.mobile!="" && data.mobile!=null){
         app.globalData.mobile = data.mobile
         app.globalData.userInfo = _this.data.userInfo;

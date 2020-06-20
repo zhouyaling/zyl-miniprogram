@@ -16,8 +16,10 @@ export default function(obj) {
 
   //将config文件中的常量整合进来
   parameter.headers = Object.assign(parameter.headers, Config.headers);
-  if (parameter.url.indexOf('app/weixin/login') == -1) {
-    // parameter.headers.token = wx.getStorageSync(Config.authToken) || '';
+  parameter.headers.ApiToken = wx.getStorageSync(Config.authToken) || '';
+  if (parameter.url.indexOf('Weixin/Lonin') == -1) {
+
+   
     // parameter.headers.userId = wx.getStorageSync(Config.userIdKey) || '';
   }
 

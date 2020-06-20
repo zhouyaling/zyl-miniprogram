@@ -4,6 +4,7 @@ let baseConfig = {
   token:'token',
   authToken: 'authToken',
   jsCodeKey: 'jsCodeName',
+  userClasses: 'userClasses', // 授权的班级id集合
   phoneNoKey: 'phoneNo',
   sessionKey: 'wxSession',
   openIdKey: 'openId',

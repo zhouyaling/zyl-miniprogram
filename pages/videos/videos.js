@@ -11,6 +11,7 @@ Page({
     className:'',
     classPeopleNum:0,
     classPrice:0,
+    classAuth:true, // 当前班次权限
     classInfo:{},
     activeZhangId: '', // 章节id
     zhangList:[],
@@ -76,7 +77,21 @@ Page({
   // 查询视频列表
   async getPageList(){
     let _this = this;
-    let res = await Server.getPageList({'课程章节id': _this.data.activeZhangId});
+    var loginStatus = wx.getStorageSync('authToken')
+    if(!loginStatus){
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: "您还未登录",
+        success: function (res) { }
+      })
+      return;
+    }
+    
+    if(!this.data.classAuth){
+      return;
+    }
+    let res = await Server.getPageList({'课程章节id': _this.data.activeZhangId,'课程班次id':_this.data.classId});
       if(res.Result && res.Result.length>0){
         let cacheRes = _this.data.zhangList.map(element => {
           if(element.Id == _this.data.activeZhangId){
@@ -87,6 +102,14 @@ Page({
         });
         _this.setData({
           zhangList:cacheRes
+        })
+      }else if(res.Result == null){
+        this.setData({classAuth:false})
+        wx.showModal({
+          title: '提示',
+          showCancel: false,
+          content: res.Message,
+          success: function (res) { }
         })
       }
   },
