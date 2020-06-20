@@ -8,6 +8,7 @@ Page({
    */
   data: {
     type:0, // 0 答题模式 1 解析模式
+    questionType:"", // 问题来源类型： 1 章节练习 2 模拟真题 3 章节测试 4 历年真题
     id:0, // 试卷id
     paperid:0, // 试卷id
     chapter:"", // 章节名称
@@ -21,6 +22,8 @@ Page({
     list:[], // 题目集合
     rightAnswerNum:0, // 正确答案个数
     rightAnswerRate:0, // 得分
+    timer:null, // 倒计时
+    timerText: "00:00:00"// 倒计时文本
   },
 
   /**
@@ -28,6 +31,7 @@ Page({
    */
   onLoad: function (options) {
     let params = {};
+    this.setData({questionType:options.questionType});
     if(options.paperid && options.paperid!="undefined"){
       this.setData({
         paperid:options.paperid
@@ -43,6 +47,10 @@ Page({
       params = {...params,'课程id': this.data.jieid}
     }
     this.getExamList(params);
+
+    if(this.data.questionType == '2' || this.data.questionType=='4'){
+      this.timerShow();
+    }
   },
 
   // 获取试题列表
@@ -140,16 +148,8 @@ Page({
 
   // 查看答题解析、关闭弹窗
   showAnswerDetail: function(e){
-  
-    if(e.currentTarget.dataset.type==1){  // 关闭
-      this.popsOnClose();
-    //  if(this.data.answeredStatus){
-    //   wx.navigateBack({
-    //     delta:1,
-    //   });
-    //  }
-    }else if(e.currentTarget.dataset.type==0){ // 查看答题解析
-      this.popsOnClose();
+    this.popsOnClose();
+    if(e.currentTarget.dataset.type==0){ // 查看答题解析
       this.setData({
         currQ:0,
         type:1
@@ -253,6 +253,27 @@ Page({
     this.setData({
       collection:!this.data.collection
     })
+  },
+
+  // 考试倒计时
+  timerShow:function (){
+    let _this = this;
+    var counttime=90 * 60;
+    _this.setData({
+        timer:setInterval(function (){
+                if(counttime>=0){
+                  var ms = counttime % 60; // 余数 89%60==29秒
+                  var mis = Math.floor(counttime/60);//分钟
+                  var hour=Math.floor(mis/60);
+                  mis=Math.floor((counttime-hour*60*60)/60);
+                  
+                  _this.setData({timerText: ( (hour < 10?'0':'') +  hour.toString()  + ":" + (mis < 10?'0':'') + mis.toString() + ":" +  (ms < 10?'0':'')  + ms.toString())})
+                  counttime--;
+                }else{
+                    clearInterval(_this.data.timer);
+                }
+              },1000)
+    }) 
   },
 
   

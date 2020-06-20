@@ -8,7 +8,7 @@
       <van-tab title="章节练习"  name="1"></van-tab>
       <van-tab title="模拟考试" name="2"></van-tab>
       <van-tab title="章节测试" name="3"></van-tab>
-      <van-tab title="模拟真题" name="4"></van-tab>
+      <van-tab title="历年真题" name="4"></van-tab>
     </van-tabs>
 	</view>
 <!-- 章节练习和章节测试模板 -->
@@ -46,15 +46,19 @@
 			</block>
 		</view>
 	</view>
+	<view class="no-info" style="margin-top:0rpx" wx:if="{{zhangList.length<=0 && !loading}}">
+		<image src="../images/no-info2.png"></image>
+		<view>暂无题目，先看看其他的吧！</view>
+	</view>
 </block>
-<!-- 模拟考试和模拟真题模板 -->
-<block wx:if="{{currentTab==2 || currentTab==4}}">
+<!-- 模拟考试模板 -->
+<block wx:if="{{currentTab==2}}">
 	<view class="library-list">
 		<view class="library-list-item" wx:for="{{examList}}" wx:key="index">
 			<view class="library-list-total" style="margin:20rpx 0">
 				<view class="item-content">
 					<view class="item-title">{{item.Paper}}</view>
-						<view class="item-subtitle" style="font-size:26rpx">及格分数：{{item.ExamTime}}分 | 每题分数：{{item.ScoreEachQuestion}}分</view>
+						<view class="item-subtitle" style="font-size:24rpx">及格分数：{{item.ExamTime}}分 | 每题分数：{{item.ScoreEachQuestion}}分</view>
 					<!-- <view class="progress-box">
                 <progress percent="0" color="#19CCB0" active stroke-width="3" />
               </view> -->
@@ -62,6 +66,31 @@
 				<image class="icon-edit" src="../images/icon-edit.png" bindtap="goQuestion" data-paperid="{{item.Id}}"></image>
 			</view>
 		</view>
+	</view>
+	<view class="no-info" style="margin-top:0rpx" wx:if="{{examList.length<=0 && !loading}}">
+		<image src="../images/no-info2.png"></image>
+		<view>暂无题目，先看看其他的吧！</view>
+	</view>
+</block>
+<!-- 历年真题模板 -->
+<block wx:if="{{currentTab==4}}">
+	<view class="library-list">
+		<view class="library-list-item" wx:for="{{examList1}}" wx:key="index">
+			<view class="library-list-total" style="margin:20rpx 0">
+				<view class="item-content">
+					<view class="item-title">{{item.Paper}}</view>
+						<view class="item-subtitle" style="font-size:24rpx">及格分数：{{item.ExamTime}}分 | 每题分数：{{item.ScoreEachQuestion}}分</view>
+					<!-- <view class="progress-box">
+                <progress percent="0" color="#19CCB0" active stroke-width="3" />
+              </view> -->
+				</view>
+				<image class="icon-edit" src="../images/icon-edit.png" bindtap="goQuestion" data-paperid="{{item.Id}}"></image>
+			</view>
+		</view>
+	</view>
+	<view class="no-info" style="margin-top:0rpx" wx:if="{{examList1.length<=0 && !loading}}">
+		<image src="../images/no-info2.png"></image>
+		<view>暂无题目，先看看其他的吧！</view>
 	</view>
 </block>
 </view>

@@ -10,6 +10,7 @@ Page({
     classId:"", // 班级类别id
     className:'',
     classPeopleNum:0,
+    classPrice:0,
     classInfo:{},
     activeZhangId: '', // 章节id
     zhangList:[],
@@ -49,6 +50,7 @@ Page({
         className:params.Class,
         classPeopleNum:params.ClassPeopleNum,
         classInfo:params,
+        classPrice:params.ClassPrice
       })
     }
     this.getZhangList()

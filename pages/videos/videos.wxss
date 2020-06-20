@@ -13,17 +13,20 @@ page{
   font-size: 36rpx;
   color: #444;
   font-weight: 600;
-  padding:32rpx 0 32rpx 32rpx;
+  padding:28rpx 0 28rpx 28rpx;
 }
 
 .news-header .des{
   font-size: 24rpx;
   color: #666;
-  padding: 0 0 26rpx 32rpx;
+  padding: 0 0 26rpx 28rpx;
+  display: flex;
+  align-items: center;
 }
 
 .col-con{
   border-radius: 14rpx;
+  padding-top: 0!important;
 }
 
 .van-collapse-item{
@@ -110,4 +113,8 @@ page{
 .description{
   padding: 30rpx;
   color: #444;
+}
+
+.des-line{
+  margin:auto 20rpx;
 }

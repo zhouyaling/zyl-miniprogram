@@ -3,6 +3,10 @@
 	<!-- 标题 -->
 	<view class="question-header">
 		<view class="header-left">{{title}}</view>
+		<view class="header-timer" wx:if="{{questionType=='2' || questionType=='4'}}">
+			<image src="../images/icon-clock.png"></image>
+			<view>{{timerText}}</view>
+		</view>
 		<view class="header-right"><text>{{totalQuestion>0?(currQ + 1):0}}</text>/<text>{{totalQuestion}}</text></view>
 	</view>
 
@@ -61,37 +65,37 @@
 				<block wx:if="{{ type==0 && list.length>0}}">
 					<view class="question-answer-item" wx:if="{{list[currQ].A}}" wx:key="{{list[currQ].A}}" bindtap="chooseAnswer" data-aid="A" data-atext="{{list[currQ].A}}" data-qid="{{list[currQ].Id}}" data-type="{{list[currQ].QuestionType}}">
 						<view wx:if="{{list[currQ].QuestionType=='单选题'}}" class="answer-a {{'A'==list[currQ].choosedAnswer?'green':''}} ">A</view>
-						<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].choosedAnswer,'A')?'green':''}} " style="border-radius:14rpx;">A</view>
+						<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].choosedAnswer,'A')?'green':''}} " style="border-radius:12rpx;">A</view>
 						<text class="answer-text ">{{list[currQ].A}}</text>
 					</view>
 					<view class="question-answer-item" wx:if="{{list[currQ].B}}" wx:key="{{list[currQ].B}}" bindtap="chooseAnswer" data-aid="B" data-atext="{{list[currQ].A}}" data-qid="{{list[currQ].Id}}" data-type="{{list[currQ].QuestionType}}">
 						<view  wx:if="{{list[currQ].QuestionType=='单选题'}}" class="answer-a {{'B'==list[currQ].choosedAnswer?'green':''}} ">B</view>
-								<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].choosedAnswer,'B')?'green':''}}  " style="border-radius:14rpx;">B</view>
+								<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].choosedAnswer,'B')?'green':''}}  " style="border-radius:12rpx;">B</view>
 						<text class="answer-text ">{{list[currQ].B}}</text>
 					</view>
 					<view class="question-answer-item" wx:if="{{list[currQ].C}}" wx:key="{{list[currQ].C}}" bindtap="chooseAnswer" data-aid="C" data-atext="{{list[currQ].A}}" data-qid="{{list[currQ].Id}}" data-type="{{list[currQ].QuestionType}}">
 						<view  wx:if="{{list[currQ].QuestionType=='单选题'}}" class="answer-a {{'C'==list[currQ].choosedAnswer?'green':''}} ">C</view>
-							<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].choosedAnswer,'C')?'green':''}} " style="border-radius:14rpx;">C</view>
+							<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].choosedAnswer,'C')?'green':''}} " style="border-radius:12rpx;">C</view>
 						<text class="answer-text ">{{list[currQ].C}}</text>
 					</view>
 					<view class="question-answer-item" wx:if="{{list[currQ].D}}" wx:key="{{list[currQ].D}}" bindtap="chooseAnswer" data-aid="D" data-atext="{{list[currQ].A}}" data-qid="{{list[currQ].Id}}" data-type="{{list[currQ].QuestionType}}">
 						<view  wx:if="{{list[currQ].QuestionType=='单选题'}}" class="answer-a {{'D'==list[currQ].choosedAnswer?'green':''}} ">D</view>
-							<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].choosedAnswer,'D')?'green':''}} " style="border-radius:14rpx;">E</view>
+							<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].choosedAnswer,'D')?'green':''}} " style="border-radius:12rpx;">E</view>
 						<text class="answer-text ">{{list[currQ].D}}</text>
 					</view>
 					<view class="question-answer-item" wx:if="{{list[currQ].E}}" wx:key="{{list[currQ].E}}" bindtap="chooseAnswer" data-aid="E" data-atext="{{list[currQ].E}}" data-qid="{{list[currQ].Id}}" data-type="{{list[currQ].QuestionType}}">
 						<view  wx:if="{{list[currQ].QuestionType=='单选题'}}" class="answer-a {{'E'==list[currQ].choosedAnswer?'green':''}} ">E</view>
-							<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].choosedAnswer,'E')?'green':''}} " style="border-radius:14rpx;">E</view>
+							<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].choosedAnswer,'E')?'green':''}} " style="border-radius:12rpx;">E</view>
 						<text class="answer-text ">{{list[currQ].E}}</text>
 					</view>
 					<view class="question-answer-item" wx:if="{{list[currQ].F}}" wx:key="{{list[currQ].F}}" bindtap="chooseAnswer" data-aid="F" data-atext="{{list[currQ].F}}" data-qid="{{list[currQ].Id}}" data-type="{{list[currQ].QuestionType}}">
 						<view  wx:if="{{list[currQ].QuestionType=='单选题'}}" class="answer-a {'F'==list[currQ].choosedAnswer?'green':''}} ">F</view>
-							<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].choosedAnswer,'F')?'green':''}}" style="border-radius:14rpx;">F</view>
+							<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].choosedAnswer,'F')?'green':''}}" style="border-radius:12rpx;">F</view>
 						<text class="answer-text ">{{list[currQ].F}}</text>
 					</view>
 					<view class="question-answer-item" wx:if="{{list[currQ].G}}" wx:key="{{list[currQ].G}}" bindtap="chooseAnswer" data-aid="G" data-atext="{{list[currQ].G}}" data-qid="{{list[currQ].Id}}" data-type="{{list[currQ].QuestionType}}">
 						<view  wx:if="{{list[currQ].QuestionType=='单选题'}}" class="answer-a {'G'==list[currQ].choosedAnswer?'green':''}} ">G</view>
-							<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].choosedAnswer,'G')?'green':''}} " style="border-radius:14rpx;">G</view>
+							<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].choosedAnswer,'G')?'green':''}} " style="border-radius:12rpx;">G</view>
 						<text class="answer-text ">{{list[currQ].G}}</text>
 					</view>
 				</block>

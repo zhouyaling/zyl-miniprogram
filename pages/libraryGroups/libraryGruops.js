@@ -15,55 +15,6 @@ Page({
     zhangList:[], // 章节数据集合
     examList:[], // 模拟试卷数据集合
     examList1:[], // 真题试卷数据集合
-    list:[{
-        id:1,
-        status:true,
-        totalInfo:{
-          name:'第一章大社区',
-          total:100,
-          actived:65,
-        },
-        children:[
-          {
-            id:11,
-            name:'第一节 大社区',
-            total:50,
-            actived:25,
-          },
-          {
-            id:12,
-            name:'第二节 大社区',
-            total:50,
-            actived:40,
-          }
-        ]
-      },
-      {
-        id:2,
-        status:false,
-        totalInfo:{
-          name:'第二章 大社区',
-          total:100,
-          actived:65,
-        },
-        children:[
-          {
-            id:21,
-            name:'第一节 大社区',
-            total:50,
-            actived:25,
-          }
-        ]
-      },{
-        id:3,
-        status:false,
-        totalInfo:{
-          name:'第三章 大社区',
-          total:100,
-          actived:65,
-        },
-          children:[]
-      }]
   },
 
   /**
@@ -84,12 +35,9 @@ Page({
    goQuestion(e){
     if(e.currentTarget.dataset.paperid || e.currentTarget.dataset.chapter || e.currentTarget.dataset.jieid){
       wx.navigateTo({
-        url: '../questions/questions?paperid=' + e.currentTarget.dataset.paperid + '&chapter=' +  e.currentTarget.dataset.chapter+ '&jieid=' +  e.currentTarget.dataset.jieid,
+        url: '../questions/questions?questionType='+ this.data.currentTab +'&paperid=' + e.currentTarget.dataset.paperid + '&chapter=' +  e.currentTarget.dataset.chapter+ '&jieid=' +  e.currentTarget.dataset.jieid,
       })
     }
-    // wx.navigateTo({
-    //   url: '../questions/questions?id=' + e.currentTarget.dataset.chapter,
-    // })
   },
 
   // 切换顶部菜单
@@ -125,6 +73,8 @@ Page({
         })
 
          _this.getPageList()
+      }else{
+        _this.setData({loading:false})
       }
   },
 
@@ -147,20 +97,35 @@ Page({
       }
   },
 
-  // 查询试卷列表
+  // 查询模拟考试或者历年真题列表
   async getPaperList(){
     let _this = this;
-    let params = {}; //'课程班次id':this.data.classId
+    _this.setData({loading:true})
+    let params = {'课程班次id':this.data.classId};
     if(this.data.currentTab==2){
       params = {...params,'试卷类型':'模拟考试'};
     } else if(this.data.currentTab==4){
       params = {...params,'试卷类型':'历年真题'};
     }
+    
     let res = await Server.getPaperList(params);
       if(res.Result && res.Result.length>0){
-        _this.setData({
-          examList:res.Result
-        })
+        if(this.data.currentTab=='2'){
+          this.setData({
+            loading:false,
+            examList:res.Result
+          })
+        }
+        
+        else if(this.data.currentTab=='4'){
+          this.setData({
+            loading:false,
+            examList1:res.Result
+          })
+
+        }
+      }else{
+        this.setData({loading:false})
       }
   },
   

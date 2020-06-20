@@ -4,8 +4,9 @@
   
     <view class="title">{{className}}</view>
     <view class="des">
-      <text>已有{{classPeopleNum}}人参与</text>
+      <text>已有{{classPeopleNum}}人参与 <text class="des-line">|</text>￥{{classPrice}}元</text>
     </view>
+    <view></view>
     <van-tabs active="{{ currentTab }}" bind:change="onChangeNav" color="#19CCB0">
       <van-tab title="简介"  name="1"></van-tab>
       <van-tab title="网课" name="2"></van-tab>

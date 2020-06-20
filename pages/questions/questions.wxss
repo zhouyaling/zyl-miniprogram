@@ -3,11 +3,13 @@ page{
 }
 .question-header{
    border-bottom: 2rpx solid #F5F4F4;
-   padding: 20rpx 30rpx;
+   min-height: 110rpx;
+   padding:0 30rpx;
    font-weight: 600;
    display: flex;
    align-items: center;
    justify-content: space-between;
+   position: relative;
 }
 
 .header-left{
@@ -221,4 +223,24 @@ page{
 
 .van-button__text{
   color: #19CCB0!important;
+}
+
+.header-timer{
+  color: #EB2F32;
+  text-align: center;
+  font-size: 26rpx;
+  font-weight: normal;
+  min-width: 150rpx;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+-ms-transform: translateX(-50%);
+-moz-transform: translateX(-50%);
+-webkit-transform: translateX(-50%);
+-o-transform: translateX(-50%);
+}
+
+.header-timer image{
+  width: 32rpx;
+  height: 32rpx;
 }

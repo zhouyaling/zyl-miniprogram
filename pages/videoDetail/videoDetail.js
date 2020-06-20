@@ -7,13 +7,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    vid:"88083abbf5535a4d7b4d8614427559e0_8",
+    type:'mp4', // 视频资源类型
+    vid:"", // 88083abbf5535a4d7b4d8614427559e0_8
     showRateStatus:false,
-    src:"", // 视频地址
+    src:"", // 视频地址 https://www.w3school.com.cn/i/movie.mp4
     videoC:null, // 视频实例
     itemInfo:{}, // 
     banDes:"",
-    src1: 'https://www.w3school.com.cn/i/movie.mp4',
   },
 
   /**
@@ -21,10 +21,16 @@ Page({
    */
   onLoad: function (options) {
     if(options.itemInfo){
+      let info = JSON.parse(options.itemInfo);
       this.setData({
-        itemInfo:JSON.parse(options.itemInfo),
+        vid:info.VideoUrl,
+        type:(info.VideoUrl.indexOf('http')>-1) ? 'mp4' : 'polyv',
+        itemInfo:info,
         banDes:options.des
       })
+      if(this.data.type=='mp4'){
+        this.setData({src:info.VideoUrl})
+      }
     }
   },
 
@@ -32,23 +38,24 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
-    /*获取视频数据*/
-    let obj = {
-      vid: this.data.vid,
-      viewerInfo: {},
-      callback: videoInfo => {
-        if (videoInfo.type === 'error') {
-          console.log('videoInfo', videoInfo);
-          return;
+    if(this.data.type=='polyv'){
+      /*获取视频数据*/
+      let obj = {
+        vid: this.data.vid,
+        viewerInfo: {},
+        callback: videoInfo => {
+          if (videoInfo.type === 'error') {
+            console.log('videoInfo', videoInfo);
+            return;
+          }
+          this.setData({
+            src: videoInfo.src[0],
+          });
         }
-        this.setData({
-          src: videoInfo.src[0],
-        });
-      }
-    };
+      };
+      this.player = polyv.getVideo(obj);
+    }
 
-    this.player = polyv.getVideo(obj);
     this.getVideoContext();
   },
 
@@ -121,7 +128,9 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    this.player.destroy();
+    if(this.data.type=='polyv'){
+      this.player.destroy();
+    }
   },
 
   /**
