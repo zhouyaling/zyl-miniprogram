@@ -57,6 +57,7 @@ Page({
     this.getZhangList()
 
     var loginStatus = wx.getStorageSync('authToken')
+    debugger
     if(!loginStatus){
       wx.showModal({
         title: '提示',
@@ -67,7 +68,7 @@ Page({
       return;
     }
     var userClass = wx.getStorageSync('userClasses');
-    if(userClass.indexOf()<0){
+    if(userClass.indexOf(this.data.classId)<0){
       this.setData({classAuth:false})
       wx.showModal({
         title: '提示',
