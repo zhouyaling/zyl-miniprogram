@@ -1,5 +1,6 @@
 // pages/videoDetail/videoDetail.js
 import polyv from '../../utils/polyv.js';
+import Server from './videoDetailServer'
 
 Page({
 
@@ -32,6 +33,17 @@ Page({
         this.setData({src:info.VideoUrl})
       }
     }
+
+    this.saveViewTimes();
+  },
+
+  
+  // 增加阅读次数
+  async saveViewTimes(){
+    let _this = this;
+    let res = await Server.saveViewTimes({id:this.data.itemInfo.Id});
+      if(res.Result){
+      }
   },
 
   /**

@@ -29,7 +29,7 @@ Page({
           this.getPageList()
         }
     });
-    
+  
   },
 
   // 切换顶部菜单
@@ -57,7 +57,6 @@ Page({
     this.getZhangList()
 
     var loginStatus = wx.getStorageSync('authToken')
-    debugger
     if(!loginStatus){
       wx.showModal({
         title: '提示',
@@ -117,6 +116,7 @@ Page({
         })
       }
   },
+
 
   // 跳转视频详情
   goVideoDetail: function (e){

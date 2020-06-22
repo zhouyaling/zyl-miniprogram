@@ -19,6 +19,7 @@ Page({
       id:options.id
     });
     this.loadArticleDetail();
+    this.saveViewTimes();
   },
 
   //  加载咨询详情
@@ -34,6 +35,15 @@ Page({
             NewsDate:res.Result.NewsDate
           }
         })
+      }
+  },
+
+  // 增加阅读次数
+  async saveViewTimes(){
+    
+    let _this = this;
+    let res = await Server.saveViewTimes({id:this.data.id});
+      if(res.Result){
       }
   },
 

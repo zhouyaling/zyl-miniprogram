@@ -1,4 +1,5 @@
 // pages/my/record/record.js
+import Server from './recordServer'
 Page({
 
   /**
@@ -10,38 +11,24 @@ Page({
       '0%': '#19CCB0',
       '100%':'#19CCB0',
     },
-    steps: [
-      {
-        text: '2020-05-13',
-        desc: '观看视频健康管理师',
-      },
-      {
-        text: '2020-05-12',
-        desc: '心功能不全病人的护理',
-      },
-      {
-        text: '2020-05-06',
-        desc: '观看视频健康管理师',
-      },
-      {
-        text: '2020-05-02',
-        desc: '观看视频健康管理师',
-      },
-    ],
-  },
-
-  sss(e){
-    wx.navigateTo({
-      url: '/pages/videoDetail/videoDetail'
-    })
+   
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getUserInfo();
   },
+
+  
+  async getUserInfo(e){
+    let _this = this;
+    let res = await Server.getUserInfo({});
+      if(res.Result){
+      }
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
