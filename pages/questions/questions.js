@@ -23,7 +23,8 @@ Page({
     rightAnswerNum:0, // 正确答案个数
     rightAnswerRate:0, // 得分
     timer:null, // 倒计时
-    timerText: "00:00:00"// 倒计时文本
+    timerText: "00:00:00",// 倒计时文本
+    wrongQuestionIds:"", // 错题id集合
   },
 
   /**
@@ -135,15 +136,21 @@ Page({
   // 统计答案
   staticsRightAnswer:function (){
     let cacheNum  =0;
+    let wrongCache = [];
     this.data.list.forEach(element => {
-        if(element.Answer==element.chooseAnswer){
+        if(element.Answer==element.choosedAnswer){
             cacheNum +=1;
+        }else if(element.choosedAnswer && element.Answer!=element.choosedAnswer){
+          wrongCache.push(element.Id)
         }
     });
     this.setData({
+      wrongQuestionIds:wrongCache.join(','),
       rightAnswerNum:cacheNum,
       rightAnswerRate:parseFloat(cacheNum / this.data.totalQuestion).toFixed(2) * 100
     })
+
+    this.addMyQuestions({questiontype:'错题',questionids:this.data.wrongQuestionIds});
   },
 
   // 查看答题解析、关闭弹窗
@@ -239,21 +246,54 @@ Page({
     })
   },
 
-  // 收藏
-  collectionAction:function(){
+  // // 收藏
+  async collectionAction(){
+    var ids = this.data.list[this.data.currQ].Id;
+    var params = {questiontype:'收藏',questionids:ids};
+    if(this.data.collection){
+      this.removeMyQuestions(params);
+    }else{
+      this.addMyQuestions(params);
+    }
+  },
+
+  // 添加收藏或者错题
+  async addMyQuestions(params){
+    var res = await Server.saveMyQuestions(params);
+    if(params.questions=='错题'){
+      return
+    }
+
     Toast({
       mask: false,
       forbidClick:true,
       message: '收藏成功!',
       duration:1000,
       onClose:function(){
+      }
+    });
+    
+    this.setData({
+      collection:!this.data.collection
+    })
+  },
 
+  // 取消收藏
+  async removeMyQuestions(params){
+    var res = await Server.removeMyQuestions(params);
+    Toast({
+      mask: false,
+      forbidClick:true,
+      message: '取消成功!',
+      duration:1000,
+      onClose:function(){
       }
     });
     this.setData({
       collection:!this.data.collection
     })
   },
+
 
   // 考试倒计时
   timerShow:function (){

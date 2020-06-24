@@ -1,4 +1,5 @@
 // pages/my/collection/collection.js
+import Server from './wrongQuestionsServer'
 Page({
 
   /**
@@ -23,10 +24,19 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function () {
+    this.getMyQuestions()
   },
 
+  // 获取我的错题列表
+  async getMyQuestions(){
+    let _this = this;
+    let res = await Server.getMyQuestions({questiontype:'错题'})
+      if(res.Result){
+        this.setData({list:res.Result})
+      }
+    
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

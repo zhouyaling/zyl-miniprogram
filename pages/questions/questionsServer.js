@@ -20,4 +20,13 @@ export default class {
       // },
     })
   }
+
+  // 添加收藏
+  static saveMyQuestions(params){
+    return Request({
+      url:"Exam/SaveMyQuestions",
+      type:"POST",
+      data:params,
+    })
+  }
 }
