@@ -1,18 +1,16 @@
 <view class="page">
-<view wx:if="list.length>0">
-<navigator src='#' url="../../news/news"  hover-class="none">
-	<view class="card" wx:for="{{list}}"  wx:key="index">
-		<image class="card-img" src="http://ppt.beegoedu.com/Upload/haibaolink/2018103071588.jpg"></image>
-		<view class="card-title">初级医护冲刺班</view>
+<view wx:if="{{list.length>0}}">
+	<view class="card" wx:for="{{list}}"  wx:key="index" >
+		<image class="card-img" src="{{item.ClassImg}}" bindtap ="goVideo" data-item = "{{item}}"></image>
+		<view class="card-title" bindtap ="goVideo" data-item = "{{item}}">{{item.Class}}</view>
 		<view class="card-des">
-			<text>¥ 2809元</text>
-			<text>已有300人参与</text>
+			<text>¥ {{item.ClassPrice}}元</text>
+			<text>已有{{item.ClassPeopleNum}}人参与</text>
 		</view>
 		<!-- <image class="card-recommend" src="../images/icon-tuijian1.png"></image> -->
 	</view>
-	</navigator>
 	</view>
-	  <view class="no-info" wx:else>
+	  <view class="no-info" wx:if="{{list.length<=0 && !loading}}">
     <image src="../../images/no-info2.png"></image>
     <view>暂无数据，先看看其他的吧！</view>
   </view>

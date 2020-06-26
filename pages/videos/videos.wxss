@@ -43,7 +43,7 @@ page{
 
 
 .list-item{
-  height: 150rpx;
+  height: 90rpx;
   /* background-color: #fff; */
   /* border-radius: 8rpx; f6f6f6*/
   border-bottom:  1px solid #f6f6f6;
@@ -54,9 +54,9 @@ page{
 }
 
 .list-item-image{
-    width: 220rpx;
-    height: 150rpx;
-    min-width: 220rpx;
+    width: 80rpx;
+    height:80rpx;
+    min-width: 80rpx;
    
 }
 

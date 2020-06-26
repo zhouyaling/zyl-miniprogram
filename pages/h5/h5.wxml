@@ -1,0 +1,4 @@
+<!--pages/h5/h5.wxml-->
+<view style="width:500px;height:500px;">
+<web-view style="width:500px;height:500px" src="{{src}}"></web-view>
+</view>

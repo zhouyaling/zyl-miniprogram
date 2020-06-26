@@ -66,16 +66,16 @@ Page({
       })
       return;
     }
-    var userClass = wx.getStorageSync('userClasses');
-    if(userClass.indexOf(this.data.classId)<0){
-      this.setData({classAuth:false})
-      wx.showModal({
-        title: '提示',
-        showCancel: false,
-        content: "您没有查看当前班次权限，请联系您的老师",
-        success: function (res) { }
-      })
-    }
+    // var userClass = wx.getStorageSync('userClasses');
+    // if(userClass.indexOf(this.data.classId)<0){
+    //   this.setData({classAuth:false})
+    //   wx.showModal({
+    //     title: '提示',
+    //     showCancel: false,
+    //     content: "您没有查看当前班次权限，请联系您的老师",
+    //     success: function (res) { }
+    //   })
+    // }
   },
 
   // 查询章节列表
@@ -99,10 +99,11 @@ Page({
   async getPageList(){
     let _this = this;
     
-    if(!this.data.classAuth){
-      return;
-    }
+    // if(!this.data.classAuth){
+    //   return;
+    // }
     let res = await Server.getPageList({'课程章节id': _this.data.activeZhangId,'课程班次id':_this.data.classId});
+    debugger
       if(res.Result && res.Result.length>0){
         let cacheRes = _this.data.zhangList.map(element => {
           if(element.Id == _this.data.activeZhangId){

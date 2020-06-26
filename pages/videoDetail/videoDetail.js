@@ -34,7 +34,7 @@ Page({
       }
     }
 
-    this.saveViewTimes();
+     this.saveViewTimes();
   },
 
   

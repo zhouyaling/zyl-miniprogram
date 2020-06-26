@@ -21,12 +21,10 @@
         <block >
         <view class="list-item" wx:for="{{item.children}}"  wx:key="key"  wx:for-item="videoItem" bindtap="goVideoDetail" data-item="{{videoItem}}" data-des="{{classInfo.ClassDescription}}">
 						<view class="list-item-image">
-							<image src="../images/default-video.jpg"></image>
+							<image src="../images/default-video.png"></image>
 						</view>
 					<view class="list-item-text">
-						<navigator url="/pages/videoDetail/videoDetail" hover-class="none">
-							<view class="text-title">{{videoItem.Section}}</view>
-						</navigator>
+							<view class="text-title" bindtap="goVideoDetail" data-item="{{videoItem}}" data-des="{{classInfo.ClassDescription}}">{{videoItem.Section}}</view>
 						<view class="text-desc">
 						<view>{{videoItem.PeopleNum}}人已学习</view>
 						</view>

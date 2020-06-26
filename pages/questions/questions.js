@@ -17,7 +17,6 @@ Page({
     answeredStatus:false, // 是否提交答题
     showPops:false, // 展示答题卡弹窗
     currQ:0, // 当前题目
-    collection:false, // 收藏状态
     totalQuestion:0, // 题目总数
     list:[], // 题目集合
     rightAnswerNum:0, // 正确答案个数
@@ -60,9 +59,11 @@ Page({
     let res = await Server.getExamList(params);
     console.log(res)
     let cacheRes=[]
+    var myCollectionIds = wx.getStorageSync('myCollectionIds');
     if(res.Result && res.Result.length>0){
       cacheRes = res.Result.map(element => {
-          return {...element,choosedAnswer:"",choosedText:""}
+        var st = myCollectionIds.indexOf(element.Id)>-1? true:false
+          return {...element,choosedAnswer:"",choosedText:"",collectionStatus:st}
       });
 
       _this.setData({
@@ -246,11 +247,11 @@ Page({
     })
   },
 
-  // // 收藏
+  // 收藏
   async collectionAction(){
     var ids = this.data.list[this.data.currQ].Id;
     var params = {questiontype:'收藏',questionids:ids};
-    if(this.data.collection){
+    if(this.data.list[this.data.currQ].collectionStatus){
       this.removeMyQuestions(params);
     }else{
       this.addMyQuestions(params);
@@ -259,39 +260,53 @@ Page({
 
   // 添加收藏或者错题
   async addMyQuestions(params){
+    let _this = this
     var res = await Server.saveMyQuestions(params);
     if(params.questions=='错题'){
       return
     }
-
-    Toast({
-      mask: false,
-      forbidClick:true,
-      message: '收藏成功!',
-      duration:1000,
-      onClose:function(){
-      }
-    });
-    
-    this.setData({
-      collection:!this.data.collection
-    })
+    if(res.Message==null && params.questiontype=='收藏'){
+      Toast({
+          mask: false,
+          forbidClick:true,
+          message: '收藏成功!',
+          duration:1000,
+          onClose:function(){
+          }
+        });
+      this.setData({
+        collection:!this.data.collection
+      })
+      var qq =[];
+      qq = _this.data.list.map((element,index)=>{
+        if(index == _this.data.currQ){
+          return {...element,collectionStatus:!element.collectionStatus}
+        }else{
+          return element
+        }
+      })
+      this.setData({
+        list:qq
+     })
+    }
   },
 
   // 取消收藏
   async removeMyQuestions(params){
     var res = await Server.removeMyQuestions(params);
-    Toast({
-      mask: false,
-      forbidClick:true,
-      message: '取消成功!',
-      duration:1000,
-      onClose:function(){
-      }
-    });
-    this.setData({
-      collection:!this.data.collection
-    })
+    if(res.Message==null){
+      Toast({
+        mask: false,
+        forbidClick:true,
+        message: '取消成功!',
+        duration:1000,
+        onClose:function(){
+        }
+      });
+      this.setData({
+        collection:!this.data.collection
+      })
+    }
   },
 
 

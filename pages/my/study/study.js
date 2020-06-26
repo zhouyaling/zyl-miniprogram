@@ -1,18 +1,49 @@
 // pages/my/study/study.js
+import Server from './studyServer'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[1,2,3]
+    loading:false,
+    list:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getMyClassList()
+  },
 
+  // 跳转到视频也没
+  goVideo:function (e){
+    wx.navigateTo({
+      url: '/pages/videos/videos?item=' + JSON.stringify(e.currentTarget.dataset.item), // url="/pages/videos/videos?item={{}}"
+    })
+  },
+
+  // 获取我的课程
+  async getMyClassList(){
+    let _this = this;
+    _this.setData({loading:true})
+    let res = await Server.getMyClassList({})
+    console.log(res)
+    debugger
+      var cacheMyClassIds =[];
+      if(res.Result.length>0){
+        res.Result.forEach(element => {
+          cacheMyClassIds.push(element.Id)
+        });
+      }
+      if(res.Result){
+        this.setData({
+          list:res.Result,
+          loading:false,
+        })
+      }
+      wx.setStorageSync('myClassIds', cacheMyClassIds.length>0 ? cacheMyClassIds.join(',') : "")
   },
 
   /**

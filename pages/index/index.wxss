@@ -321,7 +321,7 @@ swiper-item {
 
 .news-bar-scroll {
   width: 100%;
-  margin-top:40rpx
+  margin-top:30rpx
 }
 
 .news-bar {
@@ -351,4 +351,22 @@ swiper-item {
   padding-left: 24rpx;
   font-size: 28rpx;
   color: #666;
+}
+
+.topMenu{
+  width: 100%;
+  margin-top: 30rpx;
+}
+
+.topMenu .topMenu-item{
+  width: 33%;
+  float: left;
+  text-align: center;
+  font-size: 24rpx;
+  color: #444;
+}
+
+.topMenu-item image{
+  width: 70rpx;
+  height: 70rpx;
 }

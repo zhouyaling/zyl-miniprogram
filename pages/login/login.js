@@ -69,7 +69,7 @@ Page({
       wx.showLoading({
         title: '数据获取中...',
       });
-
+     
       const params = {
         "rawData":this.data.rawData,
         "signature":this.data.signature,
@@ -77,12 +77,15 @@ Page({
         "iv":this.data.iv,
         "token":wx.getStorageSync(Config.authToken)
       };
+      console.log("解密手机号",JSON.stringify(params))
       Request({
         url: "Weixin/GetPhone",
         type: "post",
         data: params
       }).then((data) => {
+        console.log('解密手机号结果,',data)
         if(data.mobile){
+          console.log('解密手机号结果mobile,',data.mobile)
           app.globalData.mobile = data.mobile;
           app.globalData.userInfo = _this.data.userInfo;
           wx.navigateBack({

@@ -23,6 +23,13 @@ Page({
       if(res.Result){
         this.setData({list:res.Result})
       }
+      var cacheMyCollectionIds = [];
+      res.Result.forEach(element => {
+        cacheMyCollectionIds.push(element.Id)
+      });
+
+      debugger
+      wx.setStorageSync('myCollectionIds', cacheMyCollectionIds.length>0?cacheMyCollectionIds.join(','):'')
     
   },
 

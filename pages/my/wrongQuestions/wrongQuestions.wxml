@@ -1,13 +1,13 @@
 <view>
   <view class="question-list" wx:if="list.length>0">
     <navigator url="/pages/questions/questions" hover-class="none" >
-      <view class="question-item" wx:for="{{list}}" wx:key="{{item.id}}">
-        <view class="item-number">{{item.id}}</view>
-        <view>{{item.title}}</view>
+      <view class="question-item" wx:for="{{list}}" wx:key="index">
+        <view class="item-number">{{index + 1}}</view>
+        <view>{{item.Question}}</view>
       </view>
     </navigator>
   </view>
-  <view class="no-info" wx:else>
+  <view class="no-info" wx:if="list.length<=0 && !loading">
     <image src="../../images/no-info2.png"></image>
     <view>暂无数据，先看看其他的吧！</view>
   </view>

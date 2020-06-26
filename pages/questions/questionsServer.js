@@ -29,4 +29,13 @@ export default class {
       data:params,
     })
   }
+
+    // 取消收藏
+    static removeMyQuestions(params){
+      return Request({
+        url:"Exam/RemoveMyQuestions",
+        type:"POST",
+        data:params,
+      })
+    }
 }
