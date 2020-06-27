@@ -65,7 +65,7 @@
 			</i>
 		</view>
 		</navigator>
-			<navigator   url="/pages/my/record/record" hover-class="none">
+			<!-- <navigator   url="/pages/my/record/record" hover-class="none">
 		<view class='cell mineCell'>
 			<image class="mineIcons" src="../../images/icon-hotphone.png"></image>
 			<text class="cenlie">学习统计</text>
@@ -73,7 +73,7 @@
 				<image src="../../images/icon-arrow1.png"></image>
 			</i>
 		</view>
-		</navigator>
+		</navigator> -->
 		<navigator url="/pages/my/about/about"  hover-class="none">
 		<view class='cell mineCell' data-url="/pages/biz/feedBack/feedBack" data-type="broker" bindtap="linkJump">
 			<image class="mineIcons" src="../../images/icon-attention.png"></image>

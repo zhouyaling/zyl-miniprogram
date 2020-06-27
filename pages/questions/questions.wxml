@@ -106,7 +106,7 @@
 	<!-- 答题解析 -->
 	<view class="question-result" wx:if="{{type==1}}">
 		<view class="question-result-all">
-			<text>正确答案：<text class="result-a">{{list[currQ].Answer}}</text> </text>
+			<text>正确答案：<text class="result-a">{{util.fnToUpperCase(list[currQ].Answer)}}</text> </text>
 			<text>你的答案：<text class="result-b">{{list[currQ].choosedAnswer}}</text> </text>
 		</view>
 		<view class="question-result-all title">解析：</view>
@@ -153,7 +153,7 @@
 			<van-tabbar-item icon="arrow-left">上一题</van-tabbar-item>
 			<van-tabbar-item icon="{{list[currQ].collectionStatus?'star':'star-o'}}">收藏</van-tabbar-item>
 			<van-tabbar-item icon="arrow">下一题</van-tabbar-item>
-			<van-tabbar-item icon="notes-o">答题卡</van-tabbar-item>
+			<van-tabbar-item wx:if="{{questionType!=5 && questionType!=6}}" icon="notes-o">答题卡</van-tabbar-item>
 		</van-tabbar>
 	</view>
 

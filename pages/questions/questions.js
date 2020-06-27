@@ -8,7 +8,7 @@ Page({
    */
   data: {
     type:0, // 0 答题模式 1 解析模式
-    questionType:"", // 问题来源类型： 1 章节练习 2 模拟真题 3 章节测试 4 历年真题
+    questionType:"", // 问题来源类型： 1 章节练习 2 模拟真题 3 章节测试 4 历年真题 5 我的收藏 6 我的错题
     id:0, // 试卷id
     paperid:0, // 试卷id
     chapter:"", // 章节名称
@@ -46,8 +46,23 @@ Page({
       this.setData({jieid:options.jieid})
       params = {...params,'课程id': this.data.jieid}
     }
-    this.getExamList(params);
+    if(options.jieid && options.jieid!="undefined"){
+      this.setData({jieid:options.jieid})
+      params = {...params,'课程id': this.data.jieid}
+    }
+    if(options.currQ && options.currQ!="undefined"){
+      this.setData({currQ:options.currQ?parseInt(options.currQ):0})
+    }
 
+    if(this.data.questionType=='5'){
+      this.getMyQuestionsList({questiontype:'收藏'});
+    }else if(this.data.questionType=='6'){
+      this.getMyQuestionsList({questiontype:'错题'});
+    }else {
+      this.getExamList(params);
+    }
+
+    // 显示倒计时
     if(this.data.questionType == '2' || this.data.questionType=='4'){
       this.timerShow();
     }
@@ -58,7 +73,19 @@ Page({
     let _this = this;
     let res = await Server.getExamList(params);
     console.log(res)
-    let cacheRes=[]
+    this.doQuestions(res);
+  },
+
+  // 获取收藏、错题列表
+  async getMyQuestionsList(params){
+    let res = await Server.getMyQuestions(params)
+     this.doQuestions(res);
+  },
+
+  // 处理题目列表信息
+  doQuestions(res){
+    var _this = this;
+    let cacheRes=[];
     var myCollectionIds = wx.getStorageSync('myCollectionIds');
     if(res.Result && res.Result.length>0){
       cacheRes = res.Result.map(element => {
@@ -69,7 +96,7 @@ Page({
       _this.setData({
         loading:false,
         totalQuestion:res.TotalCount,
-        title:cacheRes[0].Paper,
+        title:cacheRes[0].Section ||　cacheRes[0].Paper,
         list:cacheRes,
       })
     }else{
@@ -81,8 +108,6 @@ Page({
       })
     }
   },
-
-  
 
   // 答题
   chooseAnswer:function(e){

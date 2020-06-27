@@ -21,8 +21,14 @@ var fnIndexOf = function (arr, arg){
   return result;
 }
 
+var fnToUpperCase = function (arr){
+  return arr.toUpperCase();
+}
+
+
 module.exports = {
   includes : includes,
   isInArray: isInArray,
-  fnIndexOf:fnIndexOf
+  fnIndexOf:fnIndexOf,
+  fnToUpperCase:fnToUpperCase
 }

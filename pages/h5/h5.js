@@ -12,7 +12,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // debugger
       if(options.type==1){
         this.setData({
           src:"http://mp.weixin.qq.com/s?__biz=MzA5ODY1NDU4NA==&mid=100000115&idx=1&sn=b422f9395b04536e3ab88fbc27e90198&chksm=108f016427f888728a73f8b4a95084a8319ad20c4b2399d5787608204673fb1f0c753dd81783#rd"

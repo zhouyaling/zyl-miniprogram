@@ -28,9 +28,15 @@ Page({
         cacheMyCollectionIds.push(element.Id)
       });
 
-      debugger
+      // 缓存我的收藏ids
       wx.setStorageSync('myCollectionIds', cacheMyCollectionIds.length>0?cacheMyCollectionIds.join(','):'')
-    
+  },
+
+  // 查看收藏详情
+  goQuestions(e){
+    wx.navigateTo({
+      url: '/pages/questions/questions?questionType=5&currQ=' + e.currentTarget.dataset.id,
+    })
   },
 
   /**

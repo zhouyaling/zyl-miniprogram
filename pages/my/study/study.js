@@ -30,7 +30,6 @@ Page({
     _this.setData({loading:true})
     let res = await Server.getMyClassList({})
     console.log(res)
-    debugger
       var cacheMyClassIds =[];
       if(res.Result.length>0){
         res.Result.forEach(element => {

@@ -38,4 +38,13 @@ export default class {
         data:params,
       })
     }
+
+      // 获取我的收藏列表
+    static getMyQuestions(params){
+      return Request({
+        url: "Exam/GetMyQuestions",
+        type: "GET",
+        data: params,
+      })
+    }
 }
