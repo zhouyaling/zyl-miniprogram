@@ -180,7 +180,8 @@ Page({
       showPops:true,
       wrongQuestionIds:wrongCache.join(','),
       rightAnswerNum:cacheNum,
-      rightAnswerRate:parseFloat(cacheNum * this.data.scoreEachQuestion)
+      rightAnswerRate:parseFloat(cacheNum * this.data.scoreEachQuestion),
+      type:1
     })
    if(this.data.questionType==2 || this.data.questionType==4){
     this.saveMyExam();
