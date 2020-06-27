@@ -14,7 +14,7 @@ Page({
   onLoad: function (options) {
       if(options.type==1){
         this.setData({
-          src:"http://mp.weixin.qq.com/s?__biz=MzA5ODY1NDU4NA==&mid=100000115&idx=1&sn=b422f9395b04536e3ab88fbc27e90198&chksm=108f016427f888728a73f8b4a95084a8319ad20c4b2399d5787608204673fb1f0c753dd81783#rd"
+          src:"https://mp.weixin.qq.com/s/Az25ZerF37dJTWqAZ3W6oA"
         })
       }else if(options.type==2){
         this.setData({

@@ -35,7 +35,7 @@ Page({
    goQuestion(e){
     if(e.currentTarget.dataset.paperid || e.currentTarget.dataset.chapter || e.currentTarget.dataset.jieid){
       wx.navigateTo({
-        url: '../questions/questions?questionType='+ this.data.currentTab +'&paperid=' + e.currentTarget.dataset.paperid + '&chapter=' +  e.currentTarget.dataset.chapter+ '&jieid=' +  e.currentTarget.dataset.jieid,
+        url: '../questions/questions?questionType='+ this.data.currentTab +'&paperid=' + e.currentTarget.dataset.paperid + '&chapter=' +  e.currentTarget.dataset.chapter+ '&jieid=' +  e.currentTarget.dataset.jieid + '&className=' + this.data.className + '&scoreEachQuestion=' +  e.currentTarget.dataset.scoreeachquestion + '&examTime=' + e.currentTarget.dataset.examtime,
       })
     }
   },

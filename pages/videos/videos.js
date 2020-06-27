@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading:false,
     currentTab:"1",
     classId:"", // 班级类别id
     className:'',
@@ -98,11 +99,9 @@ Page({
   // 查询视频列表
   async getPageList(){
     let _this = this;
-    
-    // if(!this.data.classAuth){
-    //   return;
-    // }
+    this.setData({loading:true})
     let res = await Server.getPageList({'课程章节id': _this.data.activeZhangId,'课程班次id':_this.data.classId});
+    this.setData({loading:false})
       if(res.Result && res.Result.length>0){
         let cacheRes = _this.data.zhangList.map(element => {
           if(element.Id == _this.data.activeZhangId){

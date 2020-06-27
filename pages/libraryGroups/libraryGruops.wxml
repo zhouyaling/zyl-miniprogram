@@ -63,7 +63,7 @@
                 <progress percent="0" color="#19CCB0" active stroke-width="3" />
               </view> -->
 				</view>
-				<image class="icon-edit" src="../images/icon-edit.png" bindtap="goQuestion" data-paperid="{{item.Id}}"></image>
+				<image class="icon-edit" src="../images/icon-edit.png" bindtap="goQuestion" data-paperid="{{item.Id}}" data-scoreEachQuestion="{{item.ScoreEachQuestion}}" data-examTime="{{item.ExamTime}}"></image>
 			</view>
 		</view>
 	</view>

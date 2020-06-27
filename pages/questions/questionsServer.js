@@ -47,4 +47,13 @@ export default class {
         data: params,
       })
     }
+
+    // 获取我的收藏列表
+    static saveMyExam(params){
+      return Request({
+        url: "Exam/SaveMyExam",
+        type: "POST",
+        data: params,
+      })
+    }
 }

@@ -5,7 +5,7 @@
         <view>{{item.Question}}</view>
       </view>
   </view>
-  <view class="no-info" wx:if="list.length<=0 && !loading">
+  <view class="no-info" wx:if="{{list.length<=0 && !loading}}">
     <image src="../../images/no-info2.png"></image>
     <view>暂无数据，先看看其他的吧！</view>
   </view>

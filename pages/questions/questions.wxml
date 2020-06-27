@@ -3,7 +3,7 @@
 	<!-- 标题 -->
 	<view class="question-header">
 		<view class="header-left">{{title}}</view>
-		<view class="header-timer" wx:if="{{questionType=='2' || questionType=='4'}}">
+		<view class="header-timer" wx:if="{{(questionType=='2' || questionType=='4') && type==0}}">
 			<image src="../images/icon-clock.png"></image>
 			<view>{{timerText}}</view>
 		</view>
@@ -32,32 +32,39 @@
 				</block>
 				<block wx:if="{{type!= 0 && list.length>0}}">
 					<view class="question-answer-item" wx:if="{{list[currQ].A}}" wx:key="index">
-						<view class="answer-a {{list[currQ].A==list[currQ].Answer?'green':''}} {{list[currQ].Answer !=list[currQ].A && 'A'==list[currQ].choosedText?'red':''}} ">A</view>
+							<view   wx:if="{{list[currQ].QuestionType=='单选题'}}" class="answer-a {{'A'==list[currQ].Answer?'green':''}} {{list[currQ].Answer !='A' && 'A'==list[currQ].choosedAnswer?'red':''}} ">A</view>
+						<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].Answer,'A')?'green':''}} {{(!util.fnIndexOf(list[currQ].Answer,'A') && util.fnIndexOf(list[currQ].choosedAnswer,'A')) ?'red':''}} " style="border-radius:12rpx;">A</view>
 						<text class="answer-text ">{{list[currQ].A}}</text>
 					</view>
 
 					<view class="question-answer-item" wx:if="{{list[currQ].B}}" wx:key="index">
-						<view class="answer-a {{list[currQ].B==list[currQ].Answer?'green':''}} {{list[currQ].Answer !=list[currQ].B && 'B'==list[currQ].choosedText?'red':''}} ">B</view>
+							<view   wx:if="{{list[currQ].QuestionType=='单选题'}}" class="answer-a {{'B'==list[currQ].Answer?'green':''}} {{list[currQ].Answer !='B' && 'B'==list[currQ].choosedAnswer?'red':''}} ">B</view>
+						<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].Answer,'B')?'green':''}} {{(!util.fnIndexOf(list[currQ].Answer,'B') && util.fnIndexOf(list[currQ].choosedAnswer,'B')) ?'red':''}} " style="border-radius:12rpx;">B</view>
 						<text class="answer-text ">{{list[currQ].B}}</text>
 					</view>
 					<view class="question-answer-item" wx:if="{{list[currQ].C}}" wx:key="index">
-						<view class="answer-a {{list[currQ].C==list[currQ].Answer?'green':''}} {{list[currQ].Answer !=list[currQ].C && 'C'==list[currQ].choosedText?'red':''}} ">C</view>
+						<view   wx:if="{{list[currQ].QuestionType=='单选题'}}" class="answer-a {{'C'==list[currQ].Answer?'green':''}} {{list[currQ].Answer !='C' && 'C'==list[currQ].choosedAnswer?'red':''}} ">C</view>
+							<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].Answer,'C')?'green':''}} {{(!util.fnIndexOf(list[currQ].Answer,'C') && util.fnIndexOf(list[currQ].choosedAnswer,'C')) ?'red':''}} " style="border-radius:12rpx;">C</view>
 						<text class="answer-text ">{{list[currQ].C}}</text>
 					</view>
 					<view class="question-answer-item" wx:if="{{list[currQ].D}}" wx:key="index">
-						<view class="answer-a {{list[currQ].D==list[currQ].Answer?'green':''}} {{list[currQ].Answer !=list[currQ].D && 'D'==list[currQ].choosedText?'red':''}} ">D</view>
+						<view  wx:if="{{list[currQ].QuestionType=='单选题'}}" class="answer-a {{'D'==list[currQ].Answer?'green':''}} {{list[currQ].Answer !='D' && 'D'==list[currQ].choosedAnswer?'red':''}} ">D</view>
+							<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].Answer,'D')?'green':''}} {{(!util.fnIndexOf(list[currQ].Answer,'D') && util.fnIndexOf(list[currQ].choosedAnswer,'D')) ?'red':''}} " style="border-radius:12rpx;">D</view>
 						<text class="answer-text ">{{list[currQ].D}}</text>
 					</view>
 					<view class="question-answer-item" wx:if="{{list[currQ].E}}" wx:key="index">
-						<view class="answer-a {{list[currQ].E==list[currQ].Answer?'green':''}} {{list[currQ].Answer !=list[currQ].E && 'E'==list[currQ].choosedText?'red':''}} ">E</view>
+						<view  wx:if="{{list[currQ].QuestionType=='单选题'}}" class="answer-a {{'E'==list[currQ].Answer?'green':''}} {{list[currQ].Answer !='E' && 'E'==list[currQ].choosedAnswer?'red':''}} ">E</view>
+							<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].Answer,'E')?'green':''}} {{(!util.fnIndexOf(list[currQ].Answer,'E') && util.fnIndexOf(list[currQ].choosedAnswer,'E')) ?'red':''}} " style="border-radius:12rpx;">E</view>
 						<text class="answer-text ">{{list[currQ].E}}</text>
 					</view>
 					<view class="question-answer-item" wx:if="{{list[currQ].F}}" wx:key="index">
-						<view class="answer-a {{list[currQ].F==list[currQ].Answer?'green':''}} {{list[currQ].Answer !=list[currQ].F && 'F'==list[currQ].choosedText?'red':''}} ">F</view>
+						<view  wx:if="{{list[currQ].QuestionType=='单选题'}}" class="answer-a {{'F'==list[currQ].Answer?'green':''}} {{list[currQ].Answer !='F' && 'F'==list[currQ].choosedAnswer?'red':''}} ">F</view>
+							<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].Answer,'F')?'green':''}} {{(!util.fnIndexOf(list[currQ].Answer,'F') && util.fnIndexOf(list[currQ].choosedAnswer,'F')) ?'red':''}} " style="border-radius:12rpx;">F</view>
 						<text class="answer-text ">{{list[currQ].F}}</text>
 					</view>
 					<view class="question-answer-item" wx:if="{{list[currQ].G}}" wx:key="index">
-						<view class="answer-a {{list[currQ].G==list[currQ].Answer?'green':''}} {{list[currQ].Answer !=list[currQ].A && 'G'==list[currQ].choosedText?'red':''}} ">G</view>
+						<view  wx:if="{{list[currQ].QuestionType=='单选题'}}" class="answer-a {{'G'==list[currQ].Answer?'green':''}} {{list[currQ].Answer !='G' && 'G'==list[currQ].choosedAnswer?'red':''}} ">G</view>
+							<view wx:if="{{list[currQ].QuestionType=='多选题'}}" class="answer-a {{util.fnIndexOf(list[currQ].Answer,'G')?'green':''}} {{(!util.fnIndexOf(list[currQ].Answer,'G') && util.fnIndexOf(list[currQ].choosedAnswer,'G')) ?'red':''}} " style="border-radius:12rpx;">G</view>
 						<text class="answer-text ">{{list[currQ].G}}</text>
 					</view>
 				</block>
@@ -106,7 +113,7 @@
 	<!-- 答题解析 -->
 	<view class="question-result" wx:if="{{type==1}}">
 		<view class="question-result-all">
-			<text>正确答案：<text class="result-a">{{util.fnToUpperCase(list[currQ].Answer)}}</text> </text>
+			<text>正确答案：<text class="result-b">{{util.fnToUpperCase(list[currQ].Answer)}}</text> </text>
 			<text>你的答案：<text class="result-b">{{list[currQ].choosedAnswer}}</text> </text>
 		</view>
 		<view class="question-result-all title">解析：</view>
@@ -125,7 +132,7 @@
 					<view> 总共{{totalQuestion}}题 </view>
 					<view wx:if="{{type==1}}"> 答对{{rightAnswerNum}}题</view>
 				</view>
-				<view wx:if="{{type==1}}" class="grade">{{rightAnswerRate}}分</view>
+				<view wx:if="{{type==1 && (questionType==2 || questionType==4)}}" class="grade">{{rightAnswerRate}}分</view>
 			</view>
 			<view class="popup-card-content">
 				<block wx:if="{{type==0}}">

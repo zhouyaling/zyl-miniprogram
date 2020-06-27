@@ -33,5 +33,10 @@
         </block>
       </van-collapse-item>
     </van-collapse>
+  	<!-- 暂无数据 -->
+    <view class="no-info" style="margin-top:0rpx" wx:if="{{zhangList.length<=0}}">
+      <image src="../images/no-info2.png"></image>
+      <view>暂无数据，先看看其他的吧！</view>
+    </view>
   </view>
 </view>

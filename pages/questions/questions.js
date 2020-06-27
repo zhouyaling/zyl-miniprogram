@@ -14,6 +14,7 @@ Page({
     chapter:"", // 章节名称
     jieid:"", // 小结id
     title:"", // 名称
+    className:'', // 课程班次名称
     answeredStatus:false, // 是否提交答题
     showPops:false, // 展示答题卡弹窗
     currQ:0, // 当前题目
@@ -24,6 +25,8 @@ Page({
     timer:null, // 倒计时
     timerText: "00:00:00",// 倒计时文本
     wrongQuestionIds:"", // 错题id集合
+    examTime:0, // 考试时间
+    scoreEachQuestion:0, // 每题分数
   },
 
   /**
@@ -46,14 +49,19 @@ Page({
       this.setData({jieid:options.jieid})
       params = {...params,'课程id': this.data.jieid}
     }
-    if(options.jieid && options.jieid!="undefined"){
-      this.setData({jieid:options.jieid})
-      params = {...params,'课程id': this.data.jieid}
+    if(options.className && options.className!="undefined"){
+      this.setData({className:options.className})
+      params = {...params,'课程班次': this.data.className}
     }
     if(options.currQ && options.currQ!="undefined"){
       this.setData({currQ:options.currQ?parseInt(options.currQ):0})
     }
-
+    if(options.scoreEachQuestion && options.scoreEachQuestion!="undefined"){
+      this.setData({scoreEachQuestion:options.scoreEachQuestion})
+    }
+    if(options.examTime && options.examTime!="undefined"){
+      this.setData({examTime:options.examTime})
+    }
     if(this.data.questionType=='5'){
       this.getMyQuestionsList({questiontype:'收藏'});
     }else if(this.data.questionType=='6'){
@@ -63,7 +71,7 @@ Page({
     }
 
     // 显示倒计时
-    if(this.data.questionType == '2' || this.data.questionType=='4'){
+    if((this.data.questionType == '2' || this.data.questionType=='4') && this.data.type==0){
       this.timerShow();
     }
   },
@@ -138,18 +146,9 @@ Page({
   // 提交答案
   submitAnswer:function(){
     if(!this.data.answeredStatus){
-      Toast.loading({
-        mask: false,
-        forbidClick:true,
-        duration:500,
-        message: '答案提交中...',
-      });
-      this.setData({
-        answeredStatus:true,
-        showPops:true
-      })
       this.staticsRightAnswer();
     }else{
+      
         Toast.loading({
           mask: false,
           forbidClick:true,
@@ -159,8 +158,14 @@ Page({
       }
   },
 
+
+
+
   // 统计答案
   staticsRightAnswer:function (){
+    wx.showLoading({
+      title: '答案提交中...',
+    })
     let cacheNum  =0;
     let wrongCache = [];
     this.data.list.forEach(element => {
@@ -171,13 +176,34 @@ Page({
         }
     });
     this.setData({
+      answeredStatus:true,
+      showPops:true,
       wrongQuestionIds:wrongCache.join(','),
       rightAnswerNum:cacheNum,
-      rightAnswerRate:parseFloat(cacheNum / this.data.totalQuestion).toFixed(2) * 100
+      rightAnswerRate:parseFloat(cacheNum * this.data.scoreEachQuestion)
     })
-
+   if(this.data.questionType==2 || this.data.questionType==4){
+    this.saveMyExam();
+   }
+   if(this.data.wrongQuestionIds.length>0){
     this.addMyQuestions({questiontype:'错题',questionids:this.data.wrongQuestionIds});
+   }
   },
+
+    // 保存答案数据
+    async saveMyExam(){
+      let _this = this;
+      var params = {paperid:this.data.paperid,score:this.data.rightAnswerRate}
+      var res = await Server.saveMyExam(params);
+      if(res.Message==null){
+        wx.hideLoading();
+        wx.showToast({
+          title: '提交成功',
+          icon: 'success',
+          duration: 1000
+        })
+      }
+    },
 
   // 查看答题解析、关闭弹窗
   showAnswerDetail: function(e){
@@ -234,7 +260,7 @@ Page({
 
     // 提示已经答完
     if(this.data.currQ==this.data.totalQuestion-1){
-      if(this.data.type==1 ){
+      if(this.data.type==1 || this.data.questionType==5 || this.data.questionType==6){
         Dialog.alert({
           className:'test',
           message: '已经是最后一题啦~',
@@ -285,7 +311,6 @@ Page({
 
   // 添加收藏或者错题
   async addMyQuestions(params){
-    let _this = this
     var res = await Server.saveMyQuestions(params);
     if(params.questions=='错题'){
       return
@@ -295,24 +320,13 @@ Page({
           mask: false,
           forbidClick:true,
           message: '收藏成功!',
-          duration:1000,
+          duration:500,
           onClose:function(){
           }
         });
-      this.setData({
-        collection:!this.data.collection
-      })
-      var qq =[];
-      qq = _this.data.list.map((element,index)=>{
-        if(index == _this.data.currQ){
-          return {...element,collectionStatus:!element.collectionStatus}
-        }else{
-          return element
-        }
-      })
-      this.setData({
-        list:qq
-     })
+    
+      this.resetListStatus()
+      this.resetMyCollectionIds('add',params.questionids)
     }
   },
 
@@ -324,13 +338,46 @@ Page({
         mask: false,
         forbidClick:true,
         message: '取消成功!',
-        duration:1000,
+        duration:500,
         onClose:function(){
         }
       });
-      this.setData({
-        collection:!this.data.collection
-      })
+      this.resetListStatus()
+      this.resetMyCollectionIds('delete',params.questionids)
+     
+    }
+  },
+
+  // 更新list中收藏状态
+  resetListStatus:function (){
+    let _this = this;
+    var qq =[];
+    qq = _this.data.list.map((element,index)=>{
+      if(index == _this.data.currQ){
+        return {...element,collectionStatus:!element.collectionStatus}
+      }else{
+        return element
+      }
+    })
+    this.setData({ list:qq })
+  },
+
+  // 更新缓存收藏ids
+  resetMyCollectionIds:function(type,id){
+    var myCollectionIds = wx.getStorageSync('myCollectionIds') || "";
+    var newIds = [];
+    if(type=='add' &&  myCollectionIds.indexOf(id)<0){
+      newIds = myCollectionIds.length>0?myCollectionIds.split(','):[];
+      newIds.push(id);
+      wx.setStorageSync('myCollectionIds', newIds.join(','))
+    }
+    if(type=='delete' &&  myCollectionIds.indexOf(id)>-1){
+      myCollectionIds.split(',').forEach(element => {
+        if(element!=id){
+          newIds.push(element)
+        }
+      });
+      wx.setStorageSync('myCollectionIds', newIds.join(','))
     }
   },
 
@@ -338,7 +385,7 @@ Page({
   // 考试倒计时
   timerShow:function (){
     let _this = this;
-    var counttime=90 * 60;
+    var counttime=this.data.examTime * 60;
     _this.setData({
         timer:setInterval(function (){
                 if(counttime>=0){
