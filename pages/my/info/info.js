@@ -22,7 +22,7 @@ Page({
      }else{
       this.setData({
         userInfo:app.globalData.userInfo,
-        mobile:app.globalData.mobile
+        mobile:app.globalData.mobile || wx.getSystemInfoSync(Config.wxMobile)
       })
      }
   },

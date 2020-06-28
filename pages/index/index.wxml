@@ -38,19 +38,12 @@
 		</view>
 	</view> 
 
-	<!-- <view class="news-bar">
-		<view class="news-type">
-			<text>即时</text>
-			<text style="color:#E95321">快讯</text>
-		</view>
-		<view class="news-content">护士资格证考试开班啦</view>
-	</view>
 	<view class="news-bar-scroll">
 		<van-notice-bar
 		left-icon="volume"
 		speed="36"
 		text="嘉护教育，开班啦!致力于分享最有价值的医护资讯,提供优质课程。"
-	/>
+		/>
 	</view>
 	
 <!-- 精品课程 -->

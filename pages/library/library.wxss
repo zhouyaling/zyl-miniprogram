@@ -125,9 +125,6 @@ justify-content: center;
   background-color: #19CCB0;
 }
 
-.library-list-item .icon-check image{
-
-}
 
 .library-list-item .icon-edit{
   width: 68rpx;

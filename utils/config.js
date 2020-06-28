@@ -1,13 +1,13 @@
 // 基础共同的配置
 let baseConfig = {
   // auth名，登陆后得到的令牌缓存的名字
-  token:'token',
   authToken: 'authToken',
   jsCodeKey: 'jsCodeName',
   userClasses: 'userClasses', // 授权的班级id集合
   phoneNoKey: 'phoneNo',
   sessionKey: 'wxSession',
   openIdKey: 'openId',
+  mobile:'wxMobile', 
   //推荐人id
   referrerIdKey: 'referrerId',
   userInfoKey: 'userInfo',

@@ -55,6 +55,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    mobile:null
+    mobile:null,
+    isReturnLogin:false,
   }
 })

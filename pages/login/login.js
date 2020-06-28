@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    from:"", // 来源
     userInfo:{},
     showModal:false, // 微信确认授权弹窗
     isUserAuth:false, // 是否已授权用户信息
@@ -23,16 +24,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 判断是否同意授权
     let _this = this;
-      wx.getSetting({
-        success(res){
-          let authorizeList = res.authSetting;
-          _this.setData({
-              isUserAuth:authorizeList["scope.userInfo"]
-            })
-        }
-      })
+    _this.setData({from:options.from || "" })
+    // 判断是否同意授权
+    wx.getSetting({
+      success(res){
+        let authorizeList = res.authSetting;
+        _this.setData({
+            isUserAuth:authorizeList["scope.userInfo"]
+          })
+      }
+    })
   },
 
   /**
@@ -77,15 +79,13 @@ Page({
         "iv":this.data.iv,
         "token":wx.getStorageSync(Config.authToken)
       };
-      console.log("解密手机号",JSON.stringify(params))
       Request({
         url: "Weixin/GetPhone",
         type: "post",
         data: params
       }).then((data) => {
-        console.log('解密手机号结果,',data)
         if(data.mobile){
-          console.log('解密手机号结果mobile,',data.mobile)
+          wx.setStorageSync(Config.wxMobile, data.mobile)
           app.globalData.mobile = data.mobile;
           app.globalData.userInfo = _this.data.userInfo;
           wx.navigateBack({
@@ -148,23 +148,18 @@ Page({
       title: '数据获取中...',
     });
     const params = {
-      "code": wx.getStorageSync(Config.jsCodeKey),
-      // "rawData":this.data.rawData,
-      // "signature":this.data.signature,
-      // encryptedData:this.data.encryptedData,
-      // iv:this.data.iv
+      "code": wx.getStorageSync(Config.jsCodeKey)
     };
     Request({
       url: "Weixin/Lonin",
       type: "post",
       data: params
     }).then((data) => {
-      //wx.setStorageSync(Config.openIdKey, data.openid)
-      //wx.setStorageSync(Config.sessionKey, data.session_key)
       wx.setStorageSync(Config.authToken, data.token);
       wx.setStorageSync(Config.userClasses, data.userclasses);
       if(data.mobile!="" && data.mobile!=null){
-        app.globalData.mobile = data.mobile
+        wx.setStorageSync(Config.wxMobile, data.mobile)
+        app.globalData.mobile = data.mobile;
         app.globalData.userInfo = _this.data.userInfo;
         wx.navigateBack({
           delta: 1

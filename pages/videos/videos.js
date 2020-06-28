@@ -57,16 +57,17 @@ Page({
     }
     this.getZhangList()
 
-    var loginStatus = wx.getStorageSync('authToken')
-    if(!loginStatus){
-      wx.showModal({
-        title: '提示',
-        showCancel: false,
-        content: "您还未登录",
-        success: function (res) { }
-      })
-      return;
-    }
+    // var loginStatus = wx.getStorageSync('authToken')
+    // if(!loginStatus){
+    //   wx.showModal({
+    //     title: '提示',
+    //     showCancel: false,
+    //     content: "您还未登录",
+    //     success: function (res) { }
+    //   })
+    //   return;
+    // }
+    
     // var userClass = wx.getStorageSync('userClasses');
     // if(userClass.indexOf(this.data.classId)<0){
     //   this.setData({classAuth:false})
