@@ -108,14 +108,13 @@ Page({
       params = {...params,'试卷类型':'历年真题'};
     }
     let res = await Server.getPaperList(params);
-      if(res.Result && res.Result.length>0){
+      if(res.Tag==1){
         if(this.data.currentTab=='2'){
           this.setData({
             loading:false,
             examList:res.Result
           })
         }
-        
         else if(this.data.currentTab=='4'){
           this.setData({
             loading:false,
@@ -125,14 +124,11 @@ Page({
         }
       }else{
         this.setData({loading:false})
-        if(res.Result==null){
-          wx.showModal({
-            title: '提示',
-            showCancel: false,
-            content: res.Message,
-            success: function (res) { }
+          wx.showToast({
+            title:  res.Message,
+            icon: 'none',
+            duration:  1500
           })
-        }
       }
   },
   

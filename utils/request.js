@@ -62,18 +62,17 @@ export default function(obj) {
                 let pages = getCurrentPages();
                 if (app.globalData.isReturnLogin !== true) {
                 app.globalData.isReturnLogin = true;
-                
-                  wx.navigateTo({
-                    url: '/pages/login/login?from=' + pages[pages.length - 1].route,
-                  })
-                  setTimeout(() => {
-                    app.globalData.isReturnLogin = false;
-                  }, 2000)
+                  // wx.navigateTo({
+                  //   url: '/pages/login/login?from=' + pages[pages.length - 1].route,
+                  // })
+                  // setTimeout(() => {
+                  //   app.globalData.isReturnLogin = false;
+                  // }, 2000)
                 } else {
                   //解决页面触发太多需要校验token的请求，重复跳转到登录页问题
-                  setTimeout(() => {
-                    app.globalData.isReturnLogin = false;
-                  }, 2000 )
+                  // setTimeout(() => {
+                  //   app.globalData.isReturnLogin = false;
+                  // }, 2000 )
                 }
             }
           }

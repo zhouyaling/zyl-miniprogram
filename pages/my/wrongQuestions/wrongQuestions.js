@@ -22,8 +22,9 @@ Page({
     let _this = this;
     _this.setData({loading:true})
     let res = await Server.getMyQuestions({questiontype:'错题'})
+    this.setData({loading:false})
       if(res.Result){
-        this.setData({list:res.Result,loading:false})
+        this.setData({list:res.Result})
       }
     
   },

@@ -75,7 +75,6 @@ swiper-item {
 .topNav{
   width: 100%;
   min-height: 100rpx;
-  margin-top: 0rpx;
   position: fixed;
   top: 0;
   z-index: 999;
@@ -100,6 +99,11 @@ swiper-item {
   display: inline-block;
   border-bottom: 4rpx solid #19CCB0;
   color: #19CCB0;
+}
+
+.van-hairline--top-bottom:after{
+  border-width: none!important;
+  border-color: #19CCB0!important;
 }
 
 .listContent{

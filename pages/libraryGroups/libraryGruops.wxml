@@ -23,7 +23,7 @@
 						<van-icon wx:if="{{!item.status}}" name="arrow-down" color="#ffffff" />
 					</view>
 				</view>
-				<view class="item-content">
+				<view class="item-content" data-item="{{item}}" bindtap="arrowClick">
 					<view class="item-title">{{item.Chapter}}</view>
 					<!-- <view class="item-subtitle">{{item.totalInfo.actived}}/{{item.totalInfo.total}}道</view> -->
 					<!-- <view class="progress-box">

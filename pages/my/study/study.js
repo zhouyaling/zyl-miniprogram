@@ -29,16 +29,17 @@ Page({
     let _this = this;
     _this.setData({loading:true})
     let res = await Server.getMyClassList({})
-    console.log(res)
       var cacheMyClassIds =[];
-      if(res.Result.length>0){
+      if(res.Result && res.Result.length>0){
         res.Result.forEach(element => {
           cacheMyClassIds.push(element.Id)
         });
-      }
-      if(res.Result){
-        this.setData({
+        _this.setData({
           list:res.Result,
+          loading:false,
+        })
+      }else{
+        _this.setData({
           loading:false,
         })
       }

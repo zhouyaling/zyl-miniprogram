@@ -7,7 +7,7 @@ let baseConfig = {
   phoneNoKey: 'phoneNo',
   sessionKey: 'wxSession',
   openIdKey: 'openId',
-  mobile:'wxMobile', 
+  wxMobile:'wxMobile', 
   //推荐人id
   referrerIdKey: 'referrerId',
   userInfoKey: 'userInfo',

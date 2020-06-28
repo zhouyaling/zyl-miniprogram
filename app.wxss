@@ -17,7 +17,7 @@ page{
 
 } 
 
-/* tab样式重置 */
+/* tab样式重置 start */
 .tab-reset{
   font-size: 30rpx!important;
   color:#777!important;
@@ -40,6 +40,12 @@ page{
   color:#444!important;
   font-weight: 600!important;
 }
+
+.van-tabs__line{
+  bottom: 1px!important;
+}
+
+/* tab样式重置 end */
 
 .no-info{
   text-align: center;

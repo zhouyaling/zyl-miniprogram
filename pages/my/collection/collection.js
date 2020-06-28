@@ -20,14 +20,13 @@ Page({
   async getMyQuestions(){
     let _this = this;
     let res = await Server.getMyQuestions({questiontype:'收藏'})
+    var cacheMyCollectionIds = [];
       if(res.Result){
         this.setData({list:res.Result})
+        res.Result.forEach(element => {
+          cacheMyCollectionIds.push(element.Id)
+        });
       }
-      var cacheMyCollectionIds = [];
-      res.Result.forEach(element => {
-        cacheMyCollectionIds.push(element.Id)
-      });
-
       // 缓存我的收藏ids
       wx.setStorageSync('myCollectionIds', cacheMyCollectionIds.length>0?cacheMyCollectionIds.join(','):'')
   },

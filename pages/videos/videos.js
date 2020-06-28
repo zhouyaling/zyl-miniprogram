@@ -103,16 +103,24 @@ Page({
     this.setData({loading:true})
     let res = await Server.getPageList({'课程章节id': _this.data.activeZhangId,'课程班次id':_this.data.classId});
     this.setData({loading:false})
-      if(res.Result && res.Result.length>0){
-        let cacheRes = _this.data.zhangList.map(element => {
-          if(element.Id == _this.data.activeZhangId){
-              element.children = res.Result,
-              element.requested = true
-          }
-          return element;
-        });
-        _this.setData({
-          zhangList:cacheRes
+      if(res.Tag==1){
+        if(res.Result && res.Result.length>0){
+          let cacheRes = _this.data.zhangList.map(element => {
+            if(element.Id == _this.data.activeZhangId){
+                element.children = res.Result,
+                element.requested = true
+            }
+            return element;
+          });
+          _this.setData({
+            zhangList:cacheRes
+          })
+        }
+      }else{
+        wx.showToast({
+          title: res.Message,
+          icon: 'none',
+          duration: 1500
         })
       }
   },
