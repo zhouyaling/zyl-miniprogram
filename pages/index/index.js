@@ -7,7 +7,6 @@ Page({
   data: {
     currentTab: 1,
     mark:false,
-    loading:false,
     videoType:[], // 栏目列表
     bannerList:[
       {Id:1,imgurl:""}],
@@ -21,10 +20,6 @@ Page({
   onLoad: function () {
     this.getVideoType();
     this.getBanner();
-    this.setData({
-      list:[1,2,3,4],
-      loading:true
-    });
     // if (app.globalData.userInfo) {
     //   this.setData({
     //     userInfo: app.globalData.userInfo,
@@ -72,13 +67,9 @@ Page({
   async getClassList(){
     let _this = this;
     let res = await Server.getClassList({'课程专题Code':_this.data.currentTab});
-      if(res.Result && res.Result.length>0){
+      if(res.Result){
         _this.setData({
-          listSpec:res.Result,
-        })
-      }else{
-        _this.setData({
-          listSpec:[],
+          listSpec: res.Result.length>0 ? res.Result:[],
         })
       }
   },
@@ -110,10 +101,18 @@ Page({
   // 切换顶部专题
   handlerOnChangeTab:function(event){
     this.setData({
-      list:[1,2,3,4],
-      loading:true,
+      list:[],
       currentTab:event.detail.name
     });
     this.getClassList()
-  }
+  },
+
+  
+  /**
+  * 页面相关事件处理函数--监听用户下拉动作
+  */
+  onPullDownRefresh: function() {
+    this.getClassList()
+    wx.stopPullDownRefresh();
+  },
 })

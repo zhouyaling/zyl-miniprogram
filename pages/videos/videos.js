@@ -19,28 +19,6 @@ Page({
     list:[]
   },
 
-  // 切换手风琴卡
-  onChange(event) {
-    this.setData({
-      activeZhangId: event.detail,
-    });
-
-    this.data.zhangList.forEach(element => {
-        if(element.Id==this.data.activeZhangId && !element.requested){
-          this.getPageList()
-        }
-    });
-  
-  },
-
-  // 切换顶部菜单
-  onChangeNav(event) {
-    this.setData({
-      currentTab:event.detail.name
-    });
-  },
-
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -78,6 +56,28 @@ Page({
     //     success: function (res) { }
     //   })
     // }
+  },
+
+  
+  // 切换手风琴卡
+  onChange(event) {
+    this.setData({
+      activeZhangId: event.detail,
+    });
+
+    this.data.zhangList.forEach(element => {
+        if(element.Id==this.data.activeZhangId && !element.requested){
+          this.getPageList()
+        }
+    });
+  
+  },
+
+  // 切换顶部菜单
+  onChangeNav(event) {
+    this.setData({
+      currentTab:event.detail.name
+    });
   },
 
   // 查询章节列表
@@ -166,7 +166,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
   },
 
   /**

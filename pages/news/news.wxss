@@ -164,6 +164,12 @@ swiper-item {
   white-space: nowrap;
 }
 
+.list-item-text .text-tag-title{
+  font-size: 22rpx;
+  margin-top: 18rpx;
+  color: #8d8d8d;
+}
+
 .list-item-text .text-desc{
   font-family: PingFangSC;
   font-size: 22rpx;

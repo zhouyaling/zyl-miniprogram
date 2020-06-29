@@ -18,3 +18,12 @@ page{
   background-color: #fff;
   margin-bottom: 150rpx;
 }
+
+.btn-logout{
+  background-color: #19CCB0;
+  font-size: 32rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  color: #ffffff;
+  text-align: center;
+}

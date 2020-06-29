@@ -8,4 +8,4 @@
   </van-cell-group>
 </view>
 
-<van-button type="primary" block color="#19CCB0"  bind:click="loginOut" custom-style="font-size:32rpx">退出登录</van-button>
+<view bindtap="loginOut" class="btn-logout">退出登录</view>

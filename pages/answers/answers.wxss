@@ -218,7 +218,3 @@ page{
 .answer-text.red{
   /* color: #CB534E; */
 }
-
-.van-button__text{
-  color: #19CCB0!important;
-}

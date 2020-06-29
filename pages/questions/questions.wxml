@@ -136,10 +136,10 @@
 			</view>
 			<view class="popup-card-content">
 				<block wx:if="{{type==0}}">
-				<view wx:for="{{list}}" wx:key="{{index}}" class="answer-a answer-number {{item.choosedAnswer ?'green-0':''}}">{{index + 1}}</view>
+				<view wx:for="{{list}}" wx:key="index" class="answer-a answer-number {{item.choosedAnswer ?'green-0':''}}">{{index + 1}}</view>
 				</block>
 				<block wx:if="{{type==1}}">
-				<view wx:for="{{list}}" wx:key="{{index}}" class="answer-a answer-number {{item.choosedAnswer && item.choosedAnswer == item.Answer?'green-0':''}}  {{item.choosedAnswer && item.choosedAnswer != item.Answer?'red':''}}">{{index + 1}}</view>
+				<view wx:for="{{list}}" wx:key="index" class="answer-a answer-number {{item.choosedAnswer && item.choosedAnswer == item.Answer?'green-0':''}}  {{item.choosedAnswer && item.choosedAnswer != item.Answer?'red':''}}">{{index + 1}}</view>
 				</block>
 			</view>
 			<view wx-if="{{ type==0 && !answeredStatus}}" class="popup-card-footer">

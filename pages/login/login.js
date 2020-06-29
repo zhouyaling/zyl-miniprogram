@@ -11,7 +11,6 @@ Page({
     from:"", // 来源
     userInfo:{},
     showModal:false, // 微信确认授权弹窗
-    isUserAuth:false, // 是否已授权用户信息
     loginStatus:true, // 是否勾选
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     encryptedData:"",
@@ -26,15 +25,6 @@ Page({
   onLoad: function (options) {
     let _this = this;
     _this.setData({from:options.from || "" })
-    // 判断是否同意授权
-    wx.getSetting({
-      success(res){
-        let authorizeList = res.authSetting;
-        _this.setData({
-            isUserAuth:authorizeList["scope.userInfo"]
-          })
-      }
-    })
   },
 
   /**

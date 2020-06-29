@@ -173,8 +173,8 @@ swiper-item {
   color: #444;
   display: flex;
   align-items: center;
-  margin-bottom: 40rpx;
-  margin-top: 20rpx;
+  margin-bottom: 30rpx;
+  margin-top: 16rpx;
 }
 
 .card-bar-icon {
@@ -295,7 +295,7 @@ swiper-item {
 
 .news-bar-scroll {
   width: 100%;
-  margin-top:40rpx
+  margin-top:34rpx
 }
 
 .news-bar {

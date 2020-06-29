@@ -148,13 +148,11 @@ Page({
     if(!this.data.answeredStatus){
       this.staticsRightAnswer();
     }else{
-      
-        Toast.loading({
-          mask: false,
-          forbidClick:true,
-          duration:500,
-          message: '您已提交过答案了哦~',
-        });
+        wx.showToast({
+          title: '您已提交过答案了哦~',
+          icon: 'success',
+          duration: 1000
+        })
       }
   },
 

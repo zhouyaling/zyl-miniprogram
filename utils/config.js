@@ -71,8 +71,8 @@ let envConfig = {
     // api接口主机地址，演示阶段，先用本地，且开启mock
     //https://rend-sale-test.tq-service.com/app/ 
     // http://118.190.217.38/ys_jhjy/
-    host: 'https://feidie.tech/ys_jhjy_api/',
-    ossHost: 'https://zmzj-pro.oss-cn-shenzhen.aliyuncs.com/mideadc-miniprogram/',
+    host:'https://jhjy.jiahujiaoyu.cn/ys_jhjy_api/',  // 'https://feidie.tech/ys_jhjy_api/', https://jhjy.jiahujiaoyu.cn/ys_jhjy_api/
+    ossHost: 'https://zmzj-pro.oss-cn-shenzhen.aliyuncs.com/mideadc-miniprogram/', 
     IntergralH5Url: 'https://jfsc.mideazy.com',
     // 只能在本地生效
     mock: false,

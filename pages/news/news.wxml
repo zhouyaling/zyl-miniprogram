@@ -20,23 +20,21 @@
 	<!-- 列表 -->
 	<view class="listContent">
 			<view>
-				<view class="list-item" wx:for="{{list}}"  wx:key="index">
-					<navigator url="/pages/details/details?id={{item.Id}}" hover-class="none">
-						<view class="list-item-image">
+				<view class="list-item" wx:for="{{list}}"  wx:key="index" bindtap="goDetail" data-id="{{item.Id}}">
+							<view class="list-item-image">
 							<image src="{{item.ThumbImage?item.ThumbImage:'../images/default-pic.jpg'}}"></image>
 						</view>
-					</navigator>
+				
 					<view class="list-item-text">
-						<navigator url="/pages/details/details?id={{item.Id}}" hover-class="none">
 							<view class="text-title">{{item.NewsTitle}}</view>
-						</navigator>
-						<view class="text-desc">
-						<view>{{item.NewsDate}}</view>
-							<view class="text-zan">
-								<image src="../images/icon-view.png"></image>
-								{{item.ViewTimes}}
+							<view class="text-tag-title">{{item.NewsTag?item.NewsTag:''}}</view>
+							<view class="text-desc">
+								<view>{{item.NewsDate}}</view>
+								<view class="text-zan">
+									<image src="../images/icon-view.png"></image>
+									{{item.ViewTimes}}
+								</view>
 							</view>
-						</view>
 					</view>
 				</view>
 			</view>

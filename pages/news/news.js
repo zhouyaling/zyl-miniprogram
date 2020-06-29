@@ -77,10 +77,20 @@ Page({
       }
   },
 
+  // 查看详情
+  goDetail(e){
+    wx.navigateTo({
+      url: '/pages/details/details?id=' + e.currentTarget.dataset.id,
+    })
+  },
+
   /**
   * 页面相关事件处理函数--监听用户下拉动作
   */
   onPullDownRefresh: function() {
+    this.setData({pageIndex:1,list:[]})
+    this.getNewsList();
+    wx.stopPullDownRefresh();
   },
 
   /**

@@ -8,7 +8,7 @@
  <view class="company-info">
   <view>
       <van-cell title="235-58582587" is-link icon="phone-o" bindtap="Tel" />
-      <van-cell title="重庆市江北区石马河街道" is-link icon="location-o" link-type="navigateTo"
+      <van-cell title="重庆市渝中区英利中心1号34-5" is-link icon="location-o" link-type="navigateTo"
         url="/pages/dashboard/index" />
   </view>
  </view>

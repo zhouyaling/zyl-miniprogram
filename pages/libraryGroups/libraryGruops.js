@@ -186,7 +186,12 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    if(this.data.currentTab==1 || this.data.currentTab==3){
+      this.getZhangList();
+    }else{
+      this.getPaperList()
+    }
+    wx.stopPullDownRefresh();
   },
 
   /**

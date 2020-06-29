@@ -63,3 +63,7 @@ page{
 .color-green{
   color: #19CCB0;
 }
+
+.color-red{
+  color: #F83107;
+}

@@ -19,8 +19,6 @@ export default function(obj) {
   parameter.headers.ApiToken = wx.getStorageSync(Config.authToken) || '';
   if (parameter.url.indexOf('Weixin/Lonin') == -1) {
 
-   
-    // parameter.headers.userId = wx.getStorageSync(Config.userIdKey) || '';
   }
 
 //判断头类型是否json,如果是则需要转一下参数类型
@@ -30,13 +28,15 @@ export default function(obj) {
 
   return new Promise(function(resolve, reject) {
     console.log('发送请求:', parameter.url, '参数:', parameter)
+    console.log(Config.apiAppName(parameter.url))
     wx.request({
       header: parameter.headers,
       method: parameter.type,
       url: Config.apiAppName(parameter.url),
       dataType: parameter.dataType,
       data: parameter.data,
-      fail: function() {
+      fail: function(e) {
+        console.log(e)
         reject("失败了");
         wx.showToast({
           title: "服务请求超时",
@@ -45,6 +45,7 @@ export default function(obj) {
         })
       },
       success: function (res) {
+        console.log(res)
         let  data = res.data;
         let statusCode = res.statusCode;
         console.log('后端返回数据:', data)

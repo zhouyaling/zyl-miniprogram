@@ -14,15 +14,3 @@
   </view>
  </view>
 </view>
-<!-- <view>
-<van-steps
-  steps="{{ steps }}"
-  active="{{ -1 }}"
-  active-icon="clock-o"
-  active-color="#444444"
-  inactive-color="#444444"
-  direction="vertical"
-  bind:click-step="sss"
-  desc-class="desc"
-/>
-</view> -->

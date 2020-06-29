@@ -1,4 +1,3 @@
-import Config from '../../../utils/config.js'
 var app = getApp();
 
 Page({
@@ -21,10 +20,10 @@ Page({
         url: '/pages/login/login',
       })
      }else{
-       var mb =  wx.getStorageSync(Config.wxMobile);
+       var mb =  wx.getStorageSync("wxMobile");
       this.setData({
         userInfo:app.globalData.userInfo,
-      mobile:app.globalData.mobile 
+        mobile:app.globalData.mobile || mb
       })
      }
   },
