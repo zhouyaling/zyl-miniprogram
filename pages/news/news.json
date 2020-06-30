@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "资讯",
   "enablePullDownRefresh": true,
   "enableReachBottom": true,
   "usingComponents": {}

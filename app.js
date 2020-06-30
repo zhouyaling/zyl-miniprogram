@@ -1,36 +1,12 @@
 //app.js
 // import plv from '/lib/polyv-sdk/index';
+import tabBarList from './utils/tabBarList' 
+import Request from './utils/request'
 
 App({
   onLaunch: function () {
-    // TODO: 传入直播后台获取的appId、appSecret
-    // plv.setApp({
-    //   apiId:'fo9ej350u0',
-    //   apiSecret:'67180890349bd8851d3da33223ae4'
-    // });
-
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
-    // 登录
-    // wx.login({
-    //   success: res => {
-    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
-    //   }
-    // })
-
-    // 授权用户定位
-    // wx.authorize({scope:"scope.userLocation",
-    //   success:function(){
-    //       wx.getLocation({
-    //         success:function(res){
-    //           console.log("纬度:"+res.latitude+"经度"+res.longitude);
-    //         }
-    //       })
-    //   }
-    // })
+    this.globalData.barList = tabBarList.auditList;
+    this.getMiniProgrameStatus();
 
     // 获取用户信息
     wx.getSetting({
@@ -53,9 +29,26 @@ App({
       }
     })
   },
+
+  // 获取栏目
+  getMiniProgrameStatus(){
+    Request({
+      url: "DataDict/GetList",
+      type: "GET",
+      data:{DictType:'NewsType'}
+    }).then((data) => {
+     if(data.Result && data.Result.length>0 && data.Result[0].Detail[0].Remark=='1'){
+      this.globalData.barList = tabBarList.allList;
+     }else{
+     
+      this.globalData.barList = tabBarList.auditList;
+     }
+    })
+  },
   globalData: {
     userInfo: null,
     mobile:null,
     isReturnLogin:false,
+    barList:[]
   }
 })

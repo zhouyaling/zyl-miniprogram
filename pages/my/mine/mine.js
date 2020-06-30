@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    showAllMenu:false,
     userInfo:{},
     mobile:"",
     isLogin:0,
@@ -32,6 +33,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: app.globalData.barList.length==4 ? 3 :1 //这个数字是当前页面在tabBar中list数组的索引
+      })
+      this.setData({
+        showAllMenu:app.globalData.barList.length==4?true:false
+      })
+    }
+
     let wxSession = wx.getStorageSync("authToken") // token是否存在
 
     if(wxSession=="" || wxSession==null || wxSession == undefined){

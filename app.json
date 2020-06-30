@@ -20,6 +20,7 @@
     "pages/h5/h5"
   ],
   "tabBar": {
+    "custom": true,
     "color": "#999999",
     "selectedColor": "#19CCB0",
     "backgroundColor": "#fff",
