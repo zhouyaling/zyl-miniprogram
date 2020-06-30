@@ -27,7 +27,7 @@ Page({
       if(res.Result && res.Result.length>0){
         _this.setData({
           videoType:res.Result[0].Detail,
-          currentTab:res.Result[0].Detail[0].DictKey
+          currentTab:res.Result[0].Detail[0].DictKey,
         })
         _this.getClassList()
       }
