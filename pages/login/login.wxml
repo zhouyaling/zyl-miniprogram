@@ -28,7 +28,8 @@
       </view> -->
       <view class="login-sub">
       <checkbox-group bindchange="checkboxChange">
-        <checkbox value="1" color="#19CCB0" />同意嘉护教育平台 <text style="color:#19CCB0">《隐私权政策》</text>
+        <checkbox value="1" color="#19CCB0" />同意嘉护教育平台相关政策
+        <!-- <text style="color:#19CCB0">《隐私权政策》</text> -->
         </checkbox-group>
       </view>
   </view>

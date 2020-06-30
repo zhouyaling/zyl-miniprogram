@@ -5,9 +5,9 @@ const app = getApp()
 Page({
   data: {
     userInfo:{},
+    mobile:"",
     isLogin:0,
     motto: 'Hello World',
-    userInfo: {},
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
@@ -56,6 +56,7 @@ Page({
   getUserInfo: function() {
     this.setData({
       userInfo:  app.globalData.userInfo,
+      mobile:app.globalData.mobile,
     })
   }
 })

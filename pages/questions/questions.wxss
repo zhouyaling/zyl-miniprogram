@@ -220,6 +220,10 @@ page{
   background: #0BAC92;
 }
 
+.van-button__text{
+  color: #19CCB0!important;
+}
+
 
 .header-timer{
   color: #EB2F32;

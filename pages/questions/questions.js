@@ -297,8 +297,11 @@ Page({
     })
   },
 
-  // 收藏
+  // 发起收藏、取消
   async collectionAction(){
+    if(this.data.list.length<=0){
+      return
+    }
     var ids = this.data.list[this.data.currQ].Id;
     var params = {questiontype:'收藏',questionids:ids};
     if(this.data.list[this.data.currQ].collectionStatus){
@@ -315,14 +318,11 @@ Page({
       return
     }
     if(res.Message==null && params.questiontype=='收藏'){
-      Toast({
-          mask: false,
-          forbidClick:true,
-          message: '收藏成功!',
-          duration:500,
-          onClose:function(){
-          }
-        });
+        wx.showToast({
+          title:  "收藏成功",
+          icon: 'none',
+          duration:  500
+        })
     
       this.resetListStatus()
       this.resetMyCollectionIds('add',params.questionids)
@@ -333,14 +333,11 @@ Page({
   async removeMyQuestions(params){
     var res = await Server.removeMyQuestions(params);
     if(res.Message==null){
-      Toast({
-        mask: false,
-        forbidClick:true,
-        message: '取消成功!',
-        duration:500,
-        onClose:function(){
-        }
-      });
+      wx.showToast({
+        title:  "取消成功",
+        icon: 'none',
+        duration:  500
+      })
       this.resetListStatus()
       this.resetMyCollectionIds('delete',params.questionids)
      

@@ -166,5 +166,4 @@
 
 	<!-- 答题完毕 -->
 	<van-dialog id="van-dialog" />
-	<van-toast id="van-toast" />
 </view>

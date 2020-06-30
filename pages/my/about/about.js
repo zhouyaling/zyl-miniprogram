@@ -17,7 +17,7 @@ Page({
 
   Tel(){
     wx.makePhoneCall({
-      phoneNumber: '235-58582587',
+      phoneNumber: '13102385531',
       success: function () {
         console.log("拨打电话成功！")
       },

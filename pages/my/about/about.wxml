@@ -8,8 +8,7 @@
  <view class="company-info">
   <view>
       <van-cell title="13102385531" is-link icon="phone-o" bindtap="Tel" />
-      <van-cell title="重庆市渝中区大坪正街19号34-6" is-link icon="location-o" link-type="navigateTo"
-        url="/pages/dashboard/index" />
+      <van-cell title="重庆市渝中区大坪正街19号34-6"  icon="location-o"  />
   </view>
  </view>
   <view class="company-info des">

@@ -2,7 +2,7 @@
 @import "/wxParse/wxParse.wxss";
 .title{
   color: #0E0E0E;
-  font-size: 34rpx;
+  font-size: 36rpx;
   margin: 26rpx 26rpx 18rpx 26rpx;
 }
 
