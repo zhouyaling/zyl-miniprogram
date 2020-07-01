@@ -112,18 +112,19 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    console.log('news-onReady',app.globalData.barList)
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0,  //这个数字是当前页面在tabBar中list数组的索引
+        list: app.globalData.barList
+      })
+    }
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 0  //这个数字是当前页面在tabBar中list数组的索引
-      })
-    }
   },
 
   /**

@@ -5,8 +5,10 @@ import Request from './utils/request'
 
 App({
   onLaunch: function () {
-    this.globalData.barList = tabBarList.auditList;
-    this.getMiniProgrameStatus();
+   
+    // 动态设置底部导航菜单
+    this.globalData.barList = tabBarList.allList;
+   
 
     // 获取用户信息
     wx.getSetting({
@@ -30,25 +32,30 @@ App({
     })
   },
 
-  // 获取栏目
+  onShow: function (){
+    console.log('app-onshow');
+    this.getMiniProgrameStatus();
+  },
+
+  // 动态设置底部菜单
   getMiniProgrameStatus(){
     Request({
       url: "DataDict/GetList",
       type: "GET",
-      data:{DictType:'NewsType'}
+      data:{DictType:'wxset'}
     }).then((data) => {
-     if(data.Result && data.Result.length>0 && data.Result[0].Detail[0].Remark=='1'){
-      this.globalData.barList = tabBarList.allList;
-     }else{
      
+     if(data.Result && data.Result.length>0 && data.Result[0].Detail[0].DictValue=='1'){
+      console.log(1)
       this.globalData.barList = tabBarList.auditList;
      }
     })
   },
+
   globalData: {
     userInfo: null,
     mobile:null,
     isReturnLogin:false,
-    barList:[]
+    barList:[] // 底部菜单列表
   }
 })
