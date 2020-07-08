@@ -15,6 +15,11 @@ page{
 .header-left{
   font-size: 34rpx;
   color: #333;
+  width: 44%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
 }
 
 .header-right{
@@ -43,8 +48,8 @@ page{
 }
 
 .answer-a{
-  width: 50rpx;
-  height: 50rpx;
+  width: 54rpx;
+  height: 54rpx;
   border-radius: 50%;
   border: 2rpx solid #B0B3C0;
   display: flex;
@@ -92,6 +97,7 @@ page{
 .popup-wrap{
   position: relative;
   height: 100%;
+  overflow: hidden;
 }
 
 .popup-card-head{
@@ -107,12 +113,15 @@ page{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  height: 65%;
+  overflow-y: scroll;
 }
 
 .answer-number{
-  margin: 30rpx;
-  width: 60rpx;
-  height: 60rpx;
+  margin: 25rpx;
+  width: 70rpx;
+  height: 70rpx;
+  
   display: flex;
   align-items: center;
   justify-content: center;

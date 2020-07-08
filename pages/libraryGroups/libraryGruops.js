@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    viewAuthority:true, // 当前是否有权限
     loading:false,
     classId:"", // 班级类别id
     className:'',
@@ -33,6 +34,9 @@ Page({
 
   // 开始答题
    goQuestion(e){
+     if(e.currentTarget.dataset.chapter && !this.data.viewAuthority){
+       return
+     }
     if(e.currentTarget.dataset.paperid || e.currentTarget.dataset.chapter || e.currentTarget.dataset.jieid){
       wx.navigateTo({
         url: '../questions/questions?questionType='+ this.data.currentTab +'&paperid=' + e.currentTarget.dataset.paperid + '&chapter=' +  e.currentTarget.dataset.chapter+ '&jieid=' +  e.currentTarget.dataset.jieid + '&className=' + this.data.className + '&scoreEachQuestion=' +  e.currentTarget.dataset.scoreeachquestion + '&examTime=' + e.currentTarget.dataset.examtime,
@@ -83,17 +87,26 @@ Page({
     let _this = this;
     
     let res = await Server.getPageList({'课程章节id': _this.data.activeZhangId,"课程班次id":_this.data.classId});
-      if(res.Result && res.Result.length>0){
-        _this.setData( {
-            zhangList:_this.data.zhangList.map(function(item){
-              if(item.Id==_this.data.activeZhangId){
-                item.children = res.Result;
-                item.requested =true,
-                item.status = true
-              }
-              return item
-            })
-          });
+      if(res.Tag==1){
+        if(res.Result && res.Result.length>0){
+          _this.setData( {
+              zhangList:_this.data.zhangList.map(function(item){
+                if(item.Id==_this.data.activeZhangId){
+                  item.children = res.Result;
+                  item.requested =true,
+                  item.status = true
+                }
+                return item
+              })
+            });
+        }
+      }else{
+        this.setData({viewAuthority:false})
+          wx.showToast({
+            title:  res.Message,
+            icon: 'none',
+            duration:  1500
+          })
       }
   },
 

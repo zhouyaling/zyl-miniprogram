@@ -35,30 +35,44 @@ Page({
   onLoad: function (options) {
     let params = {};
     this.setData({questionType:options.questionType});
+
+    // 按真题id查
     if(options.paperid && options.paperid!="undefined"){
       this.setData({
         paperid:options.paperid
       })
       params = {'试卷id': this.data.paperid}
     }
+
+    // 按章名称查
     if(options.chapter && options.chapter!="undefined"){
       this.setData({chapter:options.chapter})
       params = {...params,'章节名称': this.data.chapter}
     }
+
+    // 按小结id查
     if(options.jieid && options.jieid!="undefined"){
       this.setData({jieid:options.jieid})
       params = {...params,'课程id': this.data.jieid}
     }
+
+    // 课程班次参数
     if(options.className && options.className!="undefined"){
       this.setData({className:options.className})
       params = {...params,'课程班次': this.data.className}
     }
+
+    // 定位当前第几题
     if(options.currQ && options.currQ!="undefined"){
       this.setData({currQ:options.currQ?parseInt(options.currQ):0})
     }
+
+    // 每题分数
     if(options.scoreEachQuestion && options.scoreEachQuestion!="undefined"){
       this.setData({scoreEachQuestion:options.scoreEachQuestion})
     }
+
+    // 考试时间
     if(options.examTime && options.examTime!="undefined"){
       this.setData({examTime:options.examTime})
     }
@@ -104,7 +118,7 @@ Page({
       _this.setData({
         loading:false,
         totalQuestion:res.TotalCount,
-        title:cacheRes[0].Section ||　cacheRes[0].Paper,
+        title:_this.data.chapter? this.data.chapter:(cacheRes[0].Section ||　cacheRes[0].Paper),
         list:cacheRes,
       })
     }else{
@@ -181,11 +195,14 @@ Page({
       rightAnswerRate:parseFloat(cacheNum * this.data.scoreEachQuestion),
       type:1
     })
-   if(this.data.questionType==2 || this.data.questionType==4){
-    this.saveMyExam();
-   }
+  
    if(this.data.wrongQuestionIds.length>0){
     this.addMyQuestions({questiontype:'错题',questionids:this.data.wrongQuestionIds});
+   }
+   if(this.data.questionType==2 || this.data.questionType==4){
+    this.saveMyExam();
+   }else{
+    wx.hideLoading();
    }
   },
 
