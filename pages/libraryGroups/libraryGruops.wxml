@@ -58,7 +58,7 @@
 			<view class="library-list-total" style="margin:20rpx 0">
 				<view class="item-content">
 					<view class="item-title">{{item.Paper}}</view>
-						<view class="item-subtitle" style="font-size:24rpx">及格分数：{{item.PassScore}}分 | 每题分数：{{item.ScoreEachQuestion}}分</view>
+						<view class="item-subtitle" style="font-size:24rpx">总分：{{item.totalscore}}分 | 及格分数：{{item.PassScore}}分 | 每题分数：{{item.ScoreEachQuestion}}分</view>
 					<!-- <view class="progress-box">
                 <progress percent="0" color="#19CCB0" active stroke-width="3" />
               </view> -->
@@ -79,7 +79,7 @@
 			<view class="library-list-total" style="margin:20rpx 0">
 				<view class="item-content">
 					<view class="item-title">{{item.Paper}}</view>
-						<view class="item-subtitle" style="font-size:24rpx">及格分数：{{item.PassScore}}分 | 每题分数：{{item.ScoreEachQuestion}}分</view>
+						<view class="item-subtitle" style="font-size:24rpx">总分：{{item.totalscore}}分 | 及格分数：{{item.PassScore}}分 | 每题分数：{{item.ScoreEachQuestion}}分</view>
 					<!-- <view class="progress-box">
 						<progress percent="0" color="#19CCB0" active stroke-width="3" />
 					</view> -->
