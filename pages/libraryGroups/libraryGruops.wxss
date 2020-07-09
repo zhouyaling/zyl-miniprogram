@@ -190,7 +190,8 @@ justify-content: center;
 
 
 .library-list-item .item-content{
-  width: 72%;
+  width: 90%;
+overflow: hidden;
 }
 
 .library-list-total .item-title{
@@ -218,6 +219,7 @@ justify-content: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 20rpx;
 
 }
 

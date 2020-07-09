@@ -34,7 +34,7 @@
 			</view>
 			<block wx:if="{{currentTab==1}}">
 				<view class="library-list-detail" wx:if="{{item.status}}" wx:for="{{item.children}}" wx:for-item="child" wx:key="index">
-					<view class="">
+					<view class="" style="margin-right:20rpx;">
 						<van-icon name="circle" color="#19CCB0" />
 					</view>
 					<view class="item-content">
@@ -58,7 +58,7 @@
 			<view class="library-list-total" style="margin:20rpx 0">
 				<view class="item-content">
 					<view class="item-title">{{item.Paper}}</view>
-						<view class="item-subtitle" style="font-size:24rpx">及格分数：{{item.ExamTime}}分 | 每题分数：{{item.ScoreEachQuestion}}分</view>
+						<view class="item-subtitle" style="font-size:24rpx">及格分数：{{item.PassScore}}分 | 每题分数：{{item.ScoreEachQuestion}}分</view>
 					<!-- <view class="progress-box">
                 <progress percent="0" color="#19CCB0" active stroke-width="3" />
               </view> -->
@@ -79,7 +79,7 @@
 			<view class="library-list-total" style="margin:20rpx 0">
 				<view class="item-content">
 					<view class="item-title">{{item.Paper}}</view>
-						<view class="item-subtitle" style="font-size:24rpx">及格分数：{{item.ExamTime}}分 | 每题分数：{{item.ScoreEachQuestion}}分</view>
+						<view class="item-subtitle" style="font-size:24rpx">及格分数：{{item.PassScore}}分 | 每题分数：{{item.ScoreEachQuestion}}分</view>
 					<!-- <view class="progress-box">
                 <progress percent="0" color="#19CCB0" active stroke-width="3" />
               </view> -->

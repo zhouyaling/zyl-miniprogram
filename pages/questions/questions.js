@@ -100,6 +100,7 @@ Page({
 
   // 获取收藏、错题列表
   async getMyQuestionsList(params){
+    this.setData({type:1})
     let res = await Server.getMyQuestions(params)
      this.doQuestions(res);
   },
@@ -119,7 +120,7 @@ Page({
         loading:false,
         totalQuestion:res.TotalCount,
         title:_this.data.chapter? this.data.chapter:(cacheRes[0].Section ||　cacheRes[0].Paper),
-        list:cacheRes,
+        list:cacheRes
       })
     }else{
       _this.setData({
@@ -159,6 +160,9 @@ Page({
 
   // 提交答案
   submitAnswer:function(){
+    if(this.data.list.length<=0){
+      return
+    }
     if(!this.data.answeredStatus){
       this.staticsRightAnswer();
     }else{
@@ -196,9 +200,12 @@ Page({
       type:1
     })
   
+  // 添加错题
    if(this.data.wrongQuestionIds.length>0){
     this.addMyQuestions({questiontype:'错题',questionids:this.data.wrongQuestionIds});
    }
+
+   // 保存试卷答题结果
    if(this.data.questionType==2 || this.data.questionType==4){
     this.saveMyExam();
    }else{

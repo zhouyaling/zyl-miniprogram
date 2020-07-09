@@ -50,6 +50,8 @@ page{
 .answer-a{
   width: 54rpx;
   height: 54rpx;
+  min-width: 54rpx;
+  min-height: 54rpx;
   border-radius: 50%;
   border: 2rpx solid #B0B3C0;
   display: flex;
@@ -81,7 +83,7 @@ page{
 
 .question-result{
   background-color: #FBFBFB;
-  padding: 30rpx 40rpx;
+  padding: 30rpx 40rpx 140rpx 40rpx;
 }
 
 .question-result-all.title{

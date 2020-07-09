@@ -114,7 +114,7 @@
 	<view class="question-result" wx:if="{{type==1}}">
 		<view class="question-result-all">
 			<text>正确答案：<text class="result-b">{{util.fnToUpperCase(list[currQ].Answer)}}</text> </text>
-			<text>你的答案：<text class="result-b">{{list[currQ].choosedAnswer}}</text> </text>
+			<text wx:if="{{questionType!='5' && questionType!='6'}}">你的答案：<text class="result-b">{{list[currQ].choosedAnswer}}</text> </text>
 		</view>
 		<view class="question-result-all title">解析：</view>
 		<view class="question-result-detail">
