@@ -18,7 +18,7 @@ let envConfig = {
     mock: false,
   },
   prod: {
-    host:'https://jhjy.jiahujiaoyu.cn/ys_jhjy_api2/',  //  https://jhjy.jiahujiaoyu.cn/ys_jhjy_api/
+    host:'https://jhjy.jiahujiaoyu.cn/ys_jhjy_api/',  //  https://jhjy.jiahujiaoyu.cn/ys_jhjy_api/
     mock: false,
   },
 }
