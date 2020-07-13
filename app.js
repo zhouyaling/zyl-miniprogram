@@ -33,7 +33,7 @@ App({
   },
 
   onShow: function (){
-    console.log('app-onshow');
+    // console.log('app-onshow');
     this.getMiniProgrameStatus();
   },
 
@@ -46,7 +46,6 @@ App({
     }).then((data) => {
      
      if(data.Result && data.Result.length>0 && data.Result[0].Detail[0].DictValue=='1'){
-      console.log(1)
       this.globalData.barList = tabBarList.auditList;
      }
     })
