@@ -5,7 +5,7 @@ import Request from './utils/request'
 
 App({
   onLaunch: function () {
-   
+
     // 动态设置底部导航菜单
     this.globalData.barList = tabBarList.allList;
    
@@ -33,7 +33,6 @@ App({
   },
 
   onShow: function (){
-    // console.log('app-onshow');
     this.getMiniProgrameStatus();
   },
 

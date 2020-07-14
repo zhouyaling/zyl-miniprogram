@@ -33,8 +33,12 @@ Page({
 
   // 查看收藏详情
   goQuestions(e){
+    var params = {
+      questionType:5,
+      currQ:e.currentTarget.dataset.id
+    }
     wx.navigateTo({
-      url: '/pages/questions/questions?questionType=5&currQ=' + e.currentTarget.dataset.id,
+      url: '/pages/questions/questions?params=' + JSON.stringify(params),
     })
   },
 

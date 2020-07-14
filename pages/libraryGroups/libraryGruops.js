@@ -38,9 +38,28 @@ Page({
        return
      }
     if(e.currentTarget.dataset.paperid || e.currentTarget.dataset.chapter || e.currentTarget.dataset.jieid){
+      let params = {
+        questionType:this.data.currentTab,
+        '课程班次':this.data.className,
+        '试卷id':e.currentTarget.dataset.paperid?e.currentTarget.dataset.paperid:"",
+        '课程id':e.currentTarget.dataset.jieid?e.currentTarget.dataset.jieid:"",
+        '章节名称':e.currentTarget.dataset.chapter?e.currentTarget.dataset.chapter:"",
+        scoreEachQuestion:e.currentTarget.dataset.scoreeachquestion?e.currentTarget.dataset.scoreeachquestion:"",
+        examTime:e.currentTarget.dataset.examtime?e.currentTarget.dataset.examtime:""
+      }
       wx.navigateTo({
-        url: '../questions/questions?questionType='+ this.data.currentTab +'&paperid=' + e.currentTarget.dataset.paperid + '&chapter=' +  e.currentTarget.dataset.chapter+ '&jieid=' +  e.currentTarget.dataset.jieid + '&className=' + this.data.className + '&scoreEachQuestion=' +  e.currentTarget.dataset.scoreeachquestion + '&examTime=' + e.currentTarget.dataset.examtime,
+        url: '../questions/questions?params=' + JSON.stringify(params)
       })
+
+      // wx.navigateTo({
+      //   url: '../questions/questions?questionType='+ this.data.currentTab +
+      //   '&paperid=' + currentTarget.dataset.paperid + 
+      //   '&chapter=' +  e.currentTarget.dataset.chapter+ 
+      //   '&jieid=' +  e.currentTarget.dataset.jieid + 
+      //   '&className=' + this.data.className + 
+      //   '&scoreEachQuestion=' +  e.currentTarget.dataset.scoreeachquestion + 
+      //   '&examTime=' + e.currentTarget.dataset.examtime,
+      // })
     }
   },
 

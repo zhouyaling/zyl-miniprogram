@@ -9,15 +9,16 @@ Page({
   data: {
     type:0, // 0 答题模式 1 解析模式
     questionType:"", // 问题来源类型： 1 章节练习 2 模拟真题 3 章节测试 4 历年真题 5 我的收藏 6 我的错题
+    answeredStatus:false, // 是否提交答题
     id:0, // 试卷id
     paperid:0, // 试卷id
     chapter:"", // 章节名称
     jieid:"", // 小结id
     title:"", // 名称
     className:'', // 课程班次名称
-    answeredStatus:false, // 是否提交答题
     showPops:false, // 展示答题卡弹窗
     currQ:0, // 当前题目
+    processStorage:[], // 历史答题集合
     totalQuestion:0, // 题目总数
     list:[], // 题目集合
     rightAnswerNum:0, // 正确答案个数
@@ -34,48 +35,21 @@ Page({
    */
   onLoad: function (options) {
     let params = {};
-    this.setData({questionType:options.questionType});
-
-    // 按真题id查
-    if(options.paperid && options.paperid!="undefined"){
-      this.setData({
-        paperid:options.paperid
-      })
-      params = {'试卷id': this.data.paperid}
+    if(options.params){
+        params = JSON.parse(options.params)
     }
+    
+    this.setData({
+      questionType:params.questionType,
+      paperid:params.试卷id?params.试卷id:"",
+      chapter:params.章节名称?params.章节名称:"",
+      jieid:params.课程id?params.课程id:'',
+      className:params.课程班次?params.课程班次:"",
+      currQ:params.currQ?parseInt(options.currQ):0,
+      scoreEachQuestion:params.scoreEachQuestion?params.scoreEachQuestion:"",
+      examTime:params.examTime?params.examTime:""
+    });
 
-    // 按章名称查
-    if(options.chapter && options.chapter!="undefined"){
-      this.setData({chapter:options.chapter})
-      params = {...params,'章节名称': this.data.chapter}
-    }
-
-    // 按小结id查
-    if(options.jieid && options.jieid!="undefined"){
-      this.setData({jieid:options.jieid})
-      params = {...params,'课程id': this.data.jieid}
-    }
-
-    // 课程班次参数
-    if(options.className && options.className!="undefined"){
-      this.setData({className:options.className})
-      params = {...params,'课程班次': this.data.className}
-    }
-
-    // 定位当前第几题
-    if(options.currQ && options.currQ!="undefined"){
-      this.setData({currQ:options.currQ?parseInt(options.currQ):0})
-    }
-
-    // 每题分数
-    if(options.scoreEachQuestion && options.scoreEachQuestion!="undefined"){
-      this.setData({scoreEachQuestion:options.scoreEachQuestion})
-    }
-
-    // 考试时间
-    if(options.examTime && options.examTime!="undefined"){
-      this.setData({examTime:options.examTime})
-    }
     if(this.data.questionType=='5'){
       this.getMyQuestionsList({questiontype:'收藏'});
     }else if(this.data.questionType=='6'){
@@ -87,6 +61,15 @@ Page({
     // 显示倒计时
     if((this.data.questionType == '2' || this.data.questionType=='4') && this.data.type==0){
       this.timerShow();
+    }
+
+    // 定位题目 test
+    var  storageData = wx.getStorageSync('pid-' + this.data.paperid + '-z-' + this.data.chapter + '-j-' + this.data.jieid);
+    if(this.data.type==0 && storageData.currQ){
+      this.setData({
+        currQ:storageData.currQ,
+        processStorage:storageData.progressList
+      })
     }
   },
 
@@ -111,9 +94,16 @@ Page({
     let cacheRes=[];
     var myCollectionIds = wx.getStorageSync('myCollectionIds');
     if(res.Result && res.Result.length>0){
-      cacheRes = res.Result.map(element => {
+      cacheRes = res.Result.map((element,index) => {
         var st = myCollectionIds.indexOf(element.Id)>-1? true:false
-          return {...element,choosedAnswer:"",choosedText:"",collectionStatus:st}
+        var choosedAnswer = "";
+        var choosedText = "";
+        if(index<=this.data.processStorage.length){
+          choosedAnswer = this.data.processStorage.indexOf(element.Id)>-1?this.data.processStorage[index].chooseAnswer:"";
+          choosedText = this.data.processStorage.indexOf(element.Id)>-1?this.data.processStorage[index].choosedText:"";
+        }
+
+        return {...element,choosedAnswer:choosedAnswer,choosedText:choosedText,collectionStatus:st}
       });
 
       _this.setData({
@@ -200,33 +190,33 @@ Page({
       type:1
     })
   
-  // 添加错题
-   if(this.data.wrongQuestionIds.length>0){
-    this.addMyQuestions({questiontype:'错题',questionids:this.data.wrongQuestionIds});
-   }
+    // 添加错题
+    if(this.data.wrongQuestionIds.length>0){
+      this.addMyQuestions({questiontype:'错题',questionids:this.data.wrongQuestionIds});
+    }
 
-   // 保存试卷答题结果
-   if(this.data.questionType==2 || this.data.questionType==4){
-    this.saveMyExam();
-   }else{
-    wx.hideLoading();
-   }
+    // 保存试卷答题结果
+    if(this.data.questionType==2 || this.data.questionType==4){
+      this.saveMyExam();
+    }else{
+      wx.hideLoading();
+    }
   },
 
-    // 保存答案数据
-    async saveMyExam(){
-      let _this = this;
-      var params = {paperid:this.data.paperid,score:this.data.rightAnswerRate}
-      var res = await Server.saveMyExam(params);
-      if(res.Message==null){
-        wx.hideLoading();
-        wx.showToast({
-          title: '提交成功',
-          icon: 'success',
-          duration: 1000
-        })
-      }
-    },
+  // 保存答案数据
+  async saveMyExam(){
+    let _this = this;
+    var params = {paperid:this.data.paperid,score:this.data.rightAnswerRate}
+    var res = await Server.saveMyExam(params);
+    if(res.Message==null){
+      wx.hideLoading();
+      wx.showToast({
+        title: '提交成功',
+        icon: 'success',
+        duration: 1000
+      })
+    }
+  },
 
   // 查看答题解析、关闭弹窗
   showAnswerDetail: function(e){
@@ -435,21 +425,32 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    // 保存当前做题记录
+    if(this.data.currQ!=0 && !this.data.answeredStatus){
+      var progressList = [];
+      for(var i = 0;i<this.data.currQ && this.data.currQ<=this.data.list.length;i++){
+        progressList.push({
+          Id:this.data.list[i].Id,
+          choosedAnswer:this.data.list[i].choosedAnswer,
+          choosedText:this.data.list[i].choosedText
+        })
+      }
+      debugger
+      wx.setStorageSync('pid-' + this.data.paperid + '-z-' + this.data.chapter + '-j-' + this.data.jieid, {progressList:progressList,currQ:this.data.currQ})
+    }
   },
 
   /**
