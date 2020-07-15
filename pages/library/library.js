@@ -1,5 +1,6 @@
 import Server from './libraryServer'
-
+//获取应用实例
+const app = getApp()
 Page({
 
   /**
@@ -10,7 +11,8 @@ Page({
     currentTab: 1, // 当前专题
     activeZhangId:"", // 当前选择的章id
     videoType:[], // 专题列表 
-    listSpec:[] // 班次列表
+    listSpec:[], // 班次列表
+    weizhuang:false, // 是否显示假页面内容
   },
 
    /**
@@ -18,6 +20,7 @@ Page({
    */
   onLoad: function (options) {
     this.getVideoType();
+    this.setData({weizhuang:app.globalData.allWeiZhuang})
   },
 
   // 获取专题栏目

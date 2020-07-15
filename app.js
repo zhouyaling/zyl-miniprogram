@@ -45,7 +45,9 @@ App({
     }).then((data) => {
      
      if(data.Result && data.Result.length>0 && data.Result[0].Detail[0].DictValue=='1'){
-      this.globalData.barList = tabBarList.auditList;
+       console.log(data.Result[0].Detail[0].DictValue)
+      this.globalData.allWeiZhuang = true;
+      // this.globalData.barList = tabBarList.auditList;
      }
     })
   },
@@ -54,6 +56,7 @@ App({
     userInfo: null,
     mobile:null,
     isReturnLogin:false,
+    allWeiZhuang:false,
     barList:[] // 底部菜单列表
   }
 })

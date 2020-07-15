@@ -14,10 +14,12 @@ Page({
     listSpec:[],
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    weizhuang:false,
   },
 
   onLoad: function () {
+    this.setData({weizhuang:app.globalData.allWeiZhuang})
     this.getVideoType();
     this.getBanner();
     // if (app.globalData.userInfo) {
@@ -77,6 +79,9 @@ Page({
 
   // 跳转到视频也没
   goVideo:function (e){
+    if(this.data.weizhuang){
+      return
+    }
     wx.navigateTo({
       url: '/pages/videos/videos?item=' + JSON.stringify(e.currentTarget.dataset.item), // url="/pages/videos/videos?item={{}}"
     })

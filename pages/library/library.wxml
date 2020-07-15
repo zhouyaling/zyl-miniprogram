@@ -1,5 +1,5 @@
 <import src="../template/libraryClassCard/libraryClassCard.wxml" />
-<view class="wrap">
+<view class="wrap" wx:if="{{!weizhuang}}">
   <view class="topNav">
     <van-tabs active="{{currentTab}}" animated color="#ffffff" swipeable bind:click="handlerOnChangeTab"  ellipsis="{{false}}"  tab-class="tab-reset-1" tab-active-class="tab-active-reset1">
       <van-tab wx:for="{{videoType}}" title="{{item.DictValue}}" name="{{item.DictKey}}" wx:key="index"></van-tab>
@@ -14,4 +14,10 @@
         <image src="../images/no-info2.png"></image>
         <view>暂无数据，先看看其他的吧！</view>
       </view>
+</view>
+<view wx:if="{{weizhuang}}">
+<view >
+<image style="width: 96%;height: 1000px;margin: 0 2% 4% 2%;" src="../images/weizhuang.png"></image>
+<image style="width: 96%;height: 1000px;margin: 0 2% 4% 2%;" src="../images/weizhuang1.png"></image>
+</view>
 </view>

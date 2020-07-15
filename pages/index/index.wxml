@@ -17,7 +17,7 @@
 			</swiper>
 		</view>
 	</view>
-	<view class="topMenu">
+	<view wx:if="{{!weizhuang}}" class="topMenu">
 		<view class="topMenu-item">
 		<navigator url="../h5/h5?type=1" hover-class="none">
 			<image src="../images/icon-school.png"></image>
@@ -38,7 +38,7 @@
 		</view>
 	</view> 
 
-	<view class="news-bar-scroll">
+	<view wx:if="{{!weizhuang}}" class="news-bar-scroll">
 		<van-notice-bar
 		left-icon="volume"
 		speed="36"
@@ -50,18 +50,16 @@
 <view class="card-content">
 	<view class="card-bar">
 		<text class="card-bar-icon"></text>
-		<text>精品课程</text>
+		<text wx:if="{{!weizhuang}}">精品课程</text>
+			<text wx:if="{{weizhuang}}">班次</text>
 	</view>
 	<view class="card" wx:for="{{listSpec}}"  wx:key="index" bindtap ="goVideo" data-item = "{{item}}">
-			<!-- <navigator bind:click ="goVideo" data-item = "{{item}}" hover-class="none"> -->
 			<image class="card-img" src="{{item.ClassImg}}"   ></image>
 			<view class="card-title">{{item.Class}}</view>
-			<view class="card-des">
+			<view class="card-des" wx:if="{{!weizhuang}}">
 				<text>¥ {{item.ClassPrice}}元</text>
 				<text>已有{{item.ClassPeopleNum}}人参与</text>
 			</view>
-			<!-- <image class="card-recommend" src="../images/icon-tuijian1.png"></image> -->
-			<!-- </navigator> -->
 		</view>
 	</view>
 	<!-- 暂无数据 -->
