@@ -15,6 +15,7 @@ Page({
     videoC:null, // 视频实例
     itemInfo:{}, // 
     banDes:"",
+    initialTime:0, // 播放进度
   },
 
   /**
@@ -23,6 +24,11 @@ Page({
   onLoad: function (options) {
     if(options.itemInfo){
       let info = JSON.parse(options.itemInfo);
+      var currTime = wx.getStorageSync(info.Id)
+      if(currTime){
+        this.setData({initialTime:currTime})
+      }
+
       this.setData({
         vid:info.VideoUrl,
         type:(info.VideoUrl.indexOf('http')>-1) ? 'mp4' : 'polyv',
@@ -51,13 +57,11 @@ Page({
    */
   onReady: function () {
     if(this.data.type=='polyv'){
-      /*获取视频数据*/
       let obj = {
         vid: this.data.vid,
         viewerInfo: {},
         callback: videoInfo => {
           if (videoInfo.type === 'error') {
-            console.log('videoInfo', videoInfo);
             return;
           }
           this.setData({
@@ -67,7 +71,6 @@ Page({
       };
       this.player = polyv.getVideo(obj);
     }
-
     this.getVideoContext();
   },
 
@@ -93,33 +96,23 @@ Page({
     this.setData({ showRateStatus: false })
   },
 
-  bindVideoEnterPictureInPicture() {
-    console.log('进入小窗模式')
-  },
-
-  bindVideoLeavePictureInPicture() {
-    console.log('退出小窗模式')
-  },
-
-  bindPlayVideo() {
-    console.log('1')
-    this.videoContext.play()
-  },
-  bindSendDanmu() {
-    this.videoContext.sendDanmu({
-      text: this.inputValue,
-      color: getRandomColor()
-    })
-  },
-
   videoErrorCallback(e) {
     console.log('视频错误信息:')
     console.log(e.detail.errMsg)
   },
 
-  // 视频被打断
+  // 播放进度变化
   timeupdate: function(e) {
-    this.player.timeUpdate(e);
+    if(this.data.type=='polyv'){
+      this.player.timeUpdate(e);
+    }else{
+      wx.setStorageSync(this.data.itemInfo.Id, e.detail.currentTime)
+    }
+  },
+
+  // 元数据加载完成
+  loadedmetadata:function (e){
+    this.data.videoC.play()
   },
 
   /**

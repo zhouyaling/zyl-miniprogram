@@ -98,13 +98,14 @@ Page({
         var st = myCollectionIds.indexOf(element.Id)>-1? true:false
         var choosedAnswer = "";
         var choosedText = "";
-        if(index<=this.data.processStorage.length){
-          choosedAnswer = this.data.processStorage.indexOf(element.Id)>-1?this.data.processStorage[index].chooseAnswer:"";
-          choosedText = this.data.processStorage.indexOf(element.Id)>-1?this.data.processStorage[index].choosedText:"";
+        if(index<this.data.processStorage.length){
+          choosedAnswer = this.data.processStorage[index].Id == element.Id ? this.data.processStorage[index].choosedAnswer:"";
+          choosedText = this.data.processStorage[index].Id == element.Id ? this.data.processStorage[index].choosedText:"";
         }
 
         return {...element,choosedAnswer:choosedAnswer,choosedText:choosedText,collectionStatus:st}
       });
+      
 
       _this.setData({
         loading:false,
@@ -441,14 +442,13 @@ Page({
     // 保存当前做题记录
     if(this.data.currQ!=0 && !this.data.answeredStatus){
       var progressList = [];
-      for(var i = 0;i<this.data.currQ && this.data.currQ<=this.data.list.length;i++){
+      for(var i = 0;i<=this.data.currQ && this.data.currQ<=this.data.list.length;i++){
         progressList.push({
           Id:this.data.list[i].Id,
           choosedAnswer:this.data.list[i].choosedAnswer,
           choosedText:this.data.list[i].choosedText
         })
       }
-      debugger
       wx.setStorageSync('pid-' + this.data.paperid + '-z-' + this.data.chapter + '-j-' + this.data.jieid, {progressList:progressList,currQ:this.data.currQ})
     }
   },

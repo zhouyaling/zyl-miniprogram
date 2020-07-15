@@ -163,7 +163,7 @@ swiper-item {
 
 .card-content {
   width: 100%;
-  padding: 15rpx 20rpx 25rpx 20rpx;
+  padding: 15rpx 20rpx 125rpx 20rpx;
   box-sizing: border-box;
 }
 

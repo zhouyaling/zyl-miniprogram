@@ -52,6 +52,7 @@ justify-content: center;
   width: 100%;
   /* margin-top: -70rpx; */
     margin-top: 110rpx;
+    padding-bottom: 140rpx;
 }
 
 .library-list-item{

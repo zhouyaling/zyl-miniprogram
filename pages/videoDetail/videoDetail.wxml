@@ -1,6 +1,14 @@
 <view class="page-body">
 	<view  class="page-section page-section-gap" style="width:100%;position:relative;font-size:0" bindtap='clickIt'>
-		<video wx:if="{{type=='polyv'}}" id="myVideo"  src="{{ src }}" custom-cache="{{false}}"   autoplay bindtimeupdate="timeupdate">
+		<video wx:if="{{type=='polyv'}}" 
+		id="myVideo" 
+		bindtimeupdate="timeupdate"  
+		bindloadedmetadata="loadedmetadata" 
+		src="{{ src }}" 
+		custom-cache="{{false}}"  
+		initial-time="{{initialTime}}" 
+		autoplay 
+		>
 			<view class="set-rate" bindtap="setRate">倍数</view>
 			<view class="set-rate-item" wx-if="{{showRateStatus}}">
 				<view bindtap="changeRate" data-rate="0.5">0.5x</view>
@@ -9,7 +17,18 @@
 				<view bindtap="changeRate" data-rate="2.0">2.0x</view>
 			</view>
 		</video>
-		<video wx:if="{{type=='mp4'}}" id="myVideo"  autoplay src="{{src}}" binderror="videoErrorCallback" show-center-play-btn='{{false}}' show-play-btn="{{true}}" controls picture-in-picture-mode="{{['push', 'pop']}}" bindenterpictureinpicture='bindVideoEnterPictureInPicture' bindleavepictureinpicture='bindVideoLeavePictureInPicture'>
+		<video wx:if="{{type=='mp4'}}" 
+		id="myVideo" 
+		bindtimeupdate="timeupdate" 
+		bindloadedmetadata="loadedmetadata" 
+		initial-time="{{initialTime}}"  
+		binderror="videoErrorCallback" 
+		show-center-play-btn='{{false}}' 
+		show-play-btn="{{true}}" 
+		src="{{src}}" 
+		picture-in-picture-mode="{{['push', 'pop']}}" 
+		controls 
+		>
 			<view class="set-rate" bindtap="setRate">倍数</view>
 			<view class="set-rate-item" wx-if="{{showRateStatus}}">
 				<view bindtap="changeRate" data-rate="0.5">0.5x</view>
