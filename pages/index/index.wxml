@@ -47,13 +47,14 @@
 	</view>
 	
 <!-- 精品课程 -->
-<view class="card-content">
-	<view class="card-bar">
-		<text class="card-bar-icon"></text>
-		<text wx:if="{{!weizhuang}}">精品课程</text>
-			<text wx:if="{{weizhuang}}">班次</text>
-	</view>
-	<view class="card" wx:for="{{listSpec}}"  wx:key="index" bindtap ="goVideo" data-item = "{{item}}">
+	<view class="card-content" wx:if="{{!weizhuang}}">
+		
+		<view class="card-bar"  wx:if="{{!weizhuang}}">
+			<text class="card-bar-icon"></text>
+			<text>精品课程</text>
+		</view>
+
+	  <view  wx:if="{{!weizhuang}}" class="card" wx:for="{{listSpec}}"  wx:key="index" bindtap ="goVideo" data-item = "{{item}}">
 			<image class="card-img" src="{{item.ClassImg}}"   ></image>
 			<view class="card-title">{{item.Class}}</view>
 			<view class="card-des" wx:if="{{!weizhuang}}">
@@ -61,10 +62,9 @@
 				<text>已有{{item.ClassPeopleNum}}人参与</text>
 			</view>
 		</view>
+
 	</view>
-	<!-- 暂无数据 -->
-	<!-- <view class="no-info" style="margin-top:0rpx" wx:if="{{listSpec.length<=0}}">
-		<image src="../images/no-info2.png"></image>
-		<view>暂无课程，先看看其他的吧！</view>
-	</view> -->
+	<image  wx:if="{{weizhuang}}" style="width: 96%;height:360rpx;margin: 0 2% 4% 2%;" src="../images/weizhuang2.png"></image>
 </view>
+
+	
