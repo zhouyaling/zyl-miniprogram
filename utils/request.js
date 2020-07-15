@@ -8,7 +8,7 @@ export default function(obj) {
     type: "GET",
     dataType: "json",
     headers: {
-     "Content-type": 'application/json' , //"application/x-www-form-urlencoded"
+     // "Content-type": 'application/json' , 
     },
     data: {}
   }
