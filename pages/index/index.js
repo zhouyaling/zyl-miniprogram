@@ -66,7 +66,7 @@ Page({
     // 获取精品课程班
   async getClassList(){
     let _this = this;
-    let res = await Server.getClassList({'课程专题Code':_this.data.currentTab});
+    let res = await Server.getClassList({'课程专题Code':_this.data.currentTab,'classtype':'视频'});
       if(res.Result){
         _this.setData({
           listSpec: res.Result.length>0 ? res.Result:[],

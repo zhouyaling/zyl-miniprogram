@@ -36,7 +36,7 @@ Page({
   // 获取班次列表
   async getClassList(){
     let _this = this;
-    let res = await Server.getClassList({'课程专题Code':_this.data.currentTab});
+    let res = await Server.getClassList({'课程专题Code':_this.data.currentTab,'classtype':'题库'});
       if(res.Result && res.Result.length>0){
         _this.setData({
           loading:false,
