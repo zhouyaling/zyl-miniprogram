@@ -6,8 +6,6 @@
 		bindloadedmetadata="loadedmetadata" 
 		src="{{ src }}" 
 		custom-cache="{{false}}"  
-		initial-time="{{initialTime}}" 
-		autoplay 
 		>
 			<view class="set-rate" bindtap="setRate">倍数</view>
 			<view class="set-rate-item" wx-if="{{showRateStatus}}">
@@ -21,7 +19,6 @@
 		id="myVideo" 
 		bindtimeupdate="timeupdate" 
 		bindloadedmetadata="loadedmetadata" 
-		initial-time="{{initialTime}}"  
 		binderror="videoErrorCallback" 
 		show-center-play-btn='{{false}}' 
 		show-play-btn="{{true}}" 

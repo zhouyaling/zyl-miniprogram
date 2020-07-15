@@ -9,13 +9,12 @@ Page({
    */
   data: {
     type:'mp4', // 视频资源类型
-    vid:"", // 88083abbf5535a4d7b4d8614427559e0_8
-    showRateStatus:false,
-    src:"", // 视频地址 https://www.w3school.com.cn/i/movie.mp4
-    videoC:null, // 视频实例
-    itemInfo:{}, // 
-    banDes:"",
-    initialTime:0, // 播放进度
+    showRateStatus:false, // 显示倍数选项
+    src:"", // 视频地址
+    player:null, // 视频实例
+    polyvPlayer:null, // polyv实例
+    itemInfo:{}, // 课程信息
+    banDes:"", // 班级信息
   },
 
   /**
@@ -24,32 +23,13 @@ Page({
   onLoad: function (options) {
     if(options.itemInfo){
       let info = JSON.parse(options.itemInfo);
-      var currTime = wx.getStorageSync(info.Id)
-      if(currTime){
-        this.setData({initialTime:currTime})
-      }
-
       this.setData({
-        vid:info.VideoUrl,
         type:(info.VideoUrl.indexOf('http')>-1) ? 'mp4' : 'polyv',
         itemInfo:info,
         banDes:options.des
       })
-      if(this.data.type=='mp4'){
-        this.setData({src:info.VideoUrl})
-      }
+      this.saveViewTimes();
     }
-
-     this.saveViewTimes();
-  },
-
-  
-  // 增加阅读次数
-  async saveViewTimes(){
-    let _this = this;
-    let res = await Server.saveViewTimes({id:this.data.itemInfo.Id});
-      if(res.Result){
-      }
   },
 
   /**
@@ -58,27 +38,35 @@ Page({
   onReady: function () {
     if(this.data.type=='polyv'){
       let obj = {
-        vid: this.data.vid,
+        vid:'88083abbf5535a4d7b4d8614427559e0_8', // this.data.itemInfo.VideoUrl, // 
         viewerInfo: {},
         callback: videoInfo => {
           if (videoInfo.type === 'error') {
             return;
           }
-          this.setData({
-            src: videoInfo.src[0],
-          });
+          this.setData({ src: videoInfo.src[0] });
         }
       };
-      this.player = polyv.getVideo(obj);
+      this.setData({polyvPlayer: polyv.getVideo(obj)});
+    }else{
+      this.setData({src:this.data.itemInfo.VideoUrl})
     }
     this.getVideoContext();
+  },
+
+  // 增加阅读次数
+  async saveViewTimes(){
+    let _this = this;
+    let res = await Server.saveViewTimes({id:this.data.itemInfo.Id});
+      if(res.Result){
+      }
   },
 
   // 实例化一个操作视频组件示例
   getVideoContext: function () {
     var _this = this
     this.setData({
-      videoC:wx.createVideoContext('myVideo', this)
+      player:wx.createVideoContext('myVideo', this)
     })
   },
 
@@ -92,7 +80,7 @@ Page({
   // 设置倍数
   changeRate:function (e){
     var num  = e.currentTarget.dataset.rate ? parseFloat(e.currentTarget.dataset.rate) : 1
-    this.data.videoC.playbackRate(num)
+    this.data.player.playbackRate(num)
     this.setData({ showRateStatus: false })
   },
 
@@ -103,16 +91,16 @@ Page({
 
   // 播放进度变化
   timeupdate: function(e) {
-    if(this.data.type=='polyv'){
-      this.player.timeUpdate(e);
-    }else{
-      wx.setStorageSync(this.data.itemInfo.Id, e.detail.currentTime)
-    }
+    wx.setStorageSync(this.data.itemInfo.Id, e.detail.currentTime)
   },
 
   // 元数据加载完成
   loadedmetadata:function (e){
-    this.data.videoC.play()
+    var currTime = wx.getStorageSync(this.data.itemInfo.Id)
+      if(currTime){
+        this.data.player.seek(currTime)
+      }
+      this.data.player.play()
   },
 
   /**
@@ -126,7 +114,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+   
   },
 
   /**
@@ -134,7 +122,7 @@ Page({
    */
   onUnload: function () {
     if(this.data.type=='polyv'){
-      this.player.destroy();
+      this.data.polyvPlayer.destroy();
     }
   },
 
