@@ -1,5 +1,5 @@
 // pages/news/news.js
-import Server from './videosServer' 
+import Server from './classesServer' 
 Page({
 
   /**
@@ -97,7 +97,7 @@ Page({
       }
   },
 
-  // 查询视频列表
+  // 查询 列表
   async getPageList(){
     let _this = this;
     this.setData({loading:true})
@@ -126,11 +126,11 @@ Page({
   },
 
 
-  // 跳转视频详情
+  // 跳转 详情
   goVideoDetail: function (e){
     var videoItem = e.currentTarget.dataset.item;
     wx.navigateTo({
-      url: '/pages/videoDetail/videoDetail?itemInfo=' + JSON.stringify(videoItem) + '&des=' + e.currentTarget.dataset.des,
+      url: '/pages/classesDetail/classesDetail?itemInfo=' + JSON.stringify(videoItem) + '&des=' + e.currentTarget.dataset.des,
     })
   },
 

@@ -17,10 +17,10 @@ Page({
     this.getMyClassList()
   },
 
-  // 跳转到视频也没
+  // 跳转到 也没
   goVideo:function (e){
     wx.navigateTo({
-      url: '/pages/videos/videos?item=' + JSON.stringify(e.currentTarget.dataset.item), // url="/pages/videos/videos?item={{}}"
+      url: '/pages/classes/classes?item=' + JSON.stringify(e.currentTarget.dataset.item),
     })
   },
 

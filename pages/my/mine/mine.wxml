@@ -38,7 +38,7 @@
 				<image src="../../images/icon-arrow1.png"></image>
 			</i>
 		</view></navigator>
-		<block wx:if="{{showAllMenu}}">
+		<block wx:if="{{!weizhuang}}">
 		<navigator url="/pages/my/study/study" hover-class="none">
 		<view class='cell mineCell' data-type="broker">
 			<image class="mineIcons" src="../../images/icon-yuyue.png"></image>

@@ -77,13 +77,13 @@ Page({
   },
 
 
-  // 跳转到视频也没
+  // 跳转到也没
   goVideo:function (e){
     if(this.data.weizhuang){
       return
     }
     wx.navigateTo({
-      url: '/pages/videos/videos?item=' + JSON.stringify(e.currentTarget.dataset.item), // url="/pages/videos/videos?item={{}}"
+      url: '/pages/classes/classes?item=' + JSON.stringify(e.currentTarget.dataset.item),
     })
   },
 

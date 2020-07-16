@@ -1,6 +1,6 @@
-// pages/videoDetail/videoDetail.js
+
 import polyv from '../../utils/polyv.js';
-import Server from './videoDetailServer'
+import Server from './classesDetailServer'
 
 Page({
 
@@ -8,10 +8,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    type:'mp4', // 视频资源类型
+    type:'mp4', //  资源类型
     showRateStatus:false, // 显示倍数选项
-    src:"", // 视频地址
-    player:null, // 视频实例
+    src:"", //  地址
+    player:null, //  实例
     polyvPlayer:null, // polyv实例
     itemInfo:{}, // 课程信息
     banDes:"", // 班级信息
@@ -38,7 +38,7 @@ Page({
   onReady: function () {
     if(this.data.type=='polyv'){
       let obj = {
-        vid:'88083abbf5535a4d7b4d8614427559e0_8', // this.data.itemInfo.VideoUrl, // 
+        vid:  this.data.itemInfo.VideoUrl, //'88083abbf5535a4d7b4d8614427559e0_8', //, // 
         viewerInfo: {},
         callback: videoInfo => {
           if (videoInfo.type === 'error') {
@@ -62,7 +62,7 @@ Page({
       }
   },
 
-  // 实例化一个操作视频组件示例
+  // 实例化一个操作 组件示例
   getVideoContext: function () {
     var _this = this
     this.setData({
@@ -85,7 +85,7 @@ Page({
   },
 
   videoErrorCallback(e) {
-    console.log('视频错误信息:')
+    console.log(' 错误信息:')
     console.log(e.detail.errMsg)
   },
 

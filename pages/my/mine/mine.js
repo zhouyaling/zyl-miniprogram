@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    showAllMenu:false,
+    weizhuang:false,
     userInfo:{},
     mobile:"",
     isLogin:0,
@@ -18,7 +18,7 @@ Page({
     })
   },
   onLoad: function () {
-    this.setData({showAllMenu:app.globalData.showAllMenu})
+    this.setData({weizhuang:app.globalData.allWeiZhuang})
     if (app.globalData.userInfo) {
     } else if (this.data.canIUse){
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -34,7 +34,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({showAllMenu:app.globalData.showAllMenu})
+    this.setData({weizhuang:app.globalData.allWeiZhuang})
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
         selected: app.globalData.barList.length==4 ? 3 :1 //这个数字是当前页面在tabBar中list数组的索引
