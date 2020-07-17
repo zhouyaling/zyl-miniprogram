@@ -108,8 +108,8 @@ swiper-item {
 
 .listContent{
   position: relative;
-  margin: 0 32rpx 50rpx 32rpx;
-  padding-bottom: 160rpx;
+  margin: 0 32rpx 0rpx 32rpx;
+  padding-bottom: 150rpx;
   border-top-left-radius: 60rpx;
   border-top-right-radius: 60rpx;
   box-sizing: border-box;

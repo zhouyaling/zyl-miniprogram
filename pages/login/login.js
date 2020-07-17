@@ -77,11 +77,12 @@ Page({
         if(data.mobile){
           wx.setStorageSync(Config.wxMobile, data.mobile)
           app.globalData.mobile = data.mobile;
+          app.globalData.userInfo = _this.data.userInfo;
+          wx.navigateBack({
+            delta: 1
+          })
         }
-        app.globalData.userInfo = _this.data.userInfo;
-        wx.navigateBack({
-          delta: 1
-        })
+       
         _this.setData({
           showModal:false
         })

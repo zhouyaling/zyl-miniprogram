@@ -20,7 +20,7 @@ Page({
    */
   onLoad: function (options) {
     this.getVideoType();
-    this.setData({weizhuang:app.globalData.allWeiZhuang})
+  
   },
 
   // 获取专题栏目
@@ -86,11 +86,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 2  //这个数字是当前页面在tabBar中list数组的索引
-      })
-    }
+    this.setData({weizhuang:app.globalData.allWeiZhuang})
+
+    // 动态设置菜单（已取消）
+    // if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+    //   this.getTabBar().setData({
+    //     selected: 2  //这个数字是当前页面在tabBar中list数组的索引
+    //   })
+    // }
   },
 
   /**

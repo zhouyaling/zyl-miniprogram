@@ -5,10 +5,8 @@ import Request from './utils/request'
 
 App({
   onLaunch: function () {
-
-    // 动态设置底部导航菜单
-    this.globalData.barList = tabBarList.allList;
-   
+    // 动态设置底部导航菜单（已取消）
+    // this.globalData.barList = tabBarList.allList;
 
     // 获取用户信息
     wx.getSetting({

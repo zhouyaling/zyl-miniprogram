@@ -8,7 +8,7 @@ export default function(obj) {
     type: "GET",
     dataType: "json",
     headers: {
-     // "Content-type": 'application/json' , 
+     'Content-type': 'application/json', 
     },
     data: {}
   }
@@ -22,9 +22,9 @@ export default function(obj) {
   }
 
 //判断头类型是否json,如果是则需要转一下参数类型
-  if(parameter.headers['Content-type'] === 'application/json'){
-   // parameter.data = JSON.stringify(parameter.data);
-  }
+  // if(parameter.headers['content-type'] === 'application/json'){
+  //  // parameter.data = JSON.stringify(parameter.data);
+  // }
 
   return new Promise(function(resolve, reject) {
     console.log('发送请求:', parameter.url, '参数:', parameter)
