@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    type:'mp4', //  资源类型
+    type:'', //  资源类型
     showRateStatus:false, // 显示倍数选项
     src:"", //  地址
     player:null, //  实例
@@ -21,6 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     if(options.itemInfo){
       let info = JSON.parse(options.itemInfo);
       this.setData({
@@ -94,8 +95,9 @@ Page({
     wx.setStorageSync(this.data.itemInfo.Id, e.detail.currentTime)
   },
 
-  // 元数据加载完成
+  //y 元数据加载完成
   loadedmetadata:function (e){
+    console.log(' 元数据加载完成')
     var currTime = wx.getStorageSync(this.data.itemInfo.Id)
       if(currTime){
         this.data.player.seek(currTime)

@@ -1,11 +1,13 @@
 <view class="page-body">
-	<view  class="page-section page-section-gap" style="width:100%;position:relative;font-size:0" bindtap='clickIt'>
+	<view  wx:if="{{type=='polyv'||type=='mp4'}}"  class="page-section page-section-gap" style="width:100%;position:relative;font-size:0" bindtap='clickIt'>
 		<video wx:if="{{type=='polyv'}}" 
 		id="myVideo" 
 		bindtimeupdate="timeupdate"  
 		bindloadedmetadata="loadedmetadata" 
 		src="{{ src }}" 
 		custom-cache="{{false}}"  
+		autoplay
+
 		>
 			<view class="set-rate" bindtap="setRate">倍数</view>
 			<view class="set-rate-item" wx-if="{{showRateStatus}}">
@@ -25,6 +27,7 @@
 		src="{{src}}" 
 		picture-in-picture-mode="{{['push', 'pop']}}" 
 		controls 
+		autoplay
 		>
 			<view class="set-rate" bindtap="setRate">倍数</view>
 			<view class="set-rate-item" wx-if="{{showRateStatus}}">
@@ -35,10 +38,10 @@
 			</view>
 		</video>
 	</view>
-	<view class="news-header">
+	<view class="news-header" wx:if="{{type=='polyv'||type=='mp4'}}">
 		<view class="title">{{itemInfo.Class}}—{{itemInfo.Section}}</view>
 		<view class="des">
-			<text>已有{{itemInfo.PeopleNum}}人参与学习</text>
+			<text>已有{{itemInfo.PeopleNum?itemInfo.PeopleNum:0}}人参与学习</text>
 		</view>
 	</view>
 	<view class="description">
